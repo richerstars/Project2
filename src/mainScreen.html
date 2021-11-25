@@ -11,13 +11,35 @@
 
 <body>
     <header>
-        <div class="logo"></div>
-        <h1>Фильмы</h1>
-        <nav class="headerNav"></nav>
+        <div class="logo"><img class="imgLogo" src="./img/logo.jpg" alt="logo"></div>
+        <div class="containerBetween"></div>
+        <nav class="headerNav">
+            <input type="search" class="inp" id="inputSearch" />
+            <div class="logoNav"><img class="imgLogoNav" src="./img/logoBurger.png" alt="logo" id="filters"></div>
+            <div class="logoNav"><img class="imgLogoNav" src="./img/styleLogo.png" alt="logo" id="themes"></div>
+            <div class="logoNav"><img class="imgLogoNav" src="./img/logoPeople.png" alt="logo" id="auth"></div>
+        </nav>
     </header>
     <main class="wrapper">
-
+        <section class="popularFilms">
+            <div class="popularFilmsItem"><img src="img/logo.jpg"></div>
+            <div class="popularFilmsItem"><img src="img/logo.jpg"></div>
+            <div class="popularFilmsItem"><img src="img/logo.jpg"></div>
+        </section>
+        <section class="donate"><a href="https://github.com/richerstars/Team_Project2">Поддержи проект копейкой</a>
+        </section>
+        <section class="filmsPagination">
+            <button class="triangle" id="previousBtn"></button>
+            <div class="filmsPaginationItem"></div>
+            <div class="filmsPaginationItem"></div>
+            <div class="filmsPaginationItem"></div>
+            <div class="filmsPaginationItem"></div>
+            <div class="filmsPaginationItem"></div>
+            <div class="filmsPaginationItem"></div>
+            <button class="triangle" id="nextBtn"></button>
+        </section>
     </main>
+    <footer></footer>
 </body>
 
 </html>
