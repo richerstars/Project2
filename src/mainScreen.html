@@ -17,7 +17,7 @@
         <div class="containerBetween"></div>
         <nav class="headerNav">
             <div class="search"><img src="./img/logoSearch.svg" alt="logoSearch"></div>
-            <div class="filters"><img src="./img/logoFilters.svg" alt="logoFilters"></div>
+            <div class="filters"><input type="image" src="./img/logoFilters.svg" alt="logoFilters" id="filters"></div>
             <div class="logoUsers"><img src="./img/logoUser.svg" alt="logoUsers"></div>
         </nav>
     </header>
@@ -25,6 +25,61 @@
         <div class="containerHeaderOne">
             <h1 class="HeaderOne">New Films</h1>
         </div>
+        <section class="filters-item">
+            <div class="container-filters-item">
+                <div class="filters-input">
+                    <label for="Adult">Adult</label>
+                    <select type="text" name="Adult" value="Adult" class="filters-input">
+                </div>
+                <div class="filters-input">
+                    <label for="Languages">Languages</label>
+                    <select type="text" name="Languages" value="Adult">
+                </div>
+                <div class="filters-input">
+                    <label for="Title">Title</label>
+                    <select type="text" name="Title" value="Adult">
+                </div>
+                <div class="filters-input">
+                    <label for="Genres">Genres</label>
+                    <select type="text" name="Genres" value="Adult">
+                </div>
+            </div>
+            <div class="container-input-range container-filters-item">
+                <div>
+                    <p class="filter-item-p">Budget min</p> <input type="range" min="0" max="100" step="1"
+                        id="budget-min-min"><input type="range" min="0" max="100" step="1" id="budget-min-max">
+                </div>
+                <div>
+                    <p class="filter-item-p">Budget min</p> <input type="range" min="0" max="100" step="1"
+                        id="budget-min-min"><input type="range" min="0" max="100" step="1" id="budget-min-max">
+                </div>
+                <div>
+                    <p class="filter-item-p">Budget min</p> <input type="range" min="0" max="100" step="1"
+                        id="budget-min-min"><input type="range" min="0" max="100" step="1" id="budget-min-max">
+                </div>
+                <div>
+                    <p class="filter-item-p">Budget min</p> <input type="range" min="0" max="100" step="1"
+                        id="budget-min-min"><input type="range" min="0" max="100" step="1" id="budget-min-max">
+                </div>
+            </div>
+            <div class="container-items">
+                <input type="text" placeholder="Release day first" class="filters-input">
+                <input type="text" placeholder="Release day last" class="filters-input">
+                <div class="container-items">
+                    <div>
+                        <p class="filter-item-p">Budget min</p> <input type="range" min="0" max="100" step="1"
+                            id="budget-min-min"><input type="range" min="0" max="100" step="1" id="budget-min-max">
+                    </div>
+                    <div>
+                        <p class="filter-item-p">Budget min</p> <input type="range" min="0" max="100" step="1"
+                            id="budget-min-min"><input type="range" min="0" max="100" step="1" id="budget-min-max">
+                    </div>
+                </div>
+            </div>
+            <div class="container-btn-save">
+                <button id="saveBtn">Save</button>
+            </div>
+        </section>
         <section class="popularFilms">
             <div class="popularFilmsItem"><img src="img/logo.jpg"></div>
             <div class="popularFilmsItem"><img src="img/logo.jpg"></div>

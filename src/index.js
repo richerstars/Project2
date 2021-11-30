@@ -1,18 +1,18 @@
 import { elementsOfDom } from "./constantsElements";
 
 elementsOfDom.inputIdInputSearch.addEventListener('click', findFilms);
-elementsOfDom.imgIdFilters.addEventListener('click', getFilters);
+elementsOfDom.inputIdFilters.addEventListener('click', getFilters);
 elementsOfDom.imgIdThemes.addEventListener('click', changeTheme);
 elementsOfDom.imgIdAuth.addEventListener('click', getAuth);
 elementsOfDom.buttonIdNextBtn.addEventListener('click', getNextPaginationFilmItem);
 elementsOfDom.buttonIdPreviousBtn.addEventListener('click', getPreviousFilmItem);
+elementsOfDom.buttonIdSaveBtn.addEventListener('click', saveFilters);
 
-for (const item of elementsOfDom.allDivClassFilmsPaginationItem) {
-    item.addEventListener('click', getCurrentFilm);
-}
+document.querySelector('#budget-min-min').addEventListener('change', getRangeValue);
+document.querySelector('#budget-min-max').addEventListener('input', getRangeValue);
 
-for (const item of elementsOfDom.allDivClassPopularFilmsItem) {
-    item.addEventListener('click', getCurrentFilm);
+function getRangeValue(e) {
+    console.log(e.target);
 }
 
 function findFilms() {
@@ -40,5 +40,9 @@ function getNextPaginationFilmItem() {
 }
 
 function getPreviousFilmItem() {
+
+}
+
+function saveFilters() {
 
 }

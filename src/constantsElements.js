@@ -3,14 +3,16 @@ export const elementsOfDom = {
     navHeaderNav: document.querySelector(selectorsCss.classHeaderNav),
     divClassLogo: document.querySelector(selectorsCss.classLogo),
     inputIdInputSearch: document.querySelector(selectorsCss.idInputSearch),
-    imgIdFilters: document.querySelector(selectorsCss.idFilters),
     imgIdThemes: document.querySelector(selectorsCss.idThemes),
     imgIdAuth: document.querySelector(selectorsCss.idAuth),
     sectionclassPopularFilms: document.querySelector(selectorsCss.classPopularFilms),
     allDivClassPopularFilmsItem: document.querySelectorAll(selectorsCss.classPopularFilmsItem),
     allDivClassFilmsPaginationItem: document.querySelectorAll(selectorsCss.classFilmsPaginationItem),
     buttonIdPreviousBtn: document.querySelector(selectorsCss.idPreviousBtn),
-    buttonIdNextBtn: document.querySelector(selectorsCss.idNextBtn)
+    buttonIdNextBtn: document.querySelector(selectorsCss.idNextBtn),
+    inputIdFilters: document.querySelector(selectorsCss.idFilters),
+    sectionClassFiltersItem: document.querySelector(selectorsCss.classFiltersItem),
+    buttonIdSaveBtn: document.querySelector(selectorsCss.idSaveBtn)
 };
 
 const selectorsCss = {
@@ -26,5 +28,7 @@ const selectorsCss = {
     classPopularFilmsItem: '.popularFilmsItem',
     classFilmsPaginationItem: '.filmsPaginationItem',
     idPreviousBtn: '#previousBtn',
-    idNextBtn: '#nextBtn'
+    idNextBtn: '#nextBtn',
+    classFiltersItem: '.filters-item',
+    idSaveBtn: "#saveBtn"
 };
