@@ -1,22 +1,23 @@
-export const selectorsCss = {
+const selectorsCss = {
     classWrapper: '.wrapper',
     idAuthorizedForm: '#authorizedForm',
     classHeaderNav: '.headerNav',
     classLogo: '.logo',
-    idInputSearch: '#inputSearch',
     idFilters: '#filters',
     idThemes: '#themes',
     idAuth: '#auth',
     classPopularFilms: '.popularFilms',
     classPopularFilmsItem: '.popularFilmsItem',
     classFilmsPaginationItem: '.filmsPaginationItem',
-    idPreviousBtn: '#previousBtn',
-    idNextBtn: '#nextBtn',
     classFiltersItem: '.filters-item',
-    idSaveBtn: "#saveBtn"
+    idSaveBtn: "#saveBtn",
+    classFiltersItemNone: '.filters-item-none',
+    classSection: '.section',
+    classRangeSlider: '.rangeSlider',
+    idAdult: '#Adult'
 };
 
-export const elementsOfDom = {
+const elementsOfDom = {
     mainClassWrapper: document.querySelector(selectorsCss.classWrapper),
     navHeaderNav: document.querySelector(selectorsCss.classHeaderNav),
     divClassLogo: document.querySelector(selectorsCss.classLogo),
@@ -30,6 +31,10 @@ export const elementsOfDom = {
     buttonIdNextBtn: document.querySelector(selectorsCss.idNextBtn),
     inputIdFilters: document.querySelector(selectorsCss.idFilters),
     sectionClassFiltersItem: document.querySelector(selectorsCss.classFiltersItem),
-    buttonIdSaveBtn: document.querySelector(selectorsCss.idSaveBtn)
+    buttonIdSaveBtn: document.querySelector(selectorsCss.idSaveBtn),
+    sectionClassFiltersItemNone: document.querySelector(selectorsCss.classFiltersItemNone),
+    sectionClassSection: document.querySelector(selectorsCss.classSection),
+    inputClassRangeSlider: document.querySelector(selectorsCss.inputClassRangeSlider),
+    inputIdAdult: document.querySelector(selectorsCss.idAdult)
 };
 

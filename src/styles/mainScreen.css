@@ -174,13 +174,13 @@ a{
   color: #FFFFFF;
 }
 
-.popularFilmsItem{
+.newFilmsItem{
   width: 32vw;
 height: 352px;
   background: #C4C4C4;
 border-radius: 10px;
 }
-.popularFilms{
+.newFilms{
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -237,6 +237,10 @@ footer{
   flex-direction: column;
   flex-wrap: wrap;
 }
+.filters-item-none{
+  display: none;
+}
+
 .container-adult{
   display: flex;
   justify-content: center;
@@ -299,9 +303,28 @@ select[value]{
   color:#fff;
 }
 label{
+  cursor: pointer;
   color:#fff;
 }
 .filters-input::placeholder{
   color:#fff;
   text-align: center;
+}
+
+.checkedAdult{
+  background-color: #FF0000;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 391px;
+height: 100px;
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 24px;
+line-height: 28px;
+border: 2px solid #FFFFFF;
+border-radius: 15px;
+color:#fff;
+margin: 0px 10px;
 }
