@@ -1,9 +1,15 @@
-import { elementsOfDom } from "./constantsElements";
+import { elementsOfDom, selectorsCss } from "./constantsElements";
+import './styles/mainScreen.css';
+import logo from './img/logo.svg';
+import logoFilters from './img/logoFilters.svg';
+import logoSearch from './img/logoSearch.svg';
+import logoUser from './img/logoUser.svg';
+import space from './img/space.jpg';
 
 elementsOfDom.inputIdInputSearch.addEventListener('click', findFilms);
 elementsOfDom.inputIdFilters.addEventListener('click', getFilters);
 elementsOfDom.imgIdThemes.addEventListener('click', changeTheme);
-elementsOfDom.imgIdAuth.addEventListener('click', getAuth);
+elementsOfDom.inputIdAuth.addEventListener('click', getAuth);
 elementsOfDom.buttonIdNextBtn.addEventListener('click', getNextPaginationFilmItem);
 elementsOfDom.buttonIdPreviousBtn.addEventListener('click', getPreviousFilmItem);
 elementsOfDom.buttonIdSaveBtn.addEventListener('click', saveFilters);
@@ -19,8 +25,8 @@ function findFilms() {
 
 }
 
-function getFilters() {
-
+function getFilters(e) {
+    console.log('wo')
 }
 
 function changeTheme() {

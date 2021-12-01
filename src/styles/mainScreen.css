@@ -212,7 +212,9 @@ border: 20px solid transparent; border-right: 20px solid #C4C4C4;
 #nextBtn{
   border: 20px solid transparent; border-left: 20px solid #C4C4C4; 
 }
-
+.search{
+  width: 66px;
+}
 
 footer{
   height: 4.5vh;
@@ -220,21 +222,32 @@ footer{
 }
 
 #filters{
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 70px;
 }
 .filters-item{
+  display: flex;
   position: absolute;
   margin-top: 50px;
   background-image: url('../img/space.jpg');
   width: 95vw;
   height: 800px;
-  display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
   flex-wrap: wrap;
 }
+.container-adult{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+#Adult{
+  position: absolute;
+  top:-2000px;
+}
+
 .filter-item-p{
   color:#FFF;
 }
@@ -245,7 +258,7 @@ footer{
 .container-filters-item{
 height: 150px;
 display: flex;
-justify-content: space-between;
+justify-content: space-around;
 align-items: center;
 }
 #saveBtn{
@@ -261,6 +274,9 @@ line-height: 28px;
 color: #FFF;
 }
 .filters-input{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   width: 391px;
 height: 100px;
 background-image: url('../img/space.jpg');
@@ -273,6 +289,11 @@ border: 2px solid #FFFFFF;
 border-radius: 15px;
 color:#fff;
 margin: 0px 10px;
+}
+select{
+  appearance: none;
+  outline: none;
+  border: none;
 }
 select[value]{
   color:#fff;

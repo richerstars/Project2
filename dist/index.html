@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./styles/mainScreen.css"> -->
+    <title>Main Screen</title>
+    <script defer src="bundle.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo"><a href=""><img src="./img/logo.svg" alt="devEducation" class="imgLogo"></a></div>
+        <section class="donate"><a href="https://github.com/richerstars/Team_Project2">Donate</a>
+        </section>
+        <div class="containerBetween"></div>
+        <nav class="headerNav">
+            <div class="search"><img src="./img/logoSearch.svg" alt="logoSearch"></div>
+            <div class="filters"><input type="image" src="./img/logoFilters.svg" alt="logoFilters" id="filters"></div>
+            <div class="logoUsers"><input type="image" src="./img/logoUser.svg" alt="logoUser" id="auth"></div>
+        </nav>
+    </header>
+    <main class="wrapper">
+        <div class="containerHeaderOne">
+            <h1 class="HeaderOne">New Films</h1>
+        </div>
+        <section class="filters-item">
+
+            <div class="container-btn-save">
+                <button id="saveBtn">Save</button>
+            </div>
+        </section>
+        <section class="popularFilms">
+            <div class="popularFilmsItem"><img src="img/logo.jpg"></div>
+            <div class="popularFilmsItem"><img src="img/logo.jpg"></div>
+            <div class="popularFilmsItem"><img src="img/logo.jpg"></div>
+        </section>
+
+        <section class="filmsPagination">
+            <button class="triangle" id="previousBtn"></button>
+            <div class="filmsPaginationItem"></div>
+            <div class="filmsPaginationItem"></div>
+            <div class="filmsPaginationItem"></div>
+            <div class="filmsPaginationItem"></div>
+            <div class="filmsPaginationItem"></div>
+            <div class="filmsPaginationItem"></div>
+            <button class="triangle" id="nextBtn"></button>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+
+</html>
