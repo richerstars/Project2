@@ -4,7 +4,8 @@
   "description": "��#\u0000 \u0000P\u0000r\u0000o\u0000j\u0000e\u0000c\u0000t\u00002\u0000\r\u0000 \u0000",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "serve": "webpack serve --open"
   },
   "repository": {
     "type": "git",
@@ -20,11 +21,13 @@
   "devDependencies": {
     "css-loader": "^6.5.1",
     "file-loader": "^6.2.0",
+    "html-loader": "^3.0.1",
     "html-webpack-plugin": "^5.5.0",
     "style-loader": "^3.3.1",
     "svg-inline-loader": "^0.8.2",
     "webpack": "^5.64.1",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.6.0"
   },
   "dependencies": {
     "core-js-compat": "^3.4.7",

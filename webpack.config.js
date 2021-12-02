@@ -7,6 +7,7 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: 'bundle.js',
+        clean: true,
     },
     stats: {
         children: true,
@@ -15,15 +16,9 @@ module.exports = {
     module: {
 
         rules: [{ test: /\.css$/, use: ["style-loader", "css-loader"] },
-        { test: /\.svg$/, loader: 'svg-inline-loader' },
+        { test: /\.(png|svg|jpg|jpeg|gif)$/i, type: 'asset/resource', },
         {
-            test: /\.(png|jpe?g|gif|svg)$/i, use: [{
-                loader: 'file-loader',
-                options: '[name].[ext]',
-
-            },
-
-            ],
+            test: /\.(png|jpe?g|gif|svg)$/i, use: [{ loader: 'file-loader', options: '[name].[ext]', },],
 
         },
         ]
