@@ -1,126 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Screen</title>
-<script defer src="bundle.js"></script><link href="main.css" rel="stylesheet"></head>
-
-<body>
-    <header>
-        <div class="logo"><a href=""><img src="./img/logo.svg" alt="devEducation" class="imgLogo"></a></div>
-        <section class="donate"><a href="https://github.com/richerstars/Team_Project2">Donate</a>
-        </section>
-        <div class="containerBetween"></div>
-        <nav class="headerNav">
-            <div class="search"><img src="./img/logoSearch.svg" alt="logoSearch"></div>
-            <div class="filters"><input type="image" src="./img/logoFilters.svg" alt="logoFilters" id="filters"></div>
-            <div class="logoUsers"><input type="image" src="./img/logoUser.svg" alt="logoUser" id="auth"></div>
-        </nav>
-    </header>
-    <main class="wrapper">
-        <div class="containerHeaderOne">
-            <h1 class="HeaderOne">New Films</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  <script defer src="bundle.js"></script><link href="main.css" rel="stylesheet"></head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h2>Create Account</h2>
+      </div>
+      <form id="form" class="form">
+        <div class="form-control">
+          <label for="username">Username</label>
+          <input type="text" placeholder="Enter your username" id="username" />
+          <i class="check-circle"></i>
+          <i class="exclamation-circle"></i>
+          <small>Error message</small>
         </div>
-        <section class="section filters-item-none">
-            <div class="container-filters-item">
-                <div class="filters-input container-adult">
-                    <label for="Adult">Adult</label>
-                    <input type="checkbox" name="Adult" id="Adult" class="filters-input">
-                </div>
-                <div class="filters-input">
-                    <div class="container-filters-selectors">
-                        <label for="selectLanguages">Languages</label>
-                        <select name="Languages" id="selectLanguages"> </select>
-                    </div>
-                </div>
-                <div class="filters-input">
-                    <div class="container-filters-selectors">
-                        <label for="selectTitle">Title</label>
-                        <select name="Title" id="selectTitle"></select>
-                    </div>
-                </div>
-                <div class="filters-input">
-                    <div class="container-filters-selectors">
-                        <label for="selectGenres">Genres</label>
-                        <select name="Genres" id="selectGenres"></select>
-                    </div>
-                </div>
-            </div>
-            <div class="container-input-range container-filters-item">
-                <div class="filter-item-p">
-                    <p>Budget min</p> <input type="range" id="budget-min-min" />
-                </div>
-                <div class="filter-item-p">
-                    <p>Budget max</p>
-                    <div class="slider-track"></div>
-                    <span><input type="range" min="0" max="100" step="1" class="rangeSlider" id="budget-max-min"><input
-                            type="range" min="0" max="100" step="1" id="budget-max-min"></span>
-                </div>
-                <div class="filter-item-p">
-                    <p>Popularity min</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
-                        id="popularity-min-min"><input type="range" min="0" max="100" step="1" id="popularity-min-max">
-                </div>
-                <div class="filter-item-p">
-                    <p>Popularity max</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
-                        id="popularity-max-min"><input type="range" min="0" max="100" step="1" id="popularity-max-max">
-                </div>
-            </div>
-            <div class="container-items">
-                <input type="number" placeholder="Release day first" class="filters-input">
-                <input type="number" placeholder="Release day last" class="filters-input">
-                <div class="container-items">
-                    <div class="filter-item-p">
-                        <p>Revenue min</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
-                            id="revenue-min-min"><input type="range" min="0" max="100" step="1" id="revenue-min-max">
-                    </div>
-                    <div class="filter-item-p">
-                        <p>Revenue max</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
-                            id="revenue-max-min"><input type="range" min="0" max="100" step="1" id="revenue-max-max">
-                    </div>
-                </div>
-            </div>
-            <div class="container-btn-save">
-                <button id="saveBtn">Save</button>
-            </div>
-            <div class="container-btn-reset">
-                <button id="resetBtn">Reset</button>
-            </div>
-        </section>
-        <section class="newFilms">
-            <div class="newFilmsItem"><img src="img/logo.jpg"></div>
-            <div class="newFilmsItem"><img src="img/logo.jpg"></div>
-            <div class="newFilmsItem"><img src="img/logo.jpg"></div>
-        </section>
-        <section class="filmsShowMore">
-            <div class="container-btn-showMore">
-                <button id="showMoreBtn">Show More</button>
-            </div>
-            <div class="containerHeaderFilms">
-                <h3>Lorem</h3>
-            </div>
-            <div class="containerFilmsItem">
-                <div class="filmsItem"><img class="imgFilmsItem" src="img/logo.jpg">
-                    <p class="descriptionFilm">Lorem ipsum</p>
-                </div>
-                <div class="filmsItem"><img class="imgFilmsItem" src="img/logo.jpg">
-                    <p class="descriptionFilm">Lorem ipsum</p>
-                </div>
-                <div class="filmsItem"><img class="imgFilmsItem" src="img/logo.jpg">
-                    <p class="descriptionFilm">Lorem ipsum</p>
-                </div>
-                <div class="filmsItem"><img class="imgFilmsItem" src="img/logo.jpg">
-                    <p class="descriptionFilm">Lorem ipsum</p>
-                </div>
-                <div class="filmsItem"><img class="imgFilmsItem" src="img/logo.jpg">
-                    <p class="descriptionFilm">Lorem ipsum</p>
-                </div>
-            </div>
-        </section>
 
-    </main>
-</body>
+        <div class="form-control">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            id="password"
+          />
+          <i class="check-circle"></i>
+          <i class="exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
 
+        <div class="form-control">
+          <label for="first_name">First Name</label>
+          <input
+            type="text"
+            placeholder="Enter your first name"
+            id="first_name"
+          />
+          <i class="check-circle"></i>
+          <i class="exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+
+        <div class="form-control">
+          <label for="last_name">Last name</label>
+          <input
+            type="text"
+            placeholder="Enter your last name"
+            id="last_name"
+          />
+          <i class="check-circle"></i>
+          <i class="exclamation-circle"></i>
+          <small>Error message</small>
+        </div>
+
+        <button>Submit</button>
+      </form>
+    </div>
+  </body>
 </html>

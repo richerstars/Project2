@@ -1,5 +1,5 @@
 import noUiSlider from './nouislider';
-import './styles/nouislider.css';
+import '../../styles/nouislider.css';
 
 const slider = document.querySelector('#budget-min-min');
 export default noUiSlider.create(slider, {
