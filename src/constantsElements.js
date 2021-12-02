@@ -1,4 +1,4 @@
-const selectorsCss = {
+export const selectorsCss = {
     classWrapper: '.wrapper',
     idAuthorizedForm: '#authorizedForm',
     classHeaderNav: '.headerNav',
@@ -11,13 +11,14 @@ const selectorsCss = {
     classFilmsPaginationItem: '.filmsPaginationItem',
     classFiltersItem: '.filters-item',
     idSaveBtn: "#saveBtn",
+    idResetBtn: '#resetBtn',
     classFiltersItemNone: '.filters-item-none',
     classSection: '.section',
     classRangeSlider: '.rangeSlider',
     idAdult: '#Adult'
 };
 
-const elementsOfDom = {
+export const elementsOfDom = {
     mainClassWrapper: document.querySelector(selectorsCss.classWrapper),
     navHeaderNav: document.querySelector(selectorsCss.classHeaderNav),
     divClassLogo: document.querySelector(selectorsCss.classLogo),
@@ -27,11 +28,10 @@ const elementsOfDom = {
     sectionclassPopularFilms: document.querySelector(selectorsCss.classPopularFilms),
     allDivClassPopularFilmsItem: document.querySelectorAll(selectorsCss.classPopularFilmsItem),
     allDivClassFilmsPaginationItem: document.querySelectorAll(selectorsCss.classFilmsPaginationItem),
-    buttonIdPreviousBtn: document.querySelector(selectorsCss.idPreviousBtn),
-    buttonIdNextBtn: document.querySelector(selectorsCss.idNextBtn),
     inputIdFilters: document.querySelector(selectorsCss.idFilters),
     sectionClassFiltersItem: document.querySelector(selectorsCss.classFiltersItem),
     buttonIdSaveBtn: document.querySelector(selectorsCss.idSaveBtn),
+    buttonIdResetBtn: document.querySelector(selectorsCss.idResetBtn),
     sectionClassFiltersItemNone: document.querySelector(selectorsCss.classFiltersItemNone),
     sectionClassSection: document.querySelector(selectorsCss.classSection),
     inputClassRangeSlider: document.querySelector(selectorsCss.inputClassRangeSlider),

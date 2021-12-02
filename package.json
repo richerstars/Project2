@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "core-js-compat": "^3.4.7",
-    "eslint": "^8.3.0"
+    "eslint": "^8.3.0",
+    "nouislider": "^15.5.0"
   }
 }

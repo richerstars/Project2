@@ -1,48 +1,49 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const slider = document.getElementById('vv');
-    if (slider) {
-        noUiSlider.create(slider, {
-            start: [0, 100],
-            connect: true,
-            step: 1,
-            range: {
-                'min': [0],
-                'max': [100]
-            }
-        });
-    }
-});
 
-const lowerSlider = document.querySelector('#budget-max-min');
-const upperSlider = document.querySelector('#budget-max-max');
-let lowerVal = parseInt(lowerSlider.value);
-let upperVal = parseInt(upperSlider.value);
-
-upperSlider.oninput = function () {
-    lowerVal = parseInt(lowerSlider.value);
-    upperVal = parseInt(upperSlider.value);
-    console.log(lowerVal);
-    console.log(upperVal);
-    if (upperVal < lowerVal + 2) {
-        lowerSlider.value = upperVal - 2;
-
-        if (lowerVal == lowerSlider.min) {
-            upperSlider.value = 2;
+const slider = document.querySelector('budget-max-max');
+if (slider) {
+    noUiSlider.create(slider, {
+        start: [0, 100],
+        connect: true,
+        step: 1,
+        range: {
+            'min': [0],
+            'max': [100]
         }
-    }
-};
+    });
+}
 
 
-lowerSlider.oninput = function () {
-    lowerVal = parseInt(lowerSlider.value);
-    upperVal = parseInt(upperSlider.value);
+// const 
+// const lowerSlider = document.querySelector('#budget-max-min');
+// const upperSlider = document.querySelector('#budget-max-max');
+// let lowerVal = parseInt(lowerSlider.value);
+// let upperVal = parseInt(upperSlider.value);
 
-    if (lowerVal > upperVal - 2) {
-        upperSlider.value = lowerVal + 2;
+// upperSlider.oninput = function () {
+//     lowerVal = parseInt(lowerSlider.value);
+//     upperVal = parseInt(upperSlider.value);
+//     console.log(lowerVal);
+//     console.log(upperVal);
+//     if (upperVal < lowerVal + 2) {
+//         lowerSlider.value = upperVal - 2;
 
-        if (upperVal == upperSlider.max) {
-            lowerSlider.value = parseInt(upperSlider.max) - 2;
-        }
+//         if (lowerVal == lowerSlider.min) {
+//             upperSlider.value = 2;
+//         }
+//     }
+// };
 
-    }
-};
+
+// lowerSlider.oninput = function () {
+//     lowerVal = parseInt(lowerSlider.value);
+//     upperVal = parseInt(upperSlider.value);
+
+//     if (lowerVal > upperVal - 2) {
+//         upperSlider.value = lowerVal + 2;
+
+//         if (upperVal == upperSlider.max) {
+//             lowerSlider.value = parseInt(upperSlider.max) - 2;
+//         }
+
+//     }
+// };

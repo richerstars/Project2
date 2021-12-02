@@ -5,8 +5,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/nouislider.css">
-    <link rel="stylesheet" href="./styles/mainScreen.css">
     <title>Main Screen</title>
 </head>
 
@@ -33,56 +31,61 @@
                     <input type="checkbox" name="Adult" id="Adult" class="filters-input">
                 </div>
                 <div class="filters-input">
-                    <label for="selectLanguages">Languages</label>
-                    <select name="Languages" id="selectLanguages"> </select>
+                    <div class="container-filters-selectors">
+                        <label for="selectLanguages">Languages</label>
+                        <select name="Languages" id="selectLanguages"> </select>
+                    </div>
                 </div>
                 <div class="filters-input">
-                    <label for="selectTitle">Title</label>
-                    <select name="Title" id="selectTitle"></select>
+                    <div class="container-filters-selectors">
+                        <label for="selectTitle">Title</label>
+                        <select name="Title" id="selectTitle"></select>
+                    </div>
                 </div>
                 <div class="filters-input">
-                    <label for="selectGenres">Genres</label>
-                    <select name="Genres" id="selectGenres"></select>
+                    <div class="container-filters-selectors">
+                        <label for="selectGenres">Genres</label>
+                        <select name="Genres" id="selectGenres"></select>
+                    </div>
                 </div>
             </div>
             <div class="container-input-range container-filters-item">
-                <div>
-                    <p class="filter-item-p">Budget min</p> <input type="range" id="budget-min-min" />
+                <div class="filter-item-p">
+                    <p>Budget min</p> <input type="range" id="budget-min-min" />
                 </div>
-                <div>
-                    <p class="filter-item-p">Budget max</p> <span><input type="range" min="0" max="100" step="1"
-                            class="rangeSlider" id="budget-max-min"><input type="range" min="0" max="100" step="1"
+                <div class="filter-item-p">
+                    <p>Budget max</p> <span><input type="range" min="0" max="100" step="1" class="rangeSlider"
+                            id="budget-max-min"><input type="range" min="0" max="100" step="1"
                             id="budget-max-max"></span>
                 </div>
-                <div>
-                    <p class="filter-item-p">Popularity min</p> <input type="range" min="0" max="100" step="1"
-                        class="rangeSlider" id="popularity-min-min"><input type="range" min="0" max="100" step="1"
-                        id="popularity-min-max">
+                <div class="filter-item-p">
+                    <p>Popularity min</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
+                        id="popularity-min-min"><input type="range" min="0" max="100" step="1" id="popularity-min-max">
                 </div>
-                <div>
-                    <p class="filter-item-p">Popularity max</p> <input type="range" min="0" max="100" step="1"
-                        class="rangeSlider" id="popularity-max-min"><input type="range" min="0" max="100" step="1"
-                        id="popularity-max-max">
+                <div class="filter-item-p">
+                    <p>Popularity max</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
+                        id="popularity-max-min"><input type="range" min="0" max="100" step="1" id="popularity-max-max">
                 </div>
             </div>
             <div class="container-items">
-                <input type="text" placeholder="Release day first" class="filters-input">
-                <input type="text" placeholder="Release day last" class="filters-input">
+                <input type="number" placeholder="Release day first" class="filters-input">
+                <input type="number" placeholder="Release day last" class="filters-input">
                 <div class="container-items">
-                    <div>
-                        <p class="filter-item-p">Revenue min</p> <input type="range" min="0" max="100" step="1"
-                            class="rangeSlider" id="revenue-min-min"><input type="range" min="0" max="100" step="1"
-                            id="revenue-min-max">
+                    <div class="filter-item-p">
+                        <p>Revenue min</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
+                            id="revenue-min-min"><input type="range" min="0" max="100" step="1" id="revenue-min-max">
                     </div>
-                    <div>
-                        <p class="filter-item-p">Revenue max</p> <input type="range" min="0" max="100" step="1"
-                            class="rangeSlider" id="revenue-max-min"><input type="range" min="0" max="100" step="1"
-                            id="revenue-max-max">
+                    <div class="filter-item-p">
+                        <p>Revenue max</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
+                            id="revenue-max-min"><input type="range" min="0" max="100" step="1" id="revenue-max-max">
                     </div>
                 </div>
             </div>
             <div class="container-btn-save">
                 <button id="saveBtn">Save</button>
+            </div>
+            <div class="container-btn-reset">
+                <button id="resetBtn">Reset</button>
             </div>
         </section>
         <section class="newFilms">
@@ -90,13 +93,33 @@
             <div class="newFilmsItem"><img src="img/logo.jpg"></div>
             <div class="newFilmsItem"><img src="img/logo.jpg"></div>
         </section>
-
+        <section class="filmsShowMore">
+            <div class="container-btn-showMore">
+                <button id="showMoreBtn">Show More</button>
+            </div>
+            <div class="containerHeaderFilms">
+                <h3>Lorem</h3>
+            </div>
+            <div class="containerFilmsItem">
+                <div class="filmsItem"><img class="imgFilmsItem" src="img/logo.jpg">
+                    <p class="descriptionFilm">Lorem ipsum</p>
+                </div>
+                <div class="filmsItem"><img class="imgFilmsItem" src="img/logo.jpg">
+                    <p class="descriptionFilm">Lorem ipsum</p>
+                </div>
+                <div class="filmsItem"><img class="imgFilmsItem" src="img/logo.jpg">
+                    <p class="descriptionFilm">Lorem ipsum</p>
+                </div>
+                <div class="filmsItem"><img class="imgFilmsItem" src="img/logo.jpg">
+                    <p class="descriptionFilm">Lorem ipsum</p>
+                </div>
+                <div class="filmsItem"><img class="imgFilmsItem" src="img/logo.jpg">
+                    <p class="descriptionFilm">Lorem ipsum</p>
+                </div>
+            </div>
+        </section>
 
     </main>
-    <script src="./nouislider.js"></script>
-    <script src="./range.slider.js"></script>
-    <script src="./index.js"></script>
-
 
 </body>
 
