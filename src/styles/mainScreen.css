@@ -260,6 +260,16 @@ footer{
   position: absolute;
   top:-2000px;
 }
+input[type="range"]{
+-webkit-appearance: none;
+-moz-appearance: none;
+appearance: none;
+height: 27px;
+width: 16px;
+background-color: #4215F4;
+border-radius: 50%;
+cursor: pointer;
+}
 
 .filter-item-p{
   display: flex;
