@@ -7,6 +7,7 @@ const username = document.getElementById('username');
 
 form.addEventListener('submit', e => {
     e.preventDefault();
+
     authorizate();
 })
 
@@ -16,16 +17,18 @@ async function authorizate() {
             "login": username.value,
             "password": password.value
         })
+
             .then(function (response) {
-                switch (response) {
+                switch (true) {
                     case response.status === 400 :
                         // peremennaya.innerHTML = response;
                         break;
                     case response.status === 401 :
+                      //  setErrorFor(username,response);
                         // peremennaya.innerHTML = response;
                         break;
                     case response.status === 403:
-                        // peremennaya.innerHTML = "User with login already exist";
+                     //   setErrorFor(username,"User with login already exist");
                         break;
                     default:
                         // peremennaya.innerHTML = response;
@@ -34,6 +37,12 @@ async function authorizate() {
                 }
             })
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
+// function setErrorFor(input, message) {
+//     const formControl = input.parentElement;
+//     const small = formControl.querySelector('small');
+//     formControl.className = 'form-control error';
+//     small.innerText = message;
+// }

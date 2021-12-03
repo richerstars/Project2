@@ -1,13 +1,11 @@
 import { elementsOfDom, selectorsCss } from "../../constantsElements";
 import '../../styles/mainScreen.css';
-import '../../styles/nouislider.css';
 import logo from '../../img/logo.svg';
 import logoFilters from '../../img/logoFilters.svg';
 import logoSearch from '../../img/logoSearch.svg';
 import logoUser from '../../img/logoUser.svg';
 import space from '../../img/space.jpg';
 import doublelider from './range.slider';
-import noUiSlider from './nouislider';
 
 
 elementsOfDom.inputIdFilters.addEventListener('click', getFilters);

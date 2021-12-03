@@ -16,7 +16,7 @@ form.addEventListener('submit', e => {
 
 async function axiosFetch() {
     try {
-        const response = await axios.post(' https://wowmeup.pp.ua/user/sing_up', {
+        const response = await axios.post('https://wowmeup.pp.ua/user/sing_up', {
             password: password.value,
             login: username.value,
             first_name: firstName.value,
@@ -32,7 +32,7 @@ async function axiosFetch() {
                         break;
                     default:
                         // peremennaya.innerHTML = "Registration successful";
-                        document.location = './src/pages/mainPage/mainScreen.html';
+                        document.location = '../dist/index.html';
                         break;
                 }
             })
