@@ -1,16 +1,16 @@
-import noUiSlider from './nouislider';
-import '../../styles/nouislider.css';
-
-const slider = document.querySelector('#budget-min-min');
-export default noUiSlider.create(slider, {
-    start: [0, 100],
-    connect: true,
-    step: 1,
-    range: {
-        'min': [0],
-        'max': [100]
-    }
-});
+// import noUiSlider from './nouislider';
+// import '../../styles/nouislider.css';
+//
+// const slider = document.querySelector('#budget-min-min');
+// export default noUiSlider.create(slider, {
+//     start: [0, 100],
+//     connect: true,
+//     step: 1,
+//     range: {
+//         'min': [0],
+//         'max': [100]
+//     }
+// });
 
 
 

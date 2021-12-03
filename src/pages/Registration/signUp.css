@@ -3,7 +3,7 @@
 }
 
 body {
-  background-image: url("background.jpg");
+  background-image: url("../../img/background.jpg");
   font-family: "Open Sans", sans-serif;
   display: flex;
   align-items: center;
@@ -17,7 +17,7 @@ body {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
   overflow: hidden;
-  width: 400px;
+  width: 430px;
   max-width: 100%;
 }
 
