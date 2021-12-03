@@ -3,8 +3,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry: {
-        // main: path.resolve(__dirname, './src/pages/mainPage/index.js'),
-        main: path.resolve(__dirname, './src/pages/Registration/signUp.js'),
+         main: path.resolve(__dirname, './src/pages/mainPage/index.js'),
+        //main: path.resolve(__dirname, './src/pages/Registration/signUp.js'),
         //main: path.resolve(__dirname, './src/pages/Authorization/signIn.js'),
     },
     output: {
@@ -29,8 +29,8 @@ module.exports = {
 
     plugins: [
         new MiniCssExtractPlugin(),
-        // new HtmlWebpackPlugin({ template: './src/pages/mainPage/mainScreen.html' }),
-        new HtmlWebpackPlugin({ template: './src/pages/Registration/signUp.html' }),
+         new HtmlWebpackPlugin({ template: './src/pages/mainPage/mainScreen.html' }),
+        //new HtmlWebpackPlugin({ template: './src/pages/Registration/signUp.html' }),
         //new HtmlWebpackPlugin({ template: './src/pages/Authorization/signIn.html' }),
     ],
 }
