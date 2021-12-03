@@ -7,7 +7,7 @@ import logoSearch from './img/logoSearch.svg';
 import logoUser from './img/logoUser.svg';
 import space from './img/space.jpg';
 import doublelider from './range.slider';
-import noUiSlider from './nouislider';
+import noUiSlider from 'nouislider';
 
 
 elementsOfDom.inputIdFilters.addEventListener('click', getFilters);

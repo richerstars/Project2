@@ -38,8 +38,8 @@
                 </div>
                 <div class="filters-input">
                     <div class="container-filters-selectors">
-                        <label for="selectTitle">Title</label>
-                        <select name="Title" id="selectTitle"></select>
+
+                        <input type="text" name="" id="inputTitle" placeholder="Title" class="filters-input">
                     </div>
                 </div>
                 <div class="filters-input">
@@ -51,21 +51,27 @@
             </div>
             <div class="container-input-range container-filters-item">
                 <div class="filter-item-p">
-                    <p>Budget min</p> <input type="range" id="budget-min-min" />
+                    <p>Budget min</p>
+                    <input type="range" min="0" max="100" step="1" class="rangeSlider" id="budget-min">
+                    <input type="number" class="inputValueNumber" id="budget-min-number">
                 </div>
                 <div class="filter-item-p">
                     <p>Budget max</p>
                     <div class="slider-track"></div>
-                    <span><input type="range" min="0" max="100" step="1" class="rangeSlider" id="budget-max-min"><input
-                            type="range" min="0" max="100" step="1" id="budget-max-min"></span>
+                    <input type="range" min="0" max="100" step="1" class="rangeSlider" id="budget-max">
+                    <input type="number" class="inputValueNumber" id="budget-max-number">
                 </div>
                 <div class="filter-item-p">
-                    <p>Popularity min</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
-                        id="popularity-min-min"><input type="range" min="0" max="100" step="1" id="popularity-min-max">
+                    <p>Popularity min</p>
+                    <div class="slider-track"></div>
+                    <input type="range" min="0" max="100" step="1" class="rangeSlider" id="popularity-min">
+                    <input type="number" class="inputValueNumber" id="popularity-min-number">
                 </div>
                 <div class="filter-item-p">
-                    <p>Popularity max</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
-                        id="popularity-max-min"><input type="range" min="0" max="100" step="1" id="popularity-max-max">
+                    <p>Popularity max</p>
+                    <div class="slider-track"></div>
+                    <input type="range" min="0" max="100" step="1" class="rangeSlider" id="popularity-max">
+                    <input type="number" class="inputValueNumber" id="popularity-max-number">
                 </div>
             </div>
             <div class="container-items">
@@ -73,12 +79,18 @@
                 <input type="number" placeholder="Release day last" class="filters-input">
                 <div class="container-items">
                     <div class="filter-item-p">
-                        <p>Revenue min</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
-                            id="revenue-min-min"><input type="range" min="0" max="100" step="1" id="revenue-min-max">
+                        <p>Revenue min</p>
+                        <div class="slider-track"></div>
+                        <input type="range" min="0" max="100" step="1" class="rangeSlider" id="revenue-min">
+                        <input type="number" class="inputValueNumber" id="revenue-min-number">
                     </div>
                     <div class="filter-item-p">
-                        <p>Revenue max</p> <input type="range" min="0" max="100" step="1" class="rangeSlider"
-                            id="revenue-max-min"><input type="range" min="0" max="100" step="1" id="revenue-max-max">
+                        <p>Revenue max</p>
+
+                        <input type="range" min="0" max="100" step="1" class="rangeSlider" id="revenue-max">
+
+                        <input type="number" class="inputValueNumber" id="revenue-max-number">
+
                     </div>
                 </div>
             </div>

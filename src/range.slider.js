@@ -1,31 +1,93 @@
-import noUiSlider from './nouislider';
-import './styles/nouislider.css';
+import { elementsOfDom } from "./constantsElements";
 
-const slider = document.querySelector('#budget-min-min');
-export default noUiSlider.create(slider, {
-    start: [0, 100],
-    connect: true,
-    step: 1,
-    range: {
-        'min': [0],
-        'max': [100]
+elementsOfDom.divClassContainerInputRange.addEventListener('input', getInputValue);
+
+function getInputValue(e) {
+    if (e.target.type === 'range') {
+        e.target.nextElementSibling.value = e.target.value;
+        return;
     }
-});
+    if (e.target.type === 'number') {
+        e.target.previousElementSibling.value = e.target.value;
+        return;
+    }
+    return;
+}
 
 
 
 
-// const 
-// const lowerSlider = document.querySelector('#budget-max-min');
-// const upperSlider = document.querySelector('#budget-max-max');
-// let lowerVal = parseInt(lowerSlider.value);
-// let upperVal = parseInt(upperSlider.value);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// elementsOfDom.divIdRevenueMax.addEventListener('mousedown', getRightInputValue);
+
+// function getRightInputValue(e) {
+//     if (e.target.className === 'thumb-left') {
+//         e.target
+//     }
+//     console.log(e.target);
+// }
+
+
+// leftThumb.addEventListener('mousedown', () => {
+//     lowerVal = parseInt(lowerSlider.value);
+//     upperVal = parseInt(upperSlider.value);
+//     minInput.value = lowerVal;
+//     maxInput.value = upperVal;
+//     leftThumb.style.left = `${lowerVal}%`;
+//     if (upperVal < lowerVal + 2) {
+//         lowerSlider.value = upperVal - 2;
+
+//         if (lowerVal == lowerSlider.min) {
+//             upperSlider.value = 2;
+//         }
+//     }
+// });
+
+// rigthThumb.addEventListener('mousedown', () => {
+//     lowerVal = parseInt(lowerSlider.value);
+//     upperVal = parseInt(upperSlider.value);
+//     minInput.value = lowerVal;
+//     maxInput.value = upperVal;
+//     rigthThumb.style.right = `${upperVal}%`;
+//     if (upperVal < lowerVal + 2) {
+//         lowerSlider.value = upperVal - 2;
+
+//         if (lowerVal == lowerSlider.min) {
+//             upperSlider.value = 2;
+//         }
+//     }
+// });
 
 // upperSlider.oninput = function () {
 //     lowerVal = parseInt(lowerSlider.value);
 //     upperVal = parseInt(upperSlider.value);
-//     console.log(lowerVal);
-//     console.log(upperVal);
+//     minInput.value = lowerVal;
+//     maxInput.value = upperVal;
+//     leftThumb.style.right = `${upperVal}%`;
+//     rigthThumb.style.right = `${lowerVal}%`;
 //     if (upperVal < lowerVal + 2) {
 //         lowerSlider.value = upperVal - 2;
 
@@ -35,11 +97,13 @@ export default noUiSlider.create(slider, {
 //     }
 // };
 
-
 // lowerSlider.oninput = function () {
 //     lowerVal = parseInt(lowerSlider.value);
 //     upperVal = parseInt(upperSlider.value);
-
+//     minInput.value = lowerVal;
+//     maxInput.value = upperVal;
+//     leftThumb.style.left = `${lowerVal}%`;
+//     rigthThumb.style.left = `${upperVal}%`;
 //     if (lowerVal > upperVal - 2) {
 //         upperSlider.value = lowerVal + 2;
 

@@ -234,6 +234,9 @@ footer{
   width: 70px;
   height: 70px;
 }
+#slider-min{
+  width: 100px;
+}
 .filters-item{
   display: flex;
   position: absolute;
@@ -261,11 +264,12 @@ footer{
   top:-2000px;
 }
 input[type="range"]{
--webkit-appearance: none;
+  position: absolute;
+/* -webkit-appearance: none;
 -moz-appearance: none;
-appearance: none;
-height: 27px;
-width: 16px;
+appearance: none; */
+height: 20px;
+width: 200px;
 background-color: #4215F4;
 border-radius: 50%;
 cursor: pointer;
@@ -446,4 +450,27 @@ display: flex;
 align-items: center;
 text-align: center;
 color: #FFFFFF;
+}
+
+.inputValueNumber{
+  height: 20px;
+  width: 100px;
+}
+.slider-track{
+  position: relative;
+  width: 210px;
+  height: 20px;
+  background-color: #C4C4C4;
+  border-radius: 50px;
+}
+
+.thumb-left,.thumb-right{
+  position: absolute;
+  height: 27px;
+    width: 16px;
+    background-color: #4215F4;
+    border-radius: 50%;
+}
+.thumb-right{
+  right: 2px;
 }
