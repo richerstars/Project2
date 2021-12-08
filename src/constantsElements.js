@@ -15,14 +15,16 @@ export const selectorsCss = {
     classFiltersItemNone: '.filters-item-none',
     classSection: '.section',
     classRangeSlider: '.rangeSlider',
-    idAdult: '#Adult'
+    idAdult: '#Adult',
+    idInputTitle: '#inputTitle',
+    idRevenueMax: '#revenue-max',
+    classContainerInputRange: '.container-input-range'
 };
 
 export const elementsOfDom = {
     mainClassWrapper: document.querySelector(selectorsCss.classWrapper),
     navHeaderNav: document.querySelector(selectorsCss.classHeaderNav),
     divClassLogo: document.querySelector(selectorsCss.classLogo),
-    inputIdInputSearch: document.querySelector(selectorsCss.idInputSearch),
     imgIdThemes: document.querySelector(selectorsCss.idThemes),
     inputIdAuth: document.querySelector(selectorsCss.idAuth),
     sectionclassPopularFilms: document.querySelector(selectorsCss.classPopularFilms),
@@ -34,7 +36,9 @@ export const elementsOfDom = {
     buttonIdResetBtn: document.querySelector(selectorsCss.idResetBtn),
     sectionClassFiltersItemNone: document.querySelector(selectorsCss.classFiltersItemNone),
     sectionClassSection: document.querySelector(selectorsCss.classSection),
-    inputClassRangeSlider: document.querySelector(selectorsCss.inputClassRangeSlider),
-    inputIdAdult: document.querySelector(selectorsCss.idAdult)
+    inputIdAdult: document.querySelector(selectorsCss.idAdult),
+    inputIdInputTitle: document.querySelector(selectorsCss.idInputTitle),
+    divIdRevenueMax: document.querySelector(selectorsCss.idRevenueMax),
+    divClassContainerInputRange: document.querySelector(selectorsCss.classContainerInputRange)
 };
 
