@@ -1,47 +1,51 @@
 import './signUp.css';
 import axios from "axios";
+import {constants} from '../../configConstants';
+import {elementsOfDom, selectorsCss} from "../../constantsElements";
 
-const form = document.getElementById('form');
+const form = document.querySelector('#form');
 const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const firstName = document.getElementById('first_name');
 const lastName = document.getElementById('last_name');
+const sendError = document.getElementById('sendError');
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
-    checkInputs();
-    axiosFetch();
-});
+// form.addEventListener('submit', function (e){
+//     e.stopImmediatePropagation();
+//     e.preventDefault();
+//     checkInputs();
+//     useAPI();
+//
+// });
 
-async function axiosFetch() {
+export async function useAPI() {
     try {
-        const response = await axios.post('https://wowmeup.pp.ua/user/sing_up', {
+        const response = await axios.post(constants.WOW_ME_UP_SING_UP, {
             password: password.value,
             login: username.value,
             first_name: firstName.value,
             last_name: lastName.value
         })
-            .then(function (response) {
-                switch (response) {
-                    case response.status === 400 :
-                        // peremennaya.innerHTML = "Validation errors";
-                        break;
-                    case response.status === 403:
-                        // peremennaya.innerHTML = "User with login already exist";
-                        break;
-                    default:
-                        // peremennaya.innerHTML = "Registration successful";
-                        document.location = '../dist/index.html';
-                        break;
-                }
-            })
+        console.log(response)
+        switch (true) {
+            case response.status === 400 :
+                sendError.innerHTML = response.data.message;
+                break;
+            case response.status === 403:
+                sendError.innerHTML = response.data.message;
+                break;
+            default:
+                elementsOfDom.divClassContainerSignUP.style.display = "none";
+                elementsOfDom.divClassContainerSignIn.style.display = "block";
+                break;
+        }
     } catch (error) {
         console.log(error);
     }
 }
 
-function checkInputs() {
+export function checkInputs() {
     const usernameValue = username.value.trim();
     const passwordValue = password.value.trim();
     console.log(!passwordValue.match(/(?=.*[0-9])(?=.*[a-zA-Z])/i));

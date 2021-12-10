@@ -1,25 +1,19 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const CopyPlugin = require("copy-webpack-plugin");
+
 module.exports = {
-    // entry: {
-    //     main: path.resolve(__dirname, './src/pages/mainPage/index.js'),
-    //     main: path.resolve(__dirname, './src/pages/Registration/signUp.js'),
-    //     main: path.resolve(__dirname, './src/pages/Authorization/signIn.js'),
-    // },
-    // entry: ['./src/pages/Registration/signUp.js', './src/pages/Authorization/signIn.js','./src/pages/mainPage/index.js','./src/styles/mainScreen.css'],
     entry: {
         main: './src/pages/mainPage/index.js',
-        signUp: './src/pages/Registration/signUp.js',
-        signIn: './src/pages/Authorization/signIn.js'
+        // signUp: './src/pages/Registration/signUp.js',
+        // signIn: './src/pages/Authorization/signIn.js'
     },
     output: {
         path: path.resolve(__dirname, './dist'),
         filename: '[name].js',
+        publicPath: '/',
         clean: true,
-    },
-    stats: {
-        children: true,
     },
     mode: 'development',
     module: {
@@ -53,15 +47,23 @@ module.exports = {
             template: "./src/pages/mainPage/mainScreen.html",
             chunks: ['main']
         }),
-        new HtmlWebpackPlugin({
-            filename: "signIn.html",
-            template: './src/pages/Authorization/signIn.html',
-            chunks: ['signIn']
-        }),
-        new HtmlWebpackPlugin({
-            filename: "signUp.html",
-            template: './src/pages/Registration/signUp.html',
-            chunks: ['signUp']
-        })
+        // new HtmlWebpackPlugin({
+        //     filename: "signIn.html",
+        //     template: './src/pages/Authorization/signIn.html',
+        //     chunks: ['signIn']
+        // }),
+        // new HtmlWebpackPlugin({
+        //     filename: "index.html",
+        //     template: './src/pages/Registration/signUp.html',
+        //     chunks: ['signUp']
+        // }),
+        // new CopyPlugin({
+        //     patterns: [
+        //         {
+        //             from: path.resolve(__dirname, './src/img'),
+        //             to: path.resolve(__dirname, 'dist/img')
+        //         }
+        //     ]
+        // }),
     ],
 }

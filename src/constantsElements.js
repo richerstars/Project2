@@ -18,7 +18,24 @@ export const selectorsCss = {
     idAdult: '#Adult',
     idInputTitle: '#inputTitle',
     idRevenueMax: '#revenue-max',
-    classContainerInputRange: '.container-input-range'
+    classContainerInputRange: '.container-input-range',
+    classContainerSignIn: '.containerSignIn',
+    classContainerSignUp: '.containerSignUp',
+    idCheckSignIn: '#checkSignIn',
+    idCheckSignUp: '#checkSignUp',
+    classPopUp: '.popUp',
+    idSetSignUpBtn: '#setSignUpBtn',
+    idSetSignInBtn: '#setSignInBtn',
+    classNewFilmsItem: '.newFilmsItem',
+    idTemplateCard: '#templateCard',
+    classImgPoster: '.imgPoster',
+    classNewFilms: '.newFilms',
+    idShowMoreBtn: '#showMoreBtn',
+    classDescriptionFilm: '.descriptionFilm',
+    idFilmsShowMore: '#filmsShowMore',
+    classFilmsShowMore: '.filmsShowMore',
+    classContainerFilmsItem: '.containerFilmsItem',
+    classImgFilmsItem: '.imgFilmsItem'
 };
 
 export const elementsOfDom = {
@@ -39,6 +56,23 @@ export const elementsOfDom = {
     inputIdAdult: document.querySelector(selectorsCss.idAdult),
     inputIdInputTitle: document.querySelector(selectorsCss.idInputTitle),
     divIdRevenueMax: document.querySelector(selectorsCss.idRevenueMax),
-    divClassContainerInputRange: document.querySelector(selectorsCss.classContainerInputRange)
+    divClassContainerInputRange: document.querySelector(selectorsCss.classContainerInputRange),
+    divClassContainerSignIn: document.querySelector(selectorsCss.classContainerSignIn),
+    divClassContainerSignUP: document.querySelector(selectorsCss.classContainerSignUp),
+    buttonIdCheckSignIn: document.querySelector(selectorsCss.idCheckSignIn),
+    buttonIdCheckSignUp: document.querySelector(selectorsCss.idCheckSignUp),
+    sectionClassPopUp: document.querySelector(selectorsCss.classPopUp),
+    buttonIdSetSignUpBtn: document.querySelector(selectorsCss.idSetSignUpBtn),
+    buttonIdSetSignInBtn: document.querySelector(selectorsCss.idSetSignInBtn),
+    divClassNewFilmsItem: document.querySelector(selectorsCss.classNewFilmsItem),
+    templateIdTemplateCard: document.querySelector(selectorsCss.idTemplateCard).content,
+    imgClassImgPoster: document.querySelector(selectorsCss.classImgPoster),
+    sectionClassNewFilms: document.querySelector(selectorsCss.classNewFilms),
+    buttonShowMoreBtn: document.querySelector(selectorsCss.idShowMoreBtn),
+    paragraphDescriptionFilm: document.querySelector(selectorsCss.classDescriptionFilm),
+    templateFilmsShowMore: document.querySelector(selectorsCss.idFilmsShowMore).content,
+    sectionFilmsShowMore: document.querySelector(selectorsCss.classFilmsShowMore),
+    divContainerFilmsItem: document.querySelector(selectorsCss.classContainerFilmsItem),
+    imgImgFilmsItem: document.querySelector(selectorsCss.classImgFilmsItem),
 };
 
