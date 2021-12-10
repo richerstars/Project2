@@ -1,48 +1,34 @@
 import './sign.css';
 import axios from "axios";
+import {constants} from "../../configConstants";
+import {elementsOfDom} from "../../constantsElements";
 
 const form = document.getElementById('form');
-const password = document.getElementById('password');
-const username = document.getElementById('username');
-
+const password = document.getElementById('passwordSignIn');
+const username = document.getElementById('usernameSignIn');
+const ErrorLogin = document.getElementById('ErrorLogin');
 form.addEventListener('submit', e => {
     e.preventDefault();
-
-    authorizate();
+    checkAuthorize();
 })
 
-async function authorizate() {
+export async function checkAuthorize() {
     try {
-        await axios.post('https://wowmeup.pp.ua/user/sign_in', {
-            "login": username.value,
-            "password": password.value
+         const response = await axios.post(constants.WOW_ME_UP_SING_IN, {
+            login: username.value,
+            password: password.value
         })
-
-            .then(function (response) {
-                switch (true) {
-                    case response.status === 400 :
-                        // peremennaya.innerHTML = response;
-                        break;
-                    case response.status === 401 :
-                      //  setErrorFor(username,response);
-                        // peremennaya.innerHTML = response;
-                        break;
-                    case response.status === 403:
-                     //   setErrorFor(username,"User with login already exist");
-                        break;
-                    default:
-                        // peremennaya.innerHTML = response;
-                        //document.location='./src/pages/mainPage/mainScreen.html';
-                        break;
-                }
-            })
+        switch (true) {
+            case response.status === 400 :
+                break;
+            case response.status === 403:
+                break;
+            default:
+                elementsOfDom.sectionClassPopUp.style.display = 'none';
+                localStorage.setItem('token', response.data.token);
+                break;
+        }
     } catch (error) {
         console.error(error);
     }
 }
-// function setErrorFor(input, message) {
-//     const formControl = input.parentElement;
-//     const small = formControl.querySelector('small');
-//     formControl.className = 'form-control error';
-//     small.innerText = message;
-// }
