@@ -1,5 +1,5 @@
 import {elementsOfDom} from "../../constantsElements";
-import '../../styles/mainScreen.css';
+import '../../mainScreen.css';
 import '../../styles/signUp.css';
 import '../../styles/sign.css';
 import {useAPI, checkInputs} from "./signUp";

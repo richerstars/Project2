@@ -1,7 +1,7 @@
 import '../../styles/signUp.css';
 import axios from "axios";
 import {constants} from '../../configConstants';
-import {elementsOfDom, selectorsCss} from "../../constantsElements";
+import {elementsOfDom } from "../../constantsElements";
 
 const username = document.getElementById('username');
 const password = document.getElementById('password');
