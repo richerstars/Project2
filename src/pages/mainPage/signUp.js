@@ -1,23 +1,13 @@
-import './signUp.css';
+import '../../styles/signUp.css';
 import axios from "axios";
 import {constants} from '../../configConstants';
-import {elementsOfDom, selectorsCss} from "../../constantsElements";
+import {elementsOfDom } from "../../constantsElements";
 
-const form = document.querySelector('#form');
 const username = document.getElementById('username');
-const email = document.getElementById('email');
 const password = document.getElementById('password');
 const firstName = document.getElementById('first_name');
 const lastName = document.getElementById('last_name');
 const sendError = document.getElementById('sendError');
-
-// form.addEventListener('submit', function (e){
-//     e.stopImmediatePropagation();
-//     e.preventDefault();
-//     checkInputs();
-//     useAPI();
-//
-// });
 
 export async function useAPI() {
     try {
@@ -68,7 +58,6 @@ export function checkInputs() {
     } else {
         setSuccessFor(password)
     }
-
 
     function setErrorFor(input, message) {
         const formControl = input.parentElement;

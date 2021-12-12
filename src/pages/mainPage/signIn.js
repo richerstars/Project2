@@ -1,16 +1,10 @@
-import './sign.css';
+import '../../styles/sign.css';
 import axios from "axios";
 import {constants} from "../../configConstants";
 import {elementsOfDom} from "../../constantsElements";
 
-const form = document.getElementById('form');
 const password = document.getElementById('passwordSignIn');
 const username = document.getElementById('usernameSignIn');
-const ErrorLogin = document.getElementById('ErrorLogin');
-form.addEventListener('submit', e => {
-    e.preventDefault();
-    checkAuthorize();
-})
 
 export async function checkAuthorize() {
     try {
