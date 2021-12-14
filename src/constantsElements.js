@@ -35,7 +35,9 @@ export const selectorsCss = {
     idFilmsShowMore: '#filmsShowMore',
     classFilmsShowMore: '.filmsShowMore',
     classContainerFilmsItem: '.containerFilmsItem',
-    classImgFilmsItem: '.imgFilmsItem'
+    classImgFilmsItem: '.imgFilmsItem',
+    classHidden: 'hidden',
+    classShow: 'show'
 };
 
 export const elementsOfDom = {

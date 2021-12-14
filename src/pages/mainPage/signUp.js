@@ -1,7 +1,7 @@
 import '../../styles/signUp.css';
 import axios from "axios";
-import {constants} from '../../configConstants';
-import {elementsOfDom } from "../../constantsElements";
+import { constants } from '../../configConstants';
+import { elementsOfDom, selectorsCss } from "../../constantsElements";
 
 const username = document.getElementById('username');
 const password = document.getElementById('password');
@@ -17,21 +17,20 @@ export async function useAPI() {
             first_name: firstName.value,
             last_name: lastName.value
         })
-        console.log(response)
         switch (true) {
-            case response.status === 400 :
+            case response.status === 400:
                 sendError.innerHTML = response.data.message;
                 break;
             case response.status === 403:
                 sendError.innerHTML = response.data.message;
                 break;
             default:
-                elementsOfDom.divClassContainerSignUP.style.display = "none";
-                elementsOfDom.divClassContainerSignIn.style.display = "block";
+                elementsOfDom.divClassContainerSignUP.classList.toggle(selectorsCss.classHidden, true);
+                elementsOfDom.divClassContainerSignIn.classList.toggle(selectorsCss.classHidden, false);
                 break;
         }
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 }
 

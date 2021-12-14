@@ -1,10 +1,10 @@
-import {elementsOfDom} from "../../constantsElements";
+import { elementsOfDom } from "../../constantsElements";
 import '../../mainScreen.css';
 import '../../styles/signUp.css';
 import '../../styles/sign.css';
-import {useAPI, checkInputs} from "./signUp";
-import {checkAuthorize} from "./signIn";
-import {changeModalWindow,renderNewFilm,getMovies,checkToken,getFilters,getAuth,saveFilters,resetFilters,checkAdult} from './logic'
+import { useAPI, checkInputs } from "./signUp";
+import { checkAuthorize } from "./signIn";
+import { changeModalWindow, renderNewFilm, getMovies, checkToken, getFilters, getAuth, saveFilters, resetFilters, checkAdult } from './logic'
 
 document.addEventListener('DOMContentLoaded', checkToken)
 elementsOfDom.inputIdFilters.addEventListener('click', getFilters);
@@ -18,7 +18,6 @@ elementsOfDom.buttonIdSetSignUpBtn.addEventListener('click', function (e) {
     e.preventDefault();
     checkInputs();
     useAPI();
-    getMovies(2);
 });
 elementsOfDom.buttonIdSetSignInBtn.addEventListener('click', function (e) {
     e.preventDefault();
