@@ -55,8 +55,11 @@ export async function renderNewFilm() {
             this.style.disabled = true;
             return;
         }
-        console.log(res);
-        if (!res.data.movies.length) return;
+
+        if (!res.data.totalCount) {
+            elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
+            return;
+        }
         res.data.movies.forEach((element, index) => {
             if (index <= 20) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
@@ -82,18 +85,87 @@ export function checkAdult(e) {
     e.target.parentElement.classList.toggle('checkedAdult');
     e.target.parentElement.classList.toggle('filters-input');
 }
-export function getFilters(e) {
+export async function getFilters() {
 
-    elementsOfDom.sectionClassSection.classList.toggle('filters-item')
-    elementsOfDom.sectionClassSection.classList.toggle('filters-item-none')
+    elementsOfDom.sectionClassSection.classList.toggle('filters-item');
+    elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
+
+    const resLangs = await axios.get(constants.WOW_ME_UP_LANGUAGES);
+    const resGenres = await axios.get(constants.WOW_ME_UP_GENRES);
+
+    resLangs.data.languages.forEach(elem => {
+        elementsOfDom.selectIdSelectLanguages.appendChild(renderLangsOptionsTemplate(elem));
+    });
+
+    resGenres.data.genres.forEach(elem => {
+        elementsOfDom.selectIdSelectGenres.appendChild(renderGenresOptionsTemplate(elem));
+    });
+
 }
-export function getAuth() {
 
+function renderLangsOptionsTemplate({ value, name }) {
+    elementsOfDom.templateIdLangOptions.value = value;
+    elementsOfDom.templateIdLangOptions.textContent = `${name}`;
+    return elementsOfDom.templateIdLangOptions.cloneNode(true);
 }
-export function saveFilters() {
 
+function renderGenresOptionsTemplate({ id, name }) {
+    elementsOfDom.templateIdLangOptions.value = id;
+    elementsOfDom.templateIdLangOptions.textContent = name;
+    return elementsOfDom.templateIdLangOptions.cloneNode(true);
 }
 
-export function resetFilters() {
+// export function saveFilters() {
+//     const adult = elementsOfDom.inputIdAdult.checked;
+//     const language = elementsOfDom.selectIdSelectLanguages.value;
+//     const title = elementsOfDom.inputIdInputTitle.value;
+//     const selectedGenres = elementsOfDom.selectIdSelectGenres.value;
+//     const budget_min = elementsOfDom.inputIdBudgetMinNumber.value;
+//     const budget_max = elementsOfDom.inputIdBudgetMaxNumber.value;
+//     const popularity_min = elementsOfDom.inputIdPopularityMinNumber.value;
+//     const popularity_max = elementsOfDom.inputIdPopularityMaxNumber.value;
+//     const release_date_first = elementsOfDom.inputIdReleaseDayFirst.value;
+//     const release_date_last = elementsOfDom.inputIdReleaseDayLast.value;
+//     const revenue_min = elementsOfDom.inputIdRevenueMinNumber.value;
+//     const revenue_max = elementsOfDom.inputIdRevenueMaxNumber.value;
+//     createDynamic({
+//         adult, language, title, budget_min, budget_max, popularity_min,
+//         popularity_max, release_date_first, release_date_last,
+//         revenue_min, revenue_max
+//     });
 
+// }
+// function createDynamic(obj) {
+//     console.log(obj);
+
+//     for (const item of Object.keys(obj)) {
+//         if (!obj[item]) return;
+//         console.log(obj[item]);
+//         item.join().
+//     }
+// }
+// export function resetFilters() {
+
+// }
+
+export function goToUp() {
+    return scroll(0, 100);
+}
+
+export function logOut() {
+    localStorage.clear();
+    location.reload();
+    elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden, false);
+}
+
+export function setSignUp(e) {
+    e.preventDefault();
+    checkInputs();
+    useAPI();
+}
+
+export function setSignIn(e) {
+    e.preventDefault();
+    checkAuthorize();
+    getMovies(2);
 }

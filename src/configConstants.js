@@ -3,6 +3,8 @@ export const constants = {
     WOW_ME_UP_SING_IN: 'https://wowmeup.pp.ua/user/sign_in',
     WOW_ME_UP_MOVIES: 'https://wowmeup.pp.ua/movie',
     IMAGE_POSTER_LINK: 'https://image.tmdb.org/t/p/original',
+    WOW_ME_UP_LANGUAGES: 'https://wowmeup.pp.ua/languages',
+    WOW_ME_UP_GENRES: 'https://wowmeup.pp.ua/genres',
     GET_PARAMS: {
         PAGE: 'page=',
         PRE_PAGE: 'pre_page=',

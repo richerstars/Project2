@@ -37,7 +37,21 @@ export const selectorsCss = {
     classContainerFilmsItem: '.containerFilmsItem',
     classImgFilmsItem: '.imgFilmsItem',
     classHidden: 'hidden',
-    classShow: 'show'
+    classShow: 'show',
+    idArrowToUp: '#arrowToUp',
+    classContainerFiltersItem: '.container-filters-item',
+    idSelectLanguages: '#selectLanguages',
+    idLangOptions: '#langOptions',
+    tagOption: 'option',
+    idSelectGenres: '#selectGenres',
+    idBudgetMinNumber: '#budget-min-number',
+    idBudgetMaxNumber: '#budget-max-number',
+    idPopularityMinNumber: '#popularity-min-number',
+    idPopularityMaxNumber: '#popularity-max-number',
+    idReleaseDayFirst: '#release-day-first',
+    idReleaseDayLast: '#release-day-last',
+    idRevenueMinNumber: '#revenue-min-number',
+    idRevenueMaxNumber: '#revenue-max-number'
 };
 
 export const elementsOfDom = {
@@ -76,5 +90,18 @@ export const elementsOfDom = {
     sectionFilmsShowMore: document.querySelector(selectorsCss.classFilmsShowMore),
     divContainerFilmsItem: document.querySelector(selectorsCss.classContainerFilmsItem),
     imgImgFilmsItem: document.querySelector(selectorsCss.classImgFilmsItem),
+    buttonIdArrowToUp: document.querySelector(selectorsCss.idArrowToUp),
+    divClassContainerFiltersItem: document.querySelector(selectorsCss.classContainerFiltersItem),
+    selectIdSelectLanguages: document.querySelector(selectorsCss.idSelectLanguages),
+    templateIdLangOptions: document.querySelector(selectorsCss.idLangOptions).content.querySelector(selectorsCss.tagOption),
+    selectIdSelectGenres: document.querySelector(selectorsCss.idSelectGenres),
+    inputIdBudgetMinNumber: document.querySelector(selectorsCss.idBudgetMinNumber),
+    inputIdBudgetMaxNumber: document.querySelector(selectorsCss.idBudgetMaxNumber),
+    inputIdPopularityMinNumber: document.querySelector(selectorsCss.idPopularityMinNumber),
+    inputIdPopularityMaxNumber: document.querySelector(selectorsCss.idPopularityMaxNumber),
+    inputIdReleaseDayFirst: document.querySelector(selectorsCss.idReleaseDayFirst),
+    inputIdReleaseDayLast: document.querySelector(selectorsCss.idReleaseDayLast),
+    inputIdRevenueMinNumber: document.querySelector(selectorsCss.idRevenueMinNumber),
+    inputIdRevenueMaxNumber: document.querySelector(selectorsCss.idRevenueMaxNumber)
 };
 

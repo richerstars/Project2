@@ -4,25 +4,23 @@ import '../../styles/signUp.css';
 import '../../styles/sign.css';
 import { useAPI, checkInputs } from "./signUp";
 import { checkAuthorize } from "./signIn";
-import { changeModalWindow, renderNewFilm, getMovies, checkToken, getFilters, getAuth, saveFilters, resetFilters, checkAdult } from './logic'
+import {
+    changeModalWindow, renderNewFilm, getMovies,
+    checkToken, getFilters, logOut,
+    saveFilters, resetFilters, checkAdult,
+    goToUp, setSignUp, setSignIn
+} from './logic'
 
 document.addEventListener('DOMContentLoaded', checkToken)
 elementsOfDom.inputIdFilters.addEventListener('click', getFilters);
-elementsOfDom.inputIdAuth.addEventListener('click', getAuth);
+elementsOfDom.inputIdAuth.addEventListener('click', logOut);
 elementsOfDom.buttonIdSaveBtn.addEventListener('click', saveFilters);
 elementsOfDom.buttonIdResetBtn.addEventListener('click', resetFilters);
 elementsOfDom.inputIdAdult.addEventListener('change', checkAdult);
 elementsOfDom.buttonIdCheckSignIn.addEventListener('click', changeModalWindow)
 elementsOfDom.buttonIdCheckSignUp.addEventListener('click', changeModalWindow)
-elementsOfDom.buttonIdSetSignUpBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    checkInputs();
-    useAPI();
-});
-elementsOfDom.buttonIdSetSignInBtn.addEventListener('click', function (e) {
-    e.preventDefault();
-    checkAuthorize();
-    getMovies(2);
-});
-elementsOfDom.buttonShowMoreBtn.addEventListener('click', renderNewFilm)
+elementsOfDom.buttonIdSetSignUpBtn.addEventListener('click', setSignUp);
+elementsOfDom.buttonIdSetSignInBtn.addEventListener('click', setSignIn);
+elementsOfDom.buttonShowMoreBtn.addEventListener('click', renderNewFilm);
 
+elementsOfDom.buttonIdArrowToUp.addEventListener('click', goToUp);
