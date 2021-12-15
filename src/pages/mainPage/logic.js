@@ -1,7 +1,8 @@
 import { elementsOfDom, selectorsCss } from "../../constantsElements";
 import { constants } from "../../configConstants";
 import axios from "axios";
-
+import {checkAuthorize} from "./signIn";
+import { useAPI, checkInputs } from "./signUp";
 
 export async function getMovies(attr) {
     try {

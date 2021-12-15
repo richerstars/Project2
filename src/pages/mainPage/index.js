@@ -2,8 +2,6 @@ import { elementsOfDom } from "../../constantsElements";
 import '../../mainScreen.css';
 import '../../styles/signUp.css';
 import '../../styles/sign.css';
-import { useAPI, checkInputs } from "./signUp";
-import { checkAuthorize } from "./signIn";
 import {
     changeModalWindow, renderNewFilm, getMovies,
     checkToken, getFilters, logOut,
