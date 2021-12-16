@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', checkToken)
 elementsOfDom.inputIdFilters.addEventListener('click', getFilters);
 elementsOfDom.inputIdAuth.addEventListener('click', logOut);
 elementsOfDom.buttonIdSaveBtn.addEventListener('click', saveFilters);
-elementsOfDom.buttonIdResetBtn.addEventListener('click', resetFilters);
+// elementsOfDom.buttonIdResetBtn.addEventListener('click', resetFilters);
 elementsOfDom.inputIdAdult.addEventListener('change', checkAdult);
 elementsOfDom.buttonIdCheckSignIn.addEventListener('click', changeModalWindow)
 elementsOfDom.buttonIdCheckSignUp.addEventListener('click', changeModalWindow)

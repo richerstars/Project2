@@ -1,7 +1,7 @@
 import { elementsOfDom, selectorsCss } from "../../constantsElements";
 import { constants } from "../../configConstants";
 import axios from "axios";
-import {checkAuthorize} from "./signIn";
+import { checkAuthorize } from "./signIn";
 import { useAPI, checkInputs } from "./signUp";
 
 export async function getMovies(attr) {
@@ -116,35 +116,61 @@ function renderGenresOptionsTemplate({ id, name }) {
     return elementsOfDom.templateIdLangOptions.cloneNode(true);
 }
 
-// export function saveFilters() {
-//     const adult = elementsOfDom.inputIdAdult.checked;
-//     const language = elementsOfDom.selectIdSelectLanguages.value;
-//     const title = elementsOfDom.inputIdInputTitle.value;
-//     const selectedGenres = elementsOfDom.selectIdSelectGenres.value;
-//     const budget_min = elementsOfDom.inputIdBudgetMinNumber.value;
-//     const budget_max = elementsOfDom.inputIdBudgetMaxNumber.value;
-//     const popularity_min = elementsOfDom.inputIdPopularityMinNumber.value;
-//     const popularity_max = elementsOfDom.inputIdPopularityMaxNumber.value;
-//     const release_date_first = elementsOfDom.inputIdReleaseDayFirst.value;
-//     const release_date_last = elementsOfDom.inputIdReleaseDayLast.value;
-//     const revenue_min = elementsOfDom.inputIdRevenueMinNumber.value;
-//     const revenue_max = elementsOfDom.inputIdRevenueMaxNumber.value;
-//     createDynamic({
-//         adult, language, title, budget_min, budget_max, popularity_min,
-//         popularity_max, release_date_first, release_date_last,
-//         revenue_min, revenue_max
-//     });
+export function saveFilters() {
+    const adult = elementsOfDom.inputIdAdult.checked;
+    const language = elementsOfDom.selectIdSelectLanguages.value;
+    const title = elementsOfDom.inputIdInputTitle.value;
+    const selectedGenres = elementsOfDom.selectIdSelectGenres.value;
+    const budget_min = elementsOfDom.inputIdBudgetMinNumber.value;
+    const budget_max = elementsOfDom.inputIdBudgetMaxNumber.value;
+    const popularity_min = elementsOfDom.inputIdPopularityMinNumber.value;
+    const popularity_max = elementsOfDom.inputIdPopularityMaxNumber.value;
+    const release_date_first = elementsOfDom.inputIdReleaseDayFirst.value;
+    const release_date_last = elementsOfDom.inputIdReleaseDayLast.value;
+    const revenue_min = elementsOfDom.inputIdRevenueMinNumber.value;
+    const revenue_max = elementsOfDom.inputIdRevenueMaxNumber.value;
+    createDynamic({
+        adult, language, title, budget_min, budget_max, popularity_min,
+        popularity_max, release_date_first, release_date_last,
+        revenue_min, revenue_max
+    });
+}
+function createDynamic(obj) {
 
-// }
-// function createDynamic(obj) {
-//     console.log(obj);
+    let url = constants.WOW_ME_UP_MOVIES + '?';
 
-//     for (const item of Object.keys(obj)) {
-//         if (!obj[item]) return;
-//         console.log(obj[item]);
-//         item.join().
-//     }
-// }
+    for (const item of Object.keys(obj)) {
+
+        if (obj[item]) {
+            url += item + '=' + obj[item] + '&';
+        }
+    }
+
+    url = url.substring(0, url.length - 1);
+
+    getMoviesByDynamicParams(url);
+
+}
+
+export async function getMoviesByDynamicParams(request) {
+    try {
+        if (elementsOfDom.sectionFilmsShowMore.children) {
+            for (const item of elementsOfDom.sectionFilmsShowMore.children) {
+                elementsOfDom.sectionFilmsShowMore.removeChild(item);
+            }
+        }
+        const res = await axios.get(request);
+        res.data.movies.forEach((element, index) => {
+            if (index <= 20) {
+                elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
+            }
+            return;
+        });
+        count++;
+    } catch (err) {
+        console.error('getMoviesByDynamicParams: ', err);
+    }
+}
 // export function resetFilters() {
 
 // }
