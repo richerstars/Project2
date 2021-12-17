@@ -17,11 +17,11 @@ export async function getMovies(attr) {
         console.error(error);
     }
 }
-function createNewFilmCard({ id, poster_path, title, original_title, tagline }) {
+function createNewFilmCard({ id, poster_path, title, tagline }) {
     const cardId = elementsOfDom.templateIdTemplateCard.querySelector('.newFilmsItem');
     const cardPoster = elementsOfDom.templateIdTemplateCard.querySelector('.imgPoster');
     const describe = elementsOfDom.templateIdTemplateCard.querySelector('.descriptionNewFilm');
-    describe.textContent = `${title} / ${original_title}`
+    describe.textContent = `${title} `
     cardId.setAttribute('id', `${id}`)
     cardId.setAttribute('title', `${tagline}`)
     cardPoster.setAttribute('src', `${constants.IMAGE_POSTER_LINK}${poster_path}`)
@@ -72,11 +72,11 @@ export async function renderNewFilm() {
         console.error('renderNewFilm: ', err);
     }
 }
-function createTemplateShowMore({ id, poster_path, title, original_title, tagline }) {
+function createTemplateShowMore({ id, poster_path, title, tagline }) {
     const cardId = elementsOfDom.templateFilmsShowMore.querySelector('.filmsItem');
     const cardPoster = elementsOfDom.templateFilmsShowMore.querySelector('.imgFilmsItem');
     const describe = elementsOfDom.templateFilmsShowMore.querySelector('.descriptionFilm');
-    describe.textContent = `${title} /   ${original_title}`
+    describe.textContent = `${title}`
     cardId.setAttribute('id', `${id}`)
     cardId.setAttribute('title', `${tagline}`)
     cardPoster.setAttribute('src', `${constants.IMAGE_POSTER_LINK}${poster_path}`)
@@ -140,10 +140,7 @@ function createDynamic(obj) {
     let url = constants.WOW_ME_UP_MOVIES + '?';
 
     for (const item of Object.keys(obj)) {
-
-        if (obj[item]) {
-            url += item + '=' + obj[item] + '&';
-        }
+        if (obj[item]) url += item + '=' + obj[item] + '&';
     }
 
     url = url.substring(0, url.length - 1);
