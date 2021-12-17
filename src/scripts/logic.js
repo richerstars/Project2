@@ -1,5 +1,5 @@
-import { elementsOfDom, selectorsCss } from "../../constantsElements";
-import { constants } from "../../configConstants";
+import { elementsOfDom, selectorsCss } from "./constants/constantsElements";
+import { constants } from "./constants/configConstants";
 import axios from "axios";
 import { checkAuthorize } from "./signIn";
 import { useAPI, checkInputs } from "./signUp";
@@ -173,7 +173,7 @@ export async function getMoviesByDynamicParams(request) {
 // }
 
 export function goToUp() {
-    return scroll(0, 100);
+    return scroll(0, 0);
 }
 
 export function logOut() {
