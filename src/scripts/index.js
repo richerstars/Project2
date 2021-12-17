@@ -1,7 +1,5 @@
-import { elementsOfDom } from "../../constantsElements";
-import '../../mainScreen.css';
-import '../../styles/signUp.css';
-import '../../styles/sign.css';
+import { elementsOfDom } from "./constants/constantsElements";
+import '../styles/main.css';
 import {
     changeModalWindow, renderNewFilm, getMovies,
     checkToken, getFilters, logOut,
