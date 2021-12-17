@@ -93,7 +93,7 @@ body {
     display: flex;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+
 }
 
 header {
@@ -102,7 +102,7 @@ header {
     width: 100vw;
     height: 80px;
     background-color: #000000;
-    opacity: 0.6;
+    z-index: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -199,7 +199,6 @@ h1 {
 
 .newFilmsItem {
     width: 32vw;
-    height: 50vh;
     background: #C4C4C4;
     border-radius: 10px;
 }
@@ -287,16 +286,16 @@ footer {
 
 .filters-item {
     display: flex;
-    position: absolute;
-    margin-top: 30px;
-    background-image: url('img/space.jpg');
-    width: 100vw;
-    height: 800px;
+    position: fixed;
+    margin-top: 78px;
+    width: 100%;
+    height: 765px;
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
     z-index: 10;
+    background-image: url('img/space.jpg');
 }
 
 .filters-item-none {
@@ -332,7 +331,7 @@ input[type="range"] {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 391px;
+    width: 300px;
     height: 100px;
     background-image: url('img/space.jpg');
     font-family: Roboto;
@@ -414,7 +413,7 @@ input[type="range"] {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 391px;
+    width: 300px;
     height: 100px;
     background-image: url('img/space.jpg');
     font-family: Roboto;
@@ -494,8 +493,6 @@ select[value] {
 }
 
 .descriptionNewFilm{
-    top: -80px;
-    width: 62vh;
     height: 80px;
     background: rgba(255, 255, 255, 0.7);
     font-family: Roboto;
@@ -508,25 +505,24 @@ select[value] {
     text-align: center;
     justify-content: center;
     color: #000000;
-    z-index: 2;
+
 }
 
 .descriptionFilm {
     top: -80px;
     width: 200px;
-    height: 80px;
+    height: 85px;
     background: rgba(255, 255, 255, 0.7);
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
     line-height: 28px;
-    display: flex;
-    align-items: center;
     text-align: center;
-    justify-content: center;
     color: #000000;
-    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .containerHeaderFilms {
@@ -579,7 +575,7 @@ select[value] {
 }
 
 .imgPoster {
-    width: 32vw;
+    width: 100%;
     height: 50vh;
 }
 
@@ -587,7 +583,6 @@ select[value] {
     margin-top: 18px;
     background-image: url('img/space.jpg');
     border-image-repeat: repeat;
-    position: absolute;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -597,7 +592,7 @@ select[value] {
 .filmsItem{
     margin: 10px;
     width: 200px;
-    height: 400px;
+    height: 422px;
     margin-top: 30px;
 }
 
