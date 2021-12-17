@@ -89,7 +89,6 @@ html, body {
 
 body {
     background-image: url('./img/space.jpg');
-    background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -297,6 +296,7 @@ footer {
     align-items: center;
     flex-direction: column;
     flex-wrap: wrap;
+    z-index: 10;
 }
 
 .filters-item-none {
@@ -476,13 +476,7 @@ select[value] {
     margin-top: 100px;
 }
 
-.filmsShowMore {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
+
 
 .imgFilmsItem {
     width: 205px;
@@ -499,9 +493,27 @@ select[value] {
     gap: 45px;
 }
 
-.descriptionFilm , .descriptionNewFilm{
+.descriptionNewFilm{
     top: -80px;
-    width: 32vw;
+    width: 62vh;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.7);
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    color: #000000;
+    z-index: 2;
+}
+
+.descriptionFilm {
+    top: -80px;
+    width: 200px;
     height: 80px;
     background: rgba(255, 255, 255, 0.7);
     font-family: Roboto;
@@ -569,6 +581,28 @@ select[value] {
 .imgPoster {
     width: 32vw;
     height: 50vh;
+}
+
+.filmsShowMore {
+    margin-top: 18px;
+    background-image: url('img/space.jpg');
+    border-image-repeat: repeat;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.filmsItem{
+    margin: 10px;
+    width: 200px;
+    height: 400px;
+    margin-top: 30px;
+}
+
+.arrowToUp{
+
 }
 
 @media screen and (max-width : 1470px){
