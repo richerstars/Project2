@@ -1,0 +1,53 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint",
+    "no-loops"
+  ],
+  "extends": [
+    "airbnb-base",
+    "eslint:recommended",
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "linebreak-style": 0,
+    "semi": "error",
+    "no-console": "warn",
+    "no-loops/no-loops": "error",
+    "indent": ["error", 4],
+    "@typescript-eslint/indent": ["error", 4],
+    "no-mixed-spaces-and-tabs": "error",
+    "import/no-unresolved": "off",
+    "one-var": "off",
+    "global-require": "off",
+    "no-restricted-syntax": "off",
+    "no-use-before-define": "off",
+    "no-case-declarations": "off",
+    "no-await-in-loop": "off",
+    "guard-for-in": "off",
+    "no-underscore-dangle": "off",
+    "no-unused-expressions": "off",
+    "consistent-return": "off",
+    "no-unsafe-negation": "error",
+    "default-case": "off",
+    "no-continue": "off",
+    "block-scoped-var": "error",
+    "no-plusplus": "off",
+    "no-param-reassign": "off",
+    "no-warning-comments": "warn",
+    "one-var-declaration-per-line": "off",
+    "vars-on-top": "error",
+    "no-shadow": "error",
+    "no-bitwise": "error"
+  }
+}

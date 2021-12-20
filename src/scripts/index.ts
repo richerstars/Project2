@@ -1,20 +1,20 @@
-import { elementsOfDom } from "./constants/constantsElements";
+import { elementsOfDom } from './constants/constantsElements';
 import '../styles/main.css';
 import {
     changeModalWindow, renderNewFilm, getMovies,
     checkToken, getFilters, logOut,
     saveFilters, resetFilters, checkAdult,
-    goToUp, setSignUp, setSignIn
-} from './logic'
+    goToUp, setSignUp, setSignIn,
+} from './logic';
 
-document.addEventListener('DOMContentLoaded', checkToken)
+document.addEventListener('DOMContentLoaded', checkToken);
 elementsOfDom.inputIdFilters.addEventListener('click', getFilters);
 elementsOfDom.inputIdAuth.addEventListener('click', logOut);
 elementsOfDom.buttonIdSaveBtn.addEventListener('click', saveFilters);
 // elementsOfDom.buttonIdResetBtn.addEventListener('click', resetFilters);
 elementsOfDom.inputIdAdult.addEventListener('change', checkAdult);
-elementsOfDom.buttonIdCheckSignIn.addEventListener('click', changeModalWindow)
-elementsOfDom.buttonIdCheckSignUp.addEventListener('click', changeModalWindow)
+elementsOfDom.buttonIdCheckSignIn.addEventListener('click', changeModalWindow);
+elementsOfDom.buttonIdCheckSignUp.addEventListener('click', changeModalWindow);
 elementsOfDom.buttonIdSetSignUpBtn.addEventListener('click', setSignUp);
 elementsOfDom.buttonIdSetSignInBtn.addEventListener('click', setSignIn);
 elementsOfDom.buttonShowMoreBtn.addEventListener('click', renderNewFilm);
