@@ -51,11 +51,5 @@ export const selectorsCss = {
     idReleaseDayFirst: '#release-day-first',
     idReleaseDayLast: '#release-day-last',
     idRevenueMinNumber: '#revenue-min-number',
-    idRevenueMaxNumber: '#revenue-max-number',
-    idUsername: '#username',
-    idPassword: '#password',
-    idFirstName: '#first_name',
-    idLastName: '#last_name',
-    idSendError: '#sendError',
-    classLinkPage: '.linkPage',
+    idRevenueMaxNumber: '#revenue-max-number'
 };
