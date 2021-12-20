@@ -7,6 +7,7 @@ const ForkTsCheckerWebpackPlugin = require( 'fork-ts-checker-webpack-plugin' );
 module.exports = {
     entry: {
         main: './src/scripts/index.ts',
+        page: './src/scripts/descriptionPage.ts',
     },
     output: {
         path: path.resolve( __dirname, 'dist' ),
@@ -49,6 +50,11 @@ module.exports = {
             filename: "index.html",
             template: "./src/pages/mainScreen.html",
             chunks: [ 'main' ]
+        } ),
+        new HtmlWebpackPlugin( {
+            filename: "descriptionPage.html",
+            template: "./src/pages/descriptionFilm.html",
+            chunks: [ 'page' ]
         } ),
 
         new CleanWebpackPlugin(),

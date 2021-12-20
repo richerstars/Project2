@@ -1,0 +1,97 @@
+html {
+  margin-top: 50px;
+  margin-left: 200px;
+  margin-right: 200px;
+  background-image: url('../img/space.jpg');
+  font-family: "Helvetica", sans-serif;
+  color: black;
+}
+
+.wrapper {
+  /*width: 900px;*/
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  border-radius: 0px;
+  justify-content: center;
+}
+
+.poster {
+  height: 600px;
+  width: 450px;
+  left: 371px;
+  top: 418px;
+  border-radius: 0px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  margin: 0;
+  margin-bottom: 50px;
+
+}
+
+table {
+  float: right;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 100%;
+  text-indent: initial;
+
+}
+
+.poster {
+  float: left;
+}
+
+tr {
+  line-height: 20px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+h2 {
+  margin-right: 15px;
+}
+
+.movie_page {
+  background-color: white;
+  padding: 50px;
+  height: 2000px;
+}
+
+.description_block {
+  /* height: 700px; */
+
+}
+
+.film_data {
+  font-size: 20px;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 22px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.advertising {
+  float: right;
+  width: 300px;
+  margin-left: 50px;
+}
+
+.wrapper_about_film {
+  width: 1100px;
+
+  height: 1000px;
+}

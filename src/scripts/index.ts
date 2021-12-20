@@ -1,10 +1,10 @@
 import { elementsOfDom } from './constants/constantsElements';
 import '../styles/main.css';
 import {
-    changeModalWindow, renderNewFilm, getMovies,
+    changeModalWindow, renderNewFilm,
     checkToken, getFilters, logOut,
-    saveFilters, resetFilters, checkAdult,
-    goToUp, setSignUp, setSignIn,
+    saveFilters, checkAdult,
+    setSignUp, setSignIn,
 } from './logic';
 
 document.addEventListener('DOMContentLoaded', checkToken);
@@ -18,5 +18,3 @@ elementsOfDom.buttonIdCheckSignUp.addEventListener('click', changeModalWindow);
 elementsOfDom.buttonIdSetSignUpBtn.addEventListener('click', setSignUp);
 elementsOfDom.buttonIdSetSignInBtn.addEventListener('click', setSignIn);
 elementsOfDom.buttonShowMoreBtn.addEventListener('click', renderNewFilm);
-
-elementsOfDom.buttonIdArrowToUp.addEventListener('click', goToUp);

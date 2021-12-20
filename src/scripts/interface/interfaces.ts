@@ -1,0 +1,15 @@
+export interface IGetMovieParam {
+    adult:boolean,
+    page:number,
+    pre_page:number,
+    budget_min:number,
+    budget_max:number,
+    language:string,
+    title:string,
+    popularity_min:number,
+    popularity_max:number,
+    release_date_first:string,
+    release_date_last:string,
+    revenue_min:number,
+    revenue_max:number,
+}
