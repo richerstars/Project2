@@ -1,13 +1,13 @@
 import axios from 'axios';
+import 'regenerator-runtime/runtime';
 import { elementsOfDom } from './constants/constantsElements';
 import { selectorsCss } from './constants/constants.selectorsCss';
 import { constants } from './constants/configConstants';
-import { checkAuthorize } from './signIn';
+// eslint-disable-next-line import/no-cycle
+import checkAuthorize from './signIn';
 import { checkInputs } from './signUp';
 import { IGetMovieParam } from './interface/interfaces';
 
-// require('babel-core/register');
-// require('babel-polyfill');
 let count = 2;
 
 function createTemplateShowMore({
@@ -37,6 +37,7 @@ export async function getMovies(attr):Promise<void> {
             }
         });
     } catch (error) {
+        // eslint-disable-next-line no-console
         console.error(error);
     }
 }
@@ -72,6 +73,7 @@ export async function renderNewFilm():Promise<IGetMovieParam> {
         });
         count++;
     } catch (err) {
+        // eslint-disable-next-line no-console
         console.error('renderNewFilm: ', err);
     }
 }
@@ -153,6 +155,7 @@ export async function getMoviesByDynamicParams(request) {
         });
         count++;
     } catch (err) {
+        // eslint-disable-next-line no-console
         console.error('getMoviesByDynamicParams: ', err);
     }
 }
@@ -167,7 +170,6 @@ function createDynamic(obj) {
         .forEach((element) => {
             if (obj[element]) url += `${element}=${obj[element]}&`;
         });
-
     url = url.substring(0, url.length - 1);
 
     getMoviesByDynamicParams(url);
@@ -198,6 +200,8 @@ export function saveFilters() {
         revenueMin,
         revenueMax,
     });
+    elementsOfDom.sectionClassSection.classList.toggle('filters-item');
+    elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
 }
 
 // export function resetFilters() {

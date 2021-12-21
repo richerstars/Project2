@@ -10,7 +10,7 @@ export const selectorsCss = {
     classPopularFilmsItem: '.popularFilmsItem',
     classFilmsPaginationItem: '.filmsPaginationItem',
     classFiltersItem: '.filters-item',
-    idSaveBtn: "#saveBtn",
+    idSaveBtn: '#saveBtn',
     idResetBtn: '#resetBtn',
     classFiltersItemNone: '.filters-item-none',
     classSection: '.section',
@@ -51,5 +51,13 @@ export const selectorsCss = {
     idReleaseDayFirst: '#release-day-first',
     idReleaseDayLast: '#release-day-last',
     idRevenueMinNumber: '#revenue-min-number',
-    idRevenueMaxNumber: '#revenue-max-number'
+    idRevenueMaxNumber: '#revenue-max-number',
+    idUsername: '#username',
+    idPassword: '#password',
+    idFirstName: '#first_name',
+    idLastName: '#last_name',
+    idSendError: '#idSendError',
+    classLinkPage: '.linkPage',
+    idUsernameSignIn: '#usernameSignIn',
+    idPasswordSignIn: '#passwordSignIn',
 };
