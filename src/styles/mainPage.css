@@ -376,9 +376,7 @@ input[type="range"] {
     color: #FFF;
 }
 
-.container-btn-reset {
-    visibility: hidden;
-}
+
 #showMoreBtn {
     margin-top: 80px;
     background: #FF0000;

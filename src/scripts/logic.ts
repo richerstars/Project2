@@ -1,12 +1,18 @@
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
-import { elementsOfDom } from './constants/constantsElements';
-import { selectorsCss } from './constants/constants.selectorsCss';
+import { elementsOfDom, elemsQuerySelectors } from './constants/constantsElements';
+import selectorsCss from './constants/constants.selectorsCss';
 import { constants } from './constants/configConstants';
 // eslint-disable-next-line import/no-cycle
 import checkAuthorize from './signIn';
 import { checkInputs } from './signUp';
-import { IGetMovieParam } from './interface/interfaces';
+import {
+    IGetMovieParam,
+    IMovies,
+    ILanguages,
+    IGenres,
+}
+    from './interface/interfaces';
 
 let count = 2;
 
@@ -15,11 +21,11 @@ function createTemplateShowMore({
     poster_path,
     title,
     tagline,
-}):HTMLElement {
-    const cardId = elementsOfDom.templateFilmsShowMore.querySelector('.filmsItem');
-    const linkId = elementsOfDom.templateFilmsShowMore.querySelector('.linkPage');
-    const cardPoster = elementsOfDom.templateFilmsShowMore.querySelector('.imgFilmsItem');
-    const describe = elementsOfDom.templateFilmsShowMore.querySelector('.descriptionFilm');
+}): HTMLElement {
+    const cardId = elemsQuerySelectors.filmsItem;
+    const linkId = elemsQuerySelectors.linkPage;
+    const cardPoster = elemsQuerySelectors.imgFilmsItem;
+    const describe = elemsQuerySelectors.descriptionFilm;
     describe.textContent = `${title}`;
     cardId.setAttribute('id', `${id}`);
     cardId.setAttribute('title', `${tagline}`);
@@ -28,10 +34,10 @@ function createTemplateShowMore({
     return cardId.cloneNode(true);
 }
 
-export async function getMovies(attr):Promise<void> {
+export async function getMovies(attr: number): Promise<void> {
     try {
-        const response = await axios.get(constants.WOW_ME_UP_MOVIES);
-        response.data.movies.forEach((element, index) => {
+        const { data: { movies } } = await axios.get(constants.WOW_ME_UP_MOVIES);
+        movies.forEach((element: IMovies, index: number) => {
             if (index <= attr) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
             }
@@ -53,20 +59,20 @@ export async function getMovies(attr):Promise<void> {
 //     return cardId.cloneNode(true);
 // }
 
-export async function renderNewFilm():Promise<IGetMovieParam> {
+export async function renderNewFilm(): Promise<IGetMovieParam> {
     try {
-        const res = await axios.get(`${constants.WOW_ME_UP_MOVIES}/?${constants.GET_PARAMS.PAGE}${count}`);
+        const { data: { totalCount, movies } } = await axios.get(`${constants.WOW_ME_UP_MOVIES}/?${constants.GET_PARAMS.PAGE}${count}`);
         this.attributes[1].value++;
         if (this.attributes[1].value > 20) {
             this.style.disabled = true;
             return;
         }
 
-        if (!res.data.totalCount) {
+        if (!totalCount) {
             elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
             return;
         }
-        res.data.movies.forEach((element, index) => {
+        movies.forEach((element: IMovies, index: number) => {
             if (index <= 20) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
             }
@@ -87,9 +93,9 @@ export function checkToken() {
     }
 }
 
-export function changeModalWindow(e) {
+export function changeModalWindow(e: Event): void {
     e.preventDefault();
-    if (e.target.id === 'checkSignIn') {
+    if ((<HTMLElement>e.target).id === 'checkSignIn') {
         elementsOfDom.divClassContainerSignUP.style.display = 'none';
         elementsOfDom.divClassContainerSignIn.style.display = 'block';
         return;
@@ -98,15 +104,15 @@ export function changeModalWindow(e) {
     elementsOfDom.divClassContainerSignUP.style.display = 'block';
 }
 
-export function checkAdult(e) {
-    e.target.parentElement.classList.toggle('checkedAdult');
-    e.target.parentElement.classList.toggle('filters-input');
+export function checkAdult(e: Event): void {
+    (<HTMLElement>e.target).parentElement.classList.toggle('checkedAdult');
+    (<HTMLElement>e.target).parentElement.classList.toggle('filters-input');
 }
 
 function renderLangsOptionsTemplate({
     value,
     name,
-}) {
+}): void {
     elementsOfDom.templateIdLangOptions.value = value;
     elementsOfDom.templateIdLangOptions.textContent = `${name}`;
     return elementsOfDom.templateIdLangOptions.cloneNode(true);
@@ -121,34 +127,37 @@ function renderGenresOptionsTemplate({
     return elementsOfDom.templateIdLangOptions.cloneNode(true);
 }
 
-export async function getFilters() {
-    elementsOfDom.sectionClassSection.classList.toggle('filters-item');
-    elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
+export async function getFilters(): Promise<void> {
+    try {
+        elementsOfDom.sectionClassSection.classList.toggle('filters-item');
+        elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
 
-    const resLangs = await axios.get(constants.WOW_ME_UP_LANGUAGES);
-    const resGenres = await axios.get(constants.WOW_ME_UP_GENRES);
+        const { data: { languages } } = await axios.get(constants.WOW_ME_UP_LANGUAGES);
+        const { data: { genres } } = await axios.get(constants.WOW_ME_UP_GENRES);
 
-    resLangs.data.languages.forEach((elem) => {
-        elementsOfDom.selectIdSelectLanguages.appendChild(renderLangsOptionsTemplate(elem));
-    });
-
-    resGenres.data.genres.forEach((elem) => {
-        elementsOfDom.selectIdSelectGenres.appendChild(renderGenresOptionsTemplate(elem));
-    });
+        languages.forEach((elem: ILanguages) => {
+            elementsOfDom.selectIdSelectLanguages.appendChild(renderLangsOptionsTemplate(elem));
+        });
+        genres.forEach((elem: IGenres) => {
+            (elementsOfDom.selectIdSelectGenres.appendChild(renderGenresOptionsTemplate(elem)));
+        });
+    } catch (err) {
+        // eslint-disable-next-line no-console
+        console.error('getFilters: ', err);
+    }
 }
 
-export async function getMoviesByDynamicParams(request) {
+export async function getMoviesByDynamicParams(request): Promise<void> {
     try {
         if (elementsOfDom.sectionFilmsShowMore.children) {
-            // for (const item of elementsOfDom.sectionFilmsShowMore.children) {
-            //     elementsOfDom.sectionFilmsShowMore.removeChild(item);
-            // }
-            elementsOfDom.sectionFilmsShowMore.children.forEach((item) => {
-                elementsOfDom.sectionFilmsShowMore.removeChild(item);
-            });
+            // eslint-disable-next-line no-loops/no-loops
+            while (elementsOfDom.sectionFilmsShowMore.firstChild) {
+                elementsOfDom.sectionFilmsShowMore
+                    .removeChild(elementsOfDom.sectionFilmsShowMore.firstChild);
+            }
         }
-        const res = await axios.get(request);
-        res.data.movies.forEach((element, index) => {
+        const { data: { movies } } = await axios.get(request);
+        movies.forEach((element: IMovies, index: number) => {
             if (index <= 20) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
             }
@@ -160,22 +169,22 @@ export async function getMoviesByDynamicParams(request) {
     }
 }
 
-function createDynamic(obj) {
+function createDynamic(obj: IGetMovieParam) {
     let url = `${constants.WOW_ME_UP_MOVIES}?`;
-
-    // for(const item of Object.keys(obj)) {
-    //     if (obj[item]) url += `${item}=${obj[item]}&`;
-    // }
     Object.keys(obj)
         .forEach((element) => {
             if (obj[element]) url += `${element}=${obj[element]}&`;
         });
     url = url.substring(0, url.length - 1);
-
     getMoviesByDynamicParams(url);
 }
-
-export function saveFilters() {
+export function resetFilters(body): void {
+    const result = Object.values(body).filter((item) => item);
+    console.log(result);
+    if (result) return elementsOfDom.divClassContainerBtnReset.classList.toggle('hidden', false);
+    elementsOfDom.divClassContainerBtnReset.classList.toggle('hidden', true);
+}
+export function saveFilters(): void {
     const adult = elementsOfDom.inputIdAdult.checked;
     const language = elementsOfDom.selectIdSelectLanguages.value;
     const title = elementsOfDom.inputIdInputTitle.value;
@@ -191,22 +200,18 @@ export function saveFilters() {
         adult,
         language,
         title,
-        budgetMin,
-        budgetMax,
-        popularityMin,
-        popularityMax,
-        releaseDateFirst,
-        releaseDateLast,
-        revenueMin,
-        revenueMax,
+        budget_min: budgetMin,
+        budget_max: budgetMax,
+        popularity_min: popularityMin,
+        popularity_max: popularityMax,
+        release_date_first: releaseDateFirst,
+        release_date_last: releaseDateLast,
+        revenue_min: revenueMin,
+        revenue_max: revenueMax,
     });
     elementsOfDom.sectionClassSection.classList.toggle('filters-item');
     elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
 }
-
-// export function resetFilters() {
-
-// }
 
 export function logOut() {
     localStorage.clear();

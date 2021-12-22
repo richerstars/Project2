@@ -1,5 +1,6 @@
-import { selectorsCss } from './constants.selectorsCss';
+import selectorsCss from './constants.selectorsCss';
 
+// eslint-disable-next-line import/prefer-default-export
 export const elementsOfDom = {
     mainClassWrapper: document.querySelector(selectorsCss.classWrapper),
     navHeaderNav: document.querySelector(selectorsCss.classHeaderNav),
@@ -60,4 +61,12 @@ export const elementsOfDom = {
     aClassLinkPage: document.querySelector(selectorsCss.classLinkPage),
     inputIdUsernameSignIn: document.querySelector(selectorsCss.idUsernameSignIn),
     inputIdPasswordSignIn: document.querySelector(selectorsCss.idPasswordSignIn),
+    divClassContainerBtnReset: document.querySelector(selectorsCss.classContainerBtnReset),
+};
+
+export const elemsQuerySelectors = {
+    filmsItem: elementsOfDom.templateFilmsShowMore.querySelector('.filmsItem'),
+    linkPage: elementsOfDom.templateFilmsShowMore.querySelector('.linkPage'),
+    imgFilmsItem: elementsOfDom.templateFilmsShowMore.querySelector('.imgFilmsItem'),
+    descriptionFilm: elementsOfDom.templateFilmsShowMore.querySelector('.descriptionFilm'),
 };

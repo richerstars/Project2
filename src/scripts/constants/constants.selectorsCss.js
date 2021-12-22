@@ -1,4 +1,4 @@
-export const selectorsCss = {
+export default {
     classWrapper: '.wrapper',
     idAuthorizedForm: '#authorizedForm',
     classHeaderNav: '.headerNav',
@@ -60,4 +60,5 @@ export const selectorsCss = {
     classLinkPage: '.linkPage',
     idUsernameSignIn: '#usernameSignIn',
     idPasswordSignIn: '#passwordSignIn',
+    classContainerBtnReset: '.container-btn-reset',
 };
