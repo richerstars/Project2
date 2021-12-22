@@ -21,7 +21,7 @@ function createTemplateShowMore({
     poster_path,
     title,
     tagline,
-}): HTMLElement {
+}):HTMLElement {
     const cardId = elemsQuerySelectors.filmsItem;
     const linkId = elemsQuerySelectors.linkPage;
     const cardPoster = elemsQuerySelectors.imgFilmsItem;
@@ -29,15 +29,15 @@ function createTemplateShowMore({
     describe.textContent = `${title}`;
     cardId.setAttribute('id', `${id}`);
     cardId.setAttribute('title', `${tagline}`);
-    linkId.setAttribute('id', `link-${id}`);
+    linkId.setAttribute('id', `${id}`);
     cardPoster.setAttribute('src', `${constants.IMAGE_POSTER_LINK}${poster_path}`);
     return cardId.cloneNode(true);
 }
 
-export async function getMovies(attr: number): Promise<void> {
+export async function getMovies(attr:number):Promise<void> {
     try {
         const { data: { movies } } = await axios.get(constants.WOW_ME_UP_MOVIES);
-        movies.forEach((element: IMovies, index: number) => {
+        movies.forEach((element:IMovies, index:number) => {
             if (index <= attr) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
             }
@@ -48,20 +48,14 @@ export async function getMovies(attr: number): Promise<void> {
     }
 }
 
-// function createNewFilmCard({ id, poster_path, title, tagline }) {
-//     const cardId = elementsOfDom.templateIdTemplateCard.querySelector('.newFilmsItem');
-//     const cardPoster = elementsOfDom.templateIdTemplateCard.querySelector('.imgPoster');
-//     const describe = elementsOfDom.templateIdTemplateCard.querySelector('.descriptionNewFilm');
-//     describe.textContent = `${title} `
-//     cardId.setAttribute('id', `${id}`)
-//     cardId.setAttribute('title', `${tagline}`)
-//     cardPoster.setAttribute('src', `${constants.IMAGE_POSTER_LINK}${poster_path}`)
-//     return cardId.cloneNode(true);
-// }
-
-export async function renderNewFilm(): Promise<IGetMovieParam> {
+export async function renderNewFilm():Promise<IGetMovieParam> {
     try {
-        const { data: { totalCount, movies } } = await axios.get(`${constants.WOW_ME_UP_MOVIES}/?${constants.GET_PARAMS.PAGE}${count}`);
+        const {
+            data: {
+                totalCount,
+                movies,
+            },
+        } = await axios.get(`${constants.WOW_ME_UP_MOVIES}/?${constants.GET_PARAMS.PAGE}${count}`);
         this.attributes[1].value++;
         if (this.attributes[1].value > 20) {
             this.style.disabled = true;
@@ -72,7 +66,7 @@ export async function renderNewFilm(): Promise<IGetMovieParam> {
             elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
             return;
         }
-        movies.forEach((element: IMovies, index: number) => {
+        movies.forEach((element:IMovies, index:number) => {
             if (index <= 20) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
             }
@@ -84,8 +78,8 @@ export async function renderNewFilm(): Promise<IGetMovieParam> {
     }
 }
 
-export function checkToken() {
-    const token = localStorage.getItem('token');
+export function checkToken():void {
+    const token:string = localStorage.getItem('token');
     if (token) {
         elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden);
         elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
@@ -93,18 +87,18 @@ export function checkToken() {
     }
 }
 
-export function changeModalWindow(e: Event): void {
+export function changeModalWindow(e:Event):void {
     e.preventDefault();
     if ((<HTMLElement>e.target).id === 'checkSignIn') {
-        elementsOfDom.divClassContainerSignUP.style.display = 'none';
-        elementsOfDom.divClassContainerSignIn.style.display = 'block';
+        elementsOfDom.divClassContainerSignUP.classList.toggle('hidden');
+        elementsOfDom.divClassContainerSignIn.classList.toggle('hidden');
         return;
     }
-    elementsOfDom.divClassContainerSignIn.style.display = 'none';
-    elementsOfDom.divClassContainerSignUP.style.display = 'block';
+    elementsOfDom.divClassContainerSignUP.classList.toggle('hidden');
+    elementsOfDom.divClassContainerSignIn.classList.toggle('hidden');
 }
 
-export function checkAdult(e: Event): void {
+export function checkAdult(e:Event):void {
     (<HTMLElement>e.target).parentElement.classList.toggle('checkedAdult');
     (<HTMLElement>e.target).parentElement.classList.toggle('filters-input');
 }
@@ -112,7 +106,7 @@ export function checkAdult(e: Event): void {
 function renderLangsOptionsTemplate({
     value,
     name,
-}): void {
+}):void {
     elementsOfDom.templateIdLangOptions.value = value;
     elementsOfDom.templateIdLangOptions.textContent = `${name}`;
     return elementsOfDom.templateIdLangOptions.cloneNode(true);
@@ -121,13 +115,13 @@ function renderLangsOptionsTemplate({
 function renderGenresOptionsTemplate({
     id,
     name,
-}) {
+}):void {
     elementsOfDom.templateIdLangOptions.value = id;
     elementsOfDom.templateIdLangOptions.textContent = name;
     return elementsOfDom.templateIdLangOptions.cloneNode(true);
 }
 
-export async function getFilters(): Promise<void> {
+export async function getFilters():Promise<void> {
     try {
         elementsOfDom.sectionClassSection.classList.toggle('filters-item');
         elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
@@ -135,10 +129,10 @@ export async function getFilters(): Promise<void> {
         const { data: { languages } } = await axios.get(constants.WOW_ME_UP_LANGUAGES);
         const { data: { genres } } = await axios.get(constants.WOW_ME_UP_GENRES);
 
-        languages.forEach((elem: ILanguages) => {
+        languages.forEach((elem:ILanguages) => {
             elementsOfDom.selectIdSelectLanguages.appendChild(renderLangsOptionsTemplate(elem));
         });
-        genres.forEach((elem: IGenres) => {
+        genres.forEach((elem:IGenres) => {
             (elementsOfDom.selectIdSelectGenres.appendChild(renderGenresOptionsTemplate(elem)));
         });
     } catch (err) {
@@ -147,7 +141,7 @@ export async function getFilters(): Promise<void> {
     }
 }
 
-export async function getMoviesByDynamicParams(request): Promise<void> {
+export async function getMoviesByDynamicParams(request):Promise<void> {
     try {
         if (elementsOfDom.sectionFilmsShowMore.children) {
             // eslint-disable-next-line no-loops/no-loops
@@ -157,7 +151,7 @@ export async function getMoviesByDynamicParams(request): Promise<void> {
             }
         }
         const { data: { movies } } = await axios.get(request);
-        movies.forEach((element: IMovies, index: number) => {
+        movies.forEach((element:IMovies, index:number) => {
             if (index <= 20) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
             }
@@ -169,7 +163,7 @@ export async function getMoviesByDynamicParams(request): Promise<void> {
     }
 }
 
-function createDynamic(obj: IGetMovieParam) {
+function createDynamic(obj:IGetMovieParam):void {
     let url = `${constants.WOW_ME_UP_MOVIES}?`;
     Object.keys(obj)
         .forEach((element) => {
@@ -178,24 +172,35 @@ function createDynamic(obj: IGetMovieParam) {
     url = url.substring(0, url.length - 1);
     getMoviesByDynamicParams(url);
 }
-export function resetFilters(body): void {
-    const result = Object.values(body).filter((item) => item);
-    console.log(result);
-    if (result) return elementsOfDom.divClassContainerBtnReset.classList.toggle('hidden', false);
-    elementsOfDom.divClassContainerBtnReset.classList.toggle('hidden', true);
+
+export function resetFilters():void {
+    elementsOfDom.inputIdAdult.checked = false;
+    elementsOfDom.inputIdAdult.parentElement.classList.remove('checkedAdult');
+    elementsOfDom.inputIdAdult.parentElement.classList.add('filters-input');
+    elementsOfDom.selectIdSelectLanguages.value = '';
+    elementsOfDom.inputIdInputTitle.value = '';
+    elementsOfDom.inputIdBudgetMinNumber.value = '';
+    elementsOfDom.inputIdBudgetMaxNumber.value = '';
+    elementsOfDom.inputIdPopularityMinNumber.value = '';
+    elementsOfDom.inputIdPopularityMaxNumber.value = '';
+    elementsOfDom.inputIdReleaseDayFirst.value = '';
+    elementsOfDom.inputIdReleaseDayLast.value = '';
+    elementsOfDom.inputIdRevenueMinNumber.value = '';
+    elementsOfDom.inputIdRevenueMaxNumber.value = '';
 }
-export function saveFilters(): void {
-    const adult = elementsOfDom.inputIdAdult.checked;
-    const language = elementsOfDom.selectIdSelectLanguages.value;
-    const title = elementsOfDom.inputIdInputTitle.value;
-    const budgetMin = elementsOfDom.inputIdBudgetMinNumber.value;
-    const budgetMax = elementsOfDom.inputIdBudgetMaxNumber.value;
-    const popularityMin = elementsOfDom.inputIdPopularityMinNumber.value;
-    const popularityMax = elementsOfDom.inputIdPopularityMaxNumber.value;
-    const releaseDateFirst = elementsOfDom.inputIdReleaseDayFirst.value;
-    const releaseDateLast = elementsOfDom.inputIdReleaseDayLast.value;
-    const revenueMin = elementsOfDom.inputIdRevenueMinNumber.value;
-    const revenueMax = elementsOfDom.inputIdRevenueMaxNumber.value;
+
+export function saveFilters():void {
+    const adult:boolean = elementsOfDom.inputIdAdult.checked;
+    const language:string = elementsOfDom.selectIdSelectLanguages.value;
+    const title:string = elementsOfDom.inputIdInputTitle.value;
+    const budgetMin:number = elementsOfDom.inputIdBudgetMinNumber.value;
+    const budgetMax:number = elementsOfDom.inputIdBudgetMaxNumber.value;
+    const popularityMin:number = elementsOfDom.inputIdPopularityMinNumber.value;
+    const popularityMax:number = elementsOfDom.inputIdPopularityMaxNumber.value;
+    const releaseDateFirst:string = elementsOfDom.inputIdReleaseDayFirst.value;
+    const releaseDateLast:string = elementsOfDom.inputIdReleaseDayLast.value;
+    const revenueMin:number = elementsOfDom.inputIdRevenueMinNumber.value;
+    const revenueMax:number = elementsOfDom.inputIdRevenueMaxNumber.value;
     createDynamic({
         adult,
         language,
@@ -213,18 +218,22 @@ export function saveFilters(): void {
     elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
 }
 
-export function logOut() {
+export function logOut():void {
     localStorage.clear();
     document.location.reload();
     elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden, false);
 }
 
-export function setSignIn(e) {
+export function setSignIn(e):void {
     e.preventDefault();
     checkAuthorize();
 }
 
-export function setSignUp(e) {
+export function setSignUp(e):void {
     e.preventDefault();
     checkInputs();
+}
+export function openFilmCard(event) {
+    const movieId = Number(event.target.id);
+    window.open(`./descriptionFilm.html#${movieId}`);
 }

@@ -281,6 +281,7 @@ footer {
     position: fixed;
     margin-top: 78px;
     width: 100%;
+    /*height: 90%;*/
     height: 100%;
     justify-content: space-between;
     align-items: center;
@@ -436,7 +437,7 @@ select[value] {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    width: 391px;
+    width: 300px;
     height: 100px;
     font-family: Roboto;
     font-style: normal;
@@ -588,3 +589,8 @@ select[value] {
 a{
     cursor: pointer;
 }
+/*.wrapper-buttons{*/
+/*    display: flex;*/
+/*    position: absolute;*/
+/*    top: 750px;*/
+/*}*/

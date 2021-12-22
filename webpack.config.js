@@ -52,7 +52,7 @@ module.exports = {
             chunks: [ 'main' ]
         } ),
         new HtmlWebpackPlugin( {
-            filename: "descriptionPage.html",
+            filename: "descriptionFilm.html",
             template: "./src/pages/descriptionFilm.html",
             chunks: [ 'page' ]
         } ),

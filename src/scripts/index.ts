@@ -5,7 +5,7 @@ import {
     checkToken, getFilters, logOut,
     saveFilters, checkAdult,
     setSignUp, setSignIn,
-    resetFilters,
+    resetFilters, openFilmCard,
 } from './logic';
 
 document.addEventListener('DOMContentLoaded', checkToken);
@@ -19,3 +19,4 @@ elementsOfDom.buttonIdCheckSignUp.addEventListener('click', changeModalWindow);
 elementsOfDom.buttonIdSetSignUpBtn.addEventListener('click', setSignUp);
 elementsOfDom.buttonIdSetSignInBtn.addEventListener('click', setSignIn);
 elementsOfDom.buttonShowMoreBtn.addEventListener('click', renderNewFilm);
+elementsOfDom.sectionFilmsShowMore.addEventListener('click', openFilmCard);

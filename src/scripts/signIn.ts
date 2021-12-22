@@ -4,9 +4,9 @@ import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
 // eslint-disable-next-line import/no-cycle
 import { getMovies } from './logic';
-import { selectorsCss } from './constants/constants.selectorsCss';
+import selectorsCss from './constants/constants.selectorsCss';
 
-export default async function checkAuthorize() {
+export default async function checkAuthorize() :Promise<void> {
     try {
         const response = await axios.post(constants.WOW_ME_UP_SING_IN, {
             login: elementsOfDom.inputIdUsernameSignIn.value,

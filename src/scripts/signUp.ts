@@ -2,9 +2,9 @@ import '../styles/popUpSignUp.css';
 import axios from 'axios';
 import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
-import { selectorsCss } from './constants/constants.selectorsCss';
+import selectorsCss from './constants/constants.selectorsCss';
 
-export async function useAPI() {
+export async function useAPI():Promise<void> {
     try {
         await axios.post(constants.WOW_ME_UP_SING_UP, {
             login: elementsOfDom.inputIdUsername.value,
