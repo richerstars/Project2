@@ -234,6 +234,6 @@ export function setSignUp(e):void {
     checkInputs();
 }
 export function openFilmCard(event) {
-    const movieId = Number(event.target.id);
+    const movieId = Number(<HTMLElement>event.target.id);
     window.open(`./descriptionFilm.html#${movieId}`);
 }
