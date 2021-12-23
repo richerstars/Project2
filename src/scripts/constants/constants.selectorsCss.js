@@ -61,4 +61,6 @@ export default {
     idUsernameSignIn: '#usernameSignIn',
     idPasswordSignIn: '#passwordSignIn',
     classContainerBtnReset: '.container-btn-reset',
+    idHOneDF: '#hOneDF',
+    idMoviesPages: '#movies_pages',
 };

@@ -4,7 +4,7 @@ import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
 
-export async function useAPI():Promise<void> {
+export async function useAPI(): Promise<void> {
     try {
         await axios.post(constants.WOW_ME_UP_SING_UP, {
             login: elementsOfDom.inputIdUsername.value,
@@ -19,18 +19,18 @@ export async function useAPI():Promise<void> {
         console.error(error);
     }
 }
-function setErrorFor(input, message) {
+function setErrorFor(input: HTMLElement, message: string): void {
     const formControl = input.parentElement;
     const small = formControl.querySelector('small');
     formControl.className = 'form-control error';
     small.innerText = message;
 }
 
-function setSuccessFor(input) {
+function setSuccessFor(input: HTMLElement): void {
     const formControl = input.parentElement;
     formControl.className = 'form-control success';
 }
-export function checkInputs() {
+export function checkInputs(): void {
     const usernameValue = elementsOfDom.inputIdUsername.value.trim();
     const passwordValue = elementsOfDom.inputIdPassword.value.trim();
     if (usernameValue === '') {
