@@ -234,7 +234,7 @@ export function setSignUp(e):void {
     checkInputs();
 }
 export function openFilmCard(event : MouseEvent) {
-    if ((<HTMLElement>event.target).parentElement.classList.contains("linkPage")) {
+    if ((<HTMLElement>event.target).parentElement.classList.contains('linkPage')) {
         const movieId = Number((<HTMLElement>event.target).parentElement.id);
         window.open(`./descriptionFilm.html#${movieId}`);
     }
