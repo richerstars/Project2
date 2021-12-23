@@ -90,10 +90,21 @@ export function checkToken(): void {
 export function changeModalWindow(e: Event): void {
     e.preventDefault();
     if ((<HTMLElement>e.target).id === 'checkSignIn') {
+        elementsOfDom.inputIdUsername.value = '';
+        elementsOfDom.inputIdPassword.value = '';
+        elementsOfDom.inputIdFirstName.value = '';
+        elementsOfDom.inputIdLastName.value = '';
+        elementsOfDom.inputIdUsername.parentElement.classList.remove('error');
+        elementsOfDom.inputIdPassword.parentElement.classList.remove('error');
+        elementsOfDom.inputIdFirstName.parentElement.classList.remove('error');
+        elementsOfDom.inputIdLastName.parentElement.classList.remove('error');
         elementsOfDom.divClassContainerSignUP.classList.toggle('hidden');
         elementsOfDom.divClassContainerSignIn.classList.toggle('hidden');
         return;
     }
+    elementsOfDom.smallIdErrorLogin.textContent = '';
+    elementsOfDom.inputIdUsernameSignIn.value = '';
+    elementsOfDom.inputIdPasswordSignIn.value = '';
     elementsOfDom.divClassContainerSignUP.classList.toggle('hidden');
     elementsOfDom.divClassContainerSignIn.classList.toggle('hidden');
 }

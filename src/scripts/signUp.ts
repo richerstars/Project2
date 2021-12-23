@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import '../styles/popUpSignUp.css';
 import axios from 'axios';
 import { constants } from './constants/configConstants';
@@ -21,36 +22,45 @@ export async function useAPI(): Promise<void> {
 }
 function setErrorFor(input: HTMLElement, message: string): void {
     const formControl = input.parentElement;
-    const small = formControl.querySelector('small');
-    formControl.className = 'form-control error';
+    const small = elementsOfDom.tagSmall;
+    formControl.classList.add('error');
     small.innerText = message;
 }
 
 function setSuccessFor(input: HTMLElement): void {
     const formControl = input.parentElement;
-    formControl.className = 'form-control success';
+    formControl.classList.add('success');
 }
 export function checkInputs(): void {
     const usernameValue = elementsOfDom.inputIdUsername.value.trim();
     const passwordValue = elementsOfDom.inputIdPassword.value.trim();
-    if (usernameValue === '') {
-        setErrorFor(elementsOfDom.inputIdUsername, 'Username cannot be blank');
-    } else if (!usernameValue[0].match(/[a-zA-Z]/i)) {
-        setErrorFor(elementsOfDom.inputIdUsername, 'Login must starts with a letter');
-    } else if (!usernameValue.match(/[^a-zA-Z0-9]/i)) {
-        setErrorFor(elementsOfDom.inputIdUsername, 'Login must contains only letters and numbers');
-    } else {
-        setSuccessFor(elementsOfDom.inputIdUsername);
+    switch (true) {
+        case (usernameValue === ''):
+            setErrorFor(elementsOfDom.inputIdUsername, 'Username cannot be blank');
+            break;
+        case (!usernameValue[0].match(/[a-zA-Z]/i)):
+            setErrorFor(elementsOfDom.inputIdUsername, 'Login must starts with a letter');
+            break;
+        case (!usernameValue.match(/[^a-zA-Z0-9]/i)):
+            setErrorFor(elementsOfDom.inputIdUsername, 'Login must contains only letters and numbers');
+            break;
+        default:
+            setSuccessFor(elementsOfDom.inputIdUsername);
     }
 
-    if (passwordValue === '') {
-        setErrorFor(elementsOfDom.inputIdPassword, 'Password cannot be blank');
-    } else if (!passwordValue.match(/(?=.*[0-9])(?=.*[a-zA-Z])/i)) {
-        setErrorFor(elementsOfDom.inputIdPassword, 'Password must have at least one letter and one number');
-    } else if (passwordValue.length < 8) {
-        setErrorFor(elementsOfDom.inputIdPassword, 'Password must have minimum eight characters');
-    } else {
-        setSuccessFor(elementsOfDom.inputIdPassword);
+    switch (true) {
+        case (passwordValue === ''):
+            setErrorFor(elementsOfDom.inputIdPassword, 'Password cannot be blank');
+            break;
+        case (!passwordValue.match(/(?=.*[0-9])(?=.*[a-zA-Z])/i)):
+            setErrorFor(elementsOfDom.inputIdPassword, 'Password must have at least one letter and one number');
+            break;
+        case (passwordValue.length < 8):
+            setErrorFor(elementsOfDom.inputIdPassword, 'Password must have minimum eight characters');
+            break;
+        default:
+            // eslint-disable-next-line @typescript-eslint/indent
+            setSuccessFor(elementsOfDom.inputIdPassword);
     }
     useAPI();
 }

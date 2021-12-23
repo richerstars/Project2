@@ -6,17 +6,22 @@ import { elementsOfDom } from './constants/constantsElements';
 import { getMovies } from './logic';
 import selectorsCss from './constants/constants.selectorsCss';
 
-export default async function checkAuthorize() :Promise<void> {
+export default async function checkAuthorize(): Promise<void> {
     try {
-        const response = await axios.post(constants.WOW_ME_UP_SING_IN, {
+        const { data: { message, token } } = await axios.post(constants.WOW_ME_UP_SING_IN, {
             login: elementsOfDom.inputIdUsernameSignIn.value,
             password: elementsOfDom.inputIdPasswordSignIn.value,
         });
-        elementsOfDom.sectionClassPopUp.style.display = 'none';
-        if (!response.data.token) return;
-        await getMovies(20);
-        localStorage.setItem('token', response.data.token);
-        elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
+        if (token) {
+            localStorage.setItem('token', token);
+            elementsOfDom.sectionClassPopUp.classList.add(selectorsCss.classHidden);
+            elementsOfDom.buttonShowMoreBtn.classList.remove(selectorsCss.classHidden);
+            getMovies(20);
+            return;
+        }
+        elementsOfDom.smallIdErrorLogin.classList.add('error');
+        elementsOfDom.smallIdErrorLogin.textContent = message;
+        return;
     } catch (error) {
         // eslint-disable-next-line no-console
         console.error(error);

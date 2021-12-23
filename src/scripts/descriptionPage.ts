@@ -7,11 +7,10 @@ import { elementsOfDom } from './constants/constantsElements';
 async function getMovieById(): Promise<void> {
     try {
         const id = window.location.hash.substring(window.location.hash.length - 2);
-        console.log(id);
         const { data: { movie } } = await axios.get(`${constants.WOW_ME_UP_MOVIES}/${id}`);
-        console.log(movie.title);
         elementsOfDom.h1IdHOneDF.textContent = movie.title;
     } catch (err) {
+        // eslint-disable-next-line no-console
         console.error('getMovieById: ', err.message);
     }
 }

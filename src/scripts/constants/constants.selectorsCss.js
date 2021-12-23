@@ -63,4 +63,6 @@ export default {
     classContainerBtnReset: '.container-btn-reset',
     idHOneDF: '#hOneDF',
     idMoviesPages: '#movies_pages',
+    idErrorLogin: '#ErrorLogin',
+    tagSmall: 'small',
 };

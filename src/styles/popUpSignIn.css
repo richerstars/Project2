@@ -86,6 +86,13 @@
   visibility: hidden;
 }
 
+#ErrorLogin{
+  color: #e74c3c;
+  position: absolute;
+  bottom: -109px;
+  left: 0;
+}
+
 .form-control.error small {
   visibility: visible;
 }
