@@ -18,6 +18,6 @@ export const constants = {
         REVENUE_MIN: 'revenue_min=',
         REVENUE_MAX: 'revenue_max=',
         POPULARITY_MIN: 'popularity_min=',
-        POPULARITY_MAX: 'popularity_max='
+        POPULARITY_MAX: 'popularity_max=',
     }
 }
