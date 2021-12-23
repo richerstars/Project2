@@ -65,6 +65,7 @@ export const elementsOfDom = {
     h1IdHOneDF: document.querySelector(selectorsCss.idHOneDF),
     smallIdErrorLogin: document.querySelector(selectorsCss.idErrorLogin),
     tagSmall: document.querySelector(selectorsCss.tagSmall),
+    filmPage: document.querySelector(selectorsCss.filmPage),
 };
 
 export const elemsQuerySelectors = {
