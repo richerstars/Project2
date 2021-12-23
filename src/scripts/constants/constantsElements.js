@@ -62,6 +62,7 @@ export const elementsOfDom = {
     inputIdUsernameSignIn: document.querySelector(selectorsCss.idUsernameSignIn),
     inputIdPasswordSignIn: document.querySelector(selectorsCss.idPasswordSignIn),
     divClassContainerBtnReset: document.querySelector(selectorsCss.classContainerBtnReset),
+    filmPage: document.querySelector(selectorsCss.filmPage)
 };
 
 export const elemsQuerySelectors = {

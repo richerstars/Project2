@@ -233,7 +233,9 @@ export function setSignUp(e):void {
     e.preventDefault();
     checkInputs();
 }
-export function openFilmCard(event) {
-    const movieId = Number(<HTMLElement>event.target.id);
-    window.open(`./descriptionFilm.html#${movieId}`);
+export function openFilmCard(event : MouseEvent) {
+    if ((<HTMLElement>event.target).parentElement.classList.contains("linkPage")) {
+        const movieId = Number((<HTMLElement>event.target).parentElement.id);
+        window.open(`./descriptionFilm.html#${movieId}`);
+    }
 }

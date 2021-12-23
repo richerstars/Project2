@@ -34,6 +34,7 @@ export default {
     classDescriptionFilm: '.descriptionFilm',
     idFilmsShowMore: '#filmsShowMore',
     classFilmsShowMore: '.filmsShowMore',
+    filmPage : '.filmsItem',
     classContainerFilmsItem: '.containerFilmsItem',
     classImgFilmsItem: '.imgFilmsItem',
     classHidden: 'hidden',
