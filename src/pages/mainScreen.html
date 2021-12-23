@@ -193,98 +193,23 @@
             <div class="header">
                 <h2>Sign in</h2>
             </div>
-            <div class="containerSignIn hidden">
-                <div class="header">
-                    <h2>Sign in</h2>
+            <form id="formSignIn" class="form">
+                <div class="form-control">
+                    <label for="username">Username</label>
+                    <input type="text" placeholder="Enter your username" id="usernameSignIn" />
+                    <i class="check-circle"></i>
+                    <i class="exclamation-circle"></i>
+                    <div id="ErrorLogin"></div>
                 </div>
-                <form id="formSignIn" class="form">
-                    <div class="form-control">
-                        <label for="username">Username</label>
-                        <input type="text" placeholder="Enter your username" id="usernameSignIn" />
-                        <i class="check-circle"></i>
-                        <i class="exclamation-circle"></i>
-                        <div id="ErrorLogin"></div>
-                    </div>
-                    <div class="form-control name">
-                        <label for="password">Password</label>
-                        <input type="password" placeholder="Enter your password" id="passwordSignIn" />
-                    </div>
-                    <button class="SignUpBtn" id="checkSignUp">Don`t have account?</button>
-                    <button id="setSignInBtn">Submit</button>
-                </form>
-            </div>
-    </section>
-    <script type="text/template" id="taskMovieTemplate">
-    <div>
-    <img class="advertising" src="../img/reklama.gif">
-    <div class="description_block">
-      <h1>{{title}}</h1>
-      <div class="wrapper">
-        <div >
-          <img src="{{poster_path}}" alt="poster" class="poster" />
+                <div class="form-control name">
+                    <label for="password">Password</label>
+                    <input type="password" placeholder="Enter your password" id="passwordSignIn" />
+                </div>
+                <button class="SignUpBtn" id="checkSignUp">Don`t have account?</button>
+                <button id="setSignInBtn">Submit</button>
+            </form>
         </div>
-        <table class="table_film_data">
-          <tbody>
-          <tr>
-            <td>
-              <h2>Release date</h2>
-            </td>
-            <td class="film_data">{{release_date}}</td>
-          </tr>
-          <tr>
-            <td>
-              <h2>Genres</h2>
-            </td>
-            <td class="film_data">{{genre_ids}}</td>
-          </tr>
-          <tr>
-            <td>
-              <h2>Rating</h2>
-            </td>
-            <td class="film_data">{{movie_rate}}</td>
-          </tr>
-          <tr>
-            <td>
-              <h2>Revenue</h2>
-            </td>
-            <td class="film_data">26.08.2020</td>
-          </tr>
-          <tr>
-            <td>
-              <h2>Original language</h2>
-            </td>
-            <td class="film_data">{{original_language}}</td>
-          </tr>
-          <tr>
-            <td>
-              <h2>Age limits</h2>
-            </td>
-            <td class="film_data">{{adult}}</td>
-          </tr>
-          <tr>
-            <td>
-              <h2>Original title</h2>
-            </td>
-            <td class="film_data">{{title}}</td>
-          </tr>
-          <tr>
-            <td>
-              <h2>Populariy</h2>
-            </td>
-            <td class="film_data">{{popularity}}</td>
-          </tr>
-          </tbody>
-        </table>
-  
-      </div>
-    </div>
-    <div class="wrapper_about_film">
-      <h2>Description</h2>
-      <div class="description">
-        {{overview}}
-      </div>
-    </div>
-</script>
+    </section>
 </body>
 
 </html>

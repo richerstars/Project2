@@ -6,9 +6,11 @@ import {
     saveFilters, checkAdult,
     setSignUp, setSignIn,
     resetFilters, openFilmCard,
+    getInputValues,
 } from './logic';
 
 document.addEventListener('DOMContentLoaded', checkToken);
+document.addEventListener('click', getInputValues);
 elementsOfDom.inputIdFilters.addEventListener('click', getFilters);
 elementsOfDom.inputIdAuth.addEventListener('click', logOut);
 elementsOfDom.buttonIdSaveBtn.addEventListener('click', saveFilters);
