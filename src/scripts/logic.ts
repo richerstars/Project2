@@ -252,10 +252,9 @@ export function openFilmCard(event: MouseEvent): void {
 }
 
 export function getInputValues(e: Event): void {
-    switch (true) {
-        case ((<HTMLElement>e.target).id === selectorsCss.idBudgetMinNumber):
-            elementsOfDom.inputBudgetMinRange.value = (<HTMLInputElement>e.target).value;
-            break;
+    if ((<HTMLElement>e.target).classList.contains('inputValueNumber')) {
+        (<HTMLInputElement>(<HTMLElement>e.target).previousElementSibling
+            .previousElementSibling).value = (<HTMLInputElement>e.target).value;
     }
     elementsOfDom.inputIdBudgetMinNumber.value = elementsOfDom.inputBudgetMinRange.value;
     elementsOfDom.inputIdBudgetMaxNumber.value = elementsOfDom.inputIdBudgetMaxRange.value;
@@ -263,5 +262,13 @@ export function getInputValues(e: Event): void {
     elementsOfDom.inputIdPopularityMaxNumber.value = elementsOfDom.inputIdPopularityMaxRange.value;
     elementsOfDom.inputIdRevenueMinNumber.value = elementsOfDom.inputIdRevenueMinRange.value;
     elementsOfDom.inputIdRevenueMaxNumber.value = elementsOfDom.inputIdRevenueMaxRange.value;
+}
 
+export function showInputSearch():void {
+    elementsOfDom.inputClassSearchInput.classList.toggle(selectorsCss.classHidden);
+}
+
+export function getFilmBySearchInput():void {
+    const inputValue = elementsOfDom.inputClassSearchInput.value;
+    createDynamic({ title: inputValue });
 }

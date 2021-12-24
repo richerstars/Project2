@@ -18,7 +18,9 @@
             </section>
             <div class="containerBetween"></div>
             <nav class="headerNav">
-                <div class="search"><img src="../img/logoSearch.svg" alt="logoSearch"></div>
+                <input type="text" class="searchInput hidden" placeholder="Enter Some film">
+                <div class="search"><img src="../img/logoSearch.svg" alt="logoSearch">
+                </div>
                 <div class="filters"><input type="image" src="../img/logoFilters.svg" alt="logoFilters" id="filters">
                 </div>
                 <div class="logoUsers"><input type="image" src="../img/logoUser.svg" alt="logoUser" id="auth"></div>
@@ -64,7 +66,6 @@
                 </div>
                 <div class="filter-item-p">
                     <p>Budget max</p>
-                    <div class="slider-track"></div>
                     <p>0</p>
                     <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider" id="budget-max">
                     <p>1000000</p>
@@ -72,7 +73,6 @@
                 </div>
                 <div class="filter-item-p">
                     <p>Popularity min</p>
-                    <div class="slider-track"></div>
                     <p>0</p>
                     <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider"
                         id="popularity-min">
@@ -81,7 +81,6 @@
                 </div>
                 <div class="filter-item-p">
                     <p>Popularity max</p>
-                    <div class="slider-track"></div>
                     <p>0</p>
                     <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider"
                         id="popularity-max">
@@ -90,12 +89,13 @@
                 </div>
             </div>
             <div class="container-items">
-                <input type="date" placeholder="Release day first" class="filters-input" id="release-day-first">
-                <input type="number" placeholder="Release day last" class="filters-input" id="release-day-last">
+                <input type="date" value="2018-07-22"
+                min="1900-01-01" max="2021-12-31" placeholder="Release day first" class="filters-input" id="release-day-first">
+                <input type="date" value="2018-07-22"
+                min="1900-01-01" max="2021-12-31" placeholder="Release day last" class="filters-input" id="release-day-last">
                 <div class="container-items">
                     <div class="filter-item-p">
                         <p>Revenue min</p>
-                        <div class="slider-track"></div>
                         <p>0</p>
                         <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider"
                             id="revenue-min">
@@ -114,10 +114,8 @@
                 </div>
             </div>
             <div class="wrapper-buttons">
-                <div class="container-btn-save">
+                <div class="container-btn-filter">
                     <button id="saveBtn">Save</button>
-                </div>
-                <div class="container-btn-reset">
                     <button id="resetBtn">Reset</button>
                 </div>
             </div>

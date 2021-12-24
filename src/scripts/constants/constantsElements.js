@@ -72,6 +72,8 @@ export const elementsOfDom = {
     smallIdErrorLogin: document.querySelector(selectorsCss.idErrorLogin),
     tagSmall: document.querySelector(selectorsCss.tagSmall),
     filmPage: document.querySelector(selectorsCss.filmPage),
+    inputClassSearchInput: document.querySelector(selectorsCss.classSearchInput),
+    divClassSearch:document.querySelector(selectorsCss.classSearch),
 };
 
 export const elemsQuerySelectors = {
