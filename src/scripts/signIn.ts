@@ -8,7 +8,7 @@ import selectorsCss from './constants/constants.selectorsCss';
 
 export default async function checkAuthorize(): Promise<void> {
     try {
-        const { data: { message, token } } = await axios.post(constants.WOW_ME_UP_SING_IN, {
+        const { data: { token } } = await axios.post(constants.WOW_ME_UP_SING_IN, {
             login: elementsOfDom.inputIdUsernameSignIn.value,
             password: elementsOfDom.inputIdPasswordSignIn.value,
         });
@@ -19,11 +19,10 @@ export default async function checkAuthorize(): Promise<void> {
             getMovies(20);
             return;
         }
-        elementsOfDom.smallIdErrorLogin.classList.add('error');
-        elementsOfDom.smallIdErrorLogin.textContent = message;
         return;
     } catch (error) {
         // eslint-disable-next-line no-console
-        console.error(error);
+        elementsOfDom.smallIdErrorLogin.classList.add('error');
+        elementsOfDom.smallIdErrorLogin.textContent = 'Wrong login or password';
     }
 }

@@ -72,4 +72,7 @@ export default {
     idMoviesPages: '#movies_pages',
     idErrorLogin: '#ErrorLogin',
     tagSmall: 'small',
+   classSearchInput: '.searchInput',
+   classSearch:'.search',
+   classAnimationSearchInput:'.animationSearchInput',
 };

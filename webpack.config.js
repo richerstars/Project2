@@ -40,12 +40,11 @@ module.exports = {
                 test: /\.(ts|js)x?$/,
                 exclude: /node_modules/,
                 use: 'babel-loader'
-            }
+            },
         ]
     },
 
     plugins: [
-
         new HtmlWebpackPlugin( {
             filename: "index.html",
             template: "./src/pages/mainScreen.html",

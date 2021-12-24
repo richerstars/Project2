@@ -1,7 +1,8 @@
 import '../styles/descriptionPage.css';
 import axios from 'axios';
-import '../img/reklama.gif';
 import { TData, TGenres } from './types/types';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const pokerok = require('../img/reklama.gif');
 
 require('babel-core/register');
 require('babel-polyfill');
@@ -48,6 +49,7 @@ const showFilm = async (movieInfo: TData) => {
             .replace('{{poster_path}}', (`https://image.tmdb.org/t/p/original${posterPath}`))
             .replace('{{release_date}}', normaliseDate(releaseDate))
             .replace('{{title}}', title)
+            .replace('{{pokerok}}', pokerok)
             .replace('{{overview}}', overview)
             .replace('{{original_title}}', originalTitle)
             .replace('{{genre_ids}}', normalGenres)
