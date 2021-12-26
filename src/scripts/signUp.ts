@@ -1,11 +1,11 @@
-/* eslint-disable indent */
 import '../styles/popUpSignUp.css';
 import axios from 'axios';
 import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
+import constantsString from './constants/constantsString';
 
-export async function useAPI(): Promise<void> {
+export async function useAPI():Promise<void> {
     try {
         await axios.post(constants.WOW_ME_UP_SING_UP, {
             login: elementsOfDom.inputIdUsername.value,
@@ -20,47 +20,42 @@ export async function useAPI(): Promise<void> {
         console.error(error);
     }
 }
-function setErrorFor(input: HTMLElement, message: string): void {
-    const formControl = input.parentElement;
-    const small = elementsOfDom.tagSmall;
-    formControl.classList.add('error');
-    small.innerText = message;
+
+function setError(element:HTMLElement, textMessage:string) {
+    element.classList.add('error');
+    element.innerText = textMessage;
 }
 
-function setSuccessFor(input: HTMLElement): void {
-    const formControl = input.parentElement;
-    formControl.classList.add('success');
-}
-export function checkInputs(): void {
+export function checkInputs():void {
+    const error = elementsOfDom.classErrorHolder;
     const usernameValue = elementsOfDom.inputIdUsername.value.trim();
     const passwordValue = elementsOfDom.inputIdPassword.value.trim();
+    const firstNameValue = elementsOfDom.inputIdFirstName.value.trim();
+    const lastNameValue = elementsOfDom.inputIdLastName.value.trim();
     switch (true) {
-        case (usernameValue === ''):
-            setErrorFor(elementsOfDom.inputIdUsername, 'Username cannot be blank');
+        case (usernameValue.length === 0 || passwordValue.length === 0
+        || firstNameValue.length === 0
+        || lastNameValue.length === 0):
+            setError(error, constantsString.blankString);
             break;
         case (!usernameValue[0].match(/[a-zA-Z]/i)):
-            setErrorFor(elementsOfDom.inputIdUsername, 'Login must starts with a letter');
+            setError(error, constantsString.loginErrLetter);
             break;
-        case (!usernameValue.match(/[^a-zA-Z0-9]/i)):
-            setErrorFor(elementsOfDom.inputIdUsername, 'Login must contains only letters and numbers');
-            break;
-        default:
-            setSuccessFor(elementsOfDom.inputIdUsername);
-    }
-
-    switch (true) {
-        case (passwordValue === ''):
-            setErrorFor(elementsOfDom.inputIdPassword, 'Password cannot be blank');
-            break;
+        // case (!usernameValue.match(/[^a-zA-Z0-9]/i)):
+        //     error.innerText = constantsString.loginValidate;
+        //     break;
         case (!passwordValue.match(/(?=.*[0-9])(?=.*[a-zA-Z])/i)):
-            setErrorFor(elementsOfDom.inputIdPassword, 'Password must have at least one letter and one number');
+            setError(error, constantsString.passCheck);
             break;
-        case (passwordValue.length < 8):
-            setErrorFor(elementsOfDom.inputIdPassword, 'Password must have minimum eight characters');
+        // case (passwordValue.length < 8 || firstNameValue.length < 8
+        // || lastNameValue.length < 15):
+        //     error.classList.add('error');
+        //     error.innerText = constantsString.firstLastLength;
+        //     break;
+        case (!firstNameValue.match(/^[a-zA-Z]+$/) || !lastNameValue.match(/^[a-zA-Z]+$/)):
+            setError(error, constantsString.fistLastCheckLetter);
             break;
         default:
-            // eslint-disable-next-line @typescript-eslint/indent
-            setSuccessFor(elementsOfDom.inputIdPassword);
+            useAPI();
     }
-    useAPI();
 }

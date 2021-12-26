@@ -22,7 +22,7 @@ export default async function checkAuthorize(): Promise<void> {
         return;
     } catch (error) {
         // eslint-disable-next-line no-console
-        elementsOfDom.smallIdErrorLogin.classList.add('error');
-        elementsOfDom.smallIdErrorLogin.textContent = 'Wrong login or password';
+        elementsOfDom.classSignInErr.classList.add('error');
+        elementsOfDom.classSignInErr.textContent = 'Wrong login or password';
     }
 }

@@ -94,6 +94,7 @@ export function changeModalWindow(e: Event): void {
         elementsOfDom.inputIdPassword.value = '';
         elementsOfDom.inputIdFirstName.value = '';
         elementsOfDom.inputIdLastName.value = '';
+        elementsOfDom.classErrorHolder.classList.remove('error');
         elementsOfDom.inputIdUsername.parentElement.classList.remove('error');
         elementsOfDom.inputIdPassword.parentElement.classList.remove('error');
         elementsOfDom.inputIdFirstName.parentElement.classList.remove('error');
@@ -102,7 +103,6 @@ export function changeModalWindow(e: Event): void {
         elementsOfDom.divClassContainerSignIn.classList.toggle('hidden');
         return;
     }
-    elementsOfDom.smallIdErrorLogin.textContent = '';
     elementsOfDom.inputIdUsernameSignIn.value = '';
     elementsOfDom.inputIdPasswordSignIn.value = '';
     elementsOfDom.divClassContainerSignUP.classList.toggle('hidden');
