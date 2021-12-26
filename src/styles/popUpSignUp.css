@@ -33,6 +33,7 @@
   margin-bottom: 10px;
   padding-bottom: 20px;
   position: relative;
+  text-align: center;
 }
 
 .form-control label {
@@ -63,35 +64,6 @@
   border-color: #e74c3c;
 }
 
-.form-control i {
-  visibility: hidden;
-  position: absolute;
-  top: 40px;
-  right: 10px;
-}
-
-.form-control.success .check-circle {
-  color: #2ecc71;
-  visibility: visible;
-}
-
-.form-control.error .exclamation-circle {
-  color: #e74c3c;
-  visibility: visible;
-}
-
-.form-control small {
-  color: #e74c3c;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  visibility: hidden;
-}
-
-.form-control.error small {
-  visibility: visible;
-}
-
 .form button {
   background-color: #9b2121;
   border: 2px solid #9b2121;
@@ -103,4 +75,36 @@
   padding: 10px;
   margin-top: 20px;
   width: 100%;
+}
+label{
+  text-align: center;
+}
+.error-holder-msg{
+  display: none;
+}
+.error{
+  display: block;
+  text-align: center;
+  border: 2px solid #9b2121;
+  padding: 10px;
+}
+.SignUpBtn:hover {
+  animation: bounce 1s;
+}
+#setSignInBtn:hover {
+  animation: bounce 1s;
+}
+@keyframes bounce {
+  0%, 20%, 60%, 100% {
+    transform: translateY(0);
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+    transform: translateY(-20px);
+  }
+  80% {
+    transform: translateY(-10px);
+    transform: translateY(-10px);
+  }
 }
