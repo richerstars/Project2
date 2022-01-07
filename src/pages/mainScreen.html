@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Screen</title>
+    <script src="https://kit.fontawesome.com/0a9220cdf9.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -19,18 +20,16 @@
             <div class="containerBetween"></div>
             <nav class="headerNav">
                 <input type="text" class="searchInput hidden" placeholder="Enter Some film">
-                <div class="search"><img src="../img/logoSearch.svg" alt="logoSearch">
+                <div class="search opasityHover"><i class="fas fa-search" alt="logoSearch"></i>
                 </div>
-                <div class="filters"><input type="image" src="../img/logoFilters.svg" alt="logoFilters" id="filters">
+                <div class="filters opasityHover">
+                    <i class="fas fa-filter" id="filters"></i>
                 </div>
-                <div class="logoUsers"><input type="image" src="../img/logoUser.svg" alt="logoUser" id="auth"></div>
+                <div class="logoUsers opasityHover"><i class="fas fa-sign-out-alt" id="auth"></i></div>
             </nav>
         </div>
     </header>
     <main class="wrapper">
-        <div class="containerHeaderOne">
-            <h1 class="HeaderOne"> List of Films</h1>
-        </div>
         <section class="section filters-item-none">
             <div class="container-filters-item">
                 <div class="filters-input container-adult">
@@ -135,6 +134,7 @@
                     <div class="linkPage">
                         <img class="imgFilmsItem" src="../img/logo.svg">
                     </div>
+                    <div class="overlay"></div>
                     <p class="descriptionFilm"></p>
                 </div>
             </div>

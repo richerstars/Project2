@@ -198,8 +198,8 @@ export function resetFilters(): void {
     elementsOfDom.inputIdReleaseDayLast.value = '';
     elementsOfDom.inputIdRevenueMinNumber.value = '';
     elementsOfDom.inputIdRevenueMaxNumber.value = '';
+    elementsOfDom.inputIdFilters.classList.remove('active');
 }
-
 export function saveFilters(): void {
     const adult: boolean = elementsOfDom.inputIdAdult.checked;
     const language: string = elementsOfDom.selectIdSelectLanguages.value;
@@ -212,6 +212,7 @@ export function saveFilters(): void {
     const releaseDateLast: string = elementsOfDom.inputIdReleaseDayLast.value;
     const revenueMin: number = elementsOfDom.inputIdRevenueMinNumber.value;
     const revenueMax: number = elementsOfDom.inputIdRevenueMaxNumber.value;
+    elementsOfDom.inputIdFilters.classList.add('active');
     createDynamic({
         adult,
         language,
@@ -245,7 +246,7 @@ export function setSignUp(e: Event): void {
     checkInputs();
 }
 export function openFilmCard(event: MouseEvent): void {
-    if ((<HTMLElement>event.target).parentElement.classList.contains('linkPage')) {
+    if ((<HTMLElement>event.target).parentElement.classList.contains('filmsItem')) {
         const movieId = Number((<HTMLElement>event.target).parentElement.id);
         window.open(`./descriptionFilm.html#${movieId}`);
     }
