@@ -16,6 +16,7 @@ export default async function checkAuthorize(): Promise<void> {
             localStorage.setItem('token', token);
             elementsOfDom.sectionClassPopUp.classList.add(selectorsCss.classHidden);
             elementsOfDom.buttonShowMoreBtn.classList.remove(selectorsCss.classHidden);
+            elementsOfDom.classHeaderOne.classList.remove(selectorsCss.classHidden);
             getMovies(20);
             return;
         }

@@ -77,4 +77,6 @@ export default {
     classAnimationSearchInput: '.animationSearchInput',
     classErrorHolder: '.error-holder-msg',
     classSignInErr: '.sign-in-err',
+    classMark: '.mask',
+    classHeaderOne: '.HeaderOne',
 };

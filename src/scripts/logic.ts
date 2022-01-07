@@ -16,6 +16,9 @@ import {
 
 let count = 2;
 
+function loader() {
+    elementsOfDom.classMask.classList.add('hidden');
+}
 function createTemplateShowMore({
     id,
     poster_path,
@@ -42,6 +45,7 @@ export async function getMovies(attr: number): Promise<void> {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
             }
         });
+        loader();
     } catch (error) {
         // eslint-disable-next-line no-console
         console.error(error);
@@ -79,6 +83,7 @@ export async function renderNewFilm(): Promise<IGetMovieParam> {
 }
 
 export function checkToken(): void {
+    setTimeout(loader, 1000);
     const token: string = localStorage.getItem('token');
     if (token) {
         elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden);
@@ -168,6 +173,7 @@ export async function getMoviesByDynamicParams(request): Promise<void> {
             }
         });
         count++;
+        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     } catch (err) {
         // eslint-disable-next-line no-console
         console.error('getMoviesByDynamicParams: ', err);
@@ -225,17 +231,20 @@ export function saveFilters(): void {
         revenue_min: revenueMin,
         revenue_max: revenueMax,
     });
+    elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     elementsOfDom.sectionClassSection.classList.toggle('filters-item');
     elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
 }
 
 export function logOut(): void {
+    elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     localStorage.clear();
     document.location.reload();
     elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden, false);
 }
 
 export function setSignIn(e: Event): void {
+    elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     e.preventDefault();
     checkAuthorize();
 }
@@ -269,6 +278,7 @@ export function showInputSearch():void {
 }
 
 export function getFilmBySearchInput():void {
+    elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     const inputValue = elementsOfDom.inputClassSearchInput.value;
     createDynamic({ title: inputValue });
 }
