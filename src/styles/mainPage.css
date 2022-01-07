@@ -84,7 +84,7 @@ html, body {
 }
 
 body {
-    background-image: url('../img/space.jpg');
+    background: url('../img/space.jpg') top fixed;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -101,6 +101,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: white;
+    font-size: 30px;
 }
 
 .headerConteiner{
@@ -510,8 +512,8 @@ select[value] {
 
 .descriptionFilm {
     top: -80px;
-    width: 200px;
-    height: 85px;
+    width: 190px;
+    height: 35px;
     background: rgba(255, 255, 255, 0.7);
     font-family: Roboto;
     font-style: normal;
@@ -519,9 +521,11 @@ select[value] {
     line-height: 28px;
     text-align: center;
     color: #000000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 5px;
 }
 
 .containerHeaderFilms {
@@ -580,21 +584,49 @@ select[value] {
 }
 
 .filmsShowMore {
+    padding: 80px 0;
     min-width: 1500px;
-    min-height: 1420px;
     margin-top: 18px;
     border-image-repeat: repeat;
-    align-items: center;
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);
     grid-gap: 20px;
-    justify-content: center;
 }
 
 .filmsItem{
     width: 200px;
     height: 422px;
     margin: 30px 10px 10px;
+    position: relative;
+}
+
+@keyframes scale {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.filmsItem:hover{
+    animation: scale 0.5s ease forwards;
+    cursor: pointer;
+}
+
+.overlay {
+    position: absolute;
+    width: 205px;
+    height: 350px;
+    background-color: rgba(0,0,0,.75);
+    transition: opacity .2s,visibility .2s;
+    top: 0;
+    display: none;
+}
+
+.linkPage::after{
+    width: 1000px; height:1000px;
+    background:rgba(250, 8, 8, 0.6);
 }
 
 
@@ -611,8 +643,31 @@ a{
 .container-btn-filter {
     margin-bottom: 90px;
 }
-/*.wrapper-buttons{*/
-/*    display: flex;*/
-/*    position: absolute;*/
-/*    top: 750px;*/
-/*}*/
+
+@media (hover: hover) {
+    .filmsItem p {
+      transform: translateY(0);
+      transition: 0.5s;
+    }
+    .filmsItem:hover p {
+      transform: translateY(-84px);
+      height: 80px;
+      overflow: visible;
+      text-overflow: clip;
+      white-space: normal;
+      font-size: 20px;
+    
+    }
+    .filmsItem:hover .overlay {
+      display: block;
+    }
+
+    .opasityHover:hover {
+        opacity: 0.5;
+        cursor: pointer;
+    }
+}
+
+.active {
+    color: #9b2121;
+}
