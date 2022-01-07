@@ -105,7 +105,7 @@ header {
     font-size: 30px;
 }
 
-.headerConteiner{
+.headerConteiner {
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
@@ -160,7 +160,6 @@ h1 {
     display: flex;
     align-content: space-around;
     align-items: center;
-    align-self: center;
     flex-wrap: wrap;
     flex-direction: column;
 }
@@ -189,7 +188,7 @@ h1 {
     align-items: center;
     text-align: center;
     text-decoration: none;
-    color:#FFFF;
+    color: #FFFF;
 }
 
 .newFilmsItem {
@@ -244,11 +243,12 @@ h1 {
     align-self: center;
 }
 
-.searchInput{
-     position: absolute;
-        top: 15px;
-        height: 40px;
-        left: 710px;
+.searchInput {
+    position: relative;
+    top: 10px;
+    height: 40px;
+    left: 50%;
+    width: 250px;
 }
 
 
@@ -264,13 +264,13 @@ h1 {
     align-self: center;
 }
 
-.logoUsers{
+.logoUsers {
     width: 40px;
     height: 40px;
     align-self: center;
 }
 
-#auth{
+#auth {
     width: 40px;
     height: 40px;
     align-self: center;
@@ -280,7 +280,6 @@ footer {
     height: 4.5vh;
     background-color: #000000;
 }
-
 
 
 #slider-min {
@@ -406,7 +405,8 @@ input[type="range"] {
     line-height: 28px;
     color: #FFF;
 }
-#showMoreBtn:disabled{
+
+#showMoreBtn:disabled {
     background-color: #777777;
 }
 
@@ -477,7 +477,6 @@ select[value] {
 }
 
 
-
 .imgFilmsItem {
     width: 205px;
     height: 350px;
@@ -494,7 +493,7 @@ select[value] {
     gap: 45px;
 }
 
-.descriptionNewFilm{
+.descriptionNewFilm {
     height: 80px;
     background: rgba(255, 255, 255, 0.7);
     font-family: Roboto;
@@ -584,16 +583,17 @@ select[value] {
 }
 
 .filmsShowMore {
-    padding: 80px 0;
-    min-width: 1500px;
-    margin-top: 18px;
+    width: 80%;
+    margin-top: 90px;
     border-image-repeat: repeat;
+    align-items: center;
     display: grid;
     grid-template-columns: repeat(auto-fill, 200px);
     grid-gap: 20px;
+    justify-content: center;
 }
 
-.filmsItem{
+.filmsItem {
     width: 200px;
     height: 422px;
     margin: 30px 10px 10px;
@@ -609,7 +609,7 @@ select[value] {
     }
 }
 
-.filmsItem:hover{
+.filmsItem:hover {
     animation: scale 0.5s ease forwards;
     cursor: pointer;
 }
@@ -618,25 +618,27 @@ select[value] {
     position: absolute;
     width: 205px;
     height: 350px;
-    background-color: rgba(0,0,0,.75);
-    transition: opacity .2s,visibility .2s;
+    background-color: rgba(0, 0, 0, .75);
+    transition: opacity .2s, visibility .2s;
     top: 0;
     display: none;
 }
 
-.linkPage::after{
-    width: 1000px; height:1000px;
-    background:rgba(250, 8, 8, 0.6);
+.linkPage::after {
+    width: 1000px;
+    height: 1000px;
+    background: rgba(250, 8, 8, 0.6);
 }
 
 
-@media screen and (max-width : 1470px){
-    .headerConteiner{
+@media screen and (max-width: 1450px) {
+    .headerConteiner {
         max-width: 1000px;
         margin: 0 auto;
     }
 }
-a{
+
+a {
     cursor: pointer;
 }
 
@@ -646,20 +648,22 @@ a{
 
 @media (hover: hover) {
     .filmsItem p {
-      transform: translateY(0);
-      transition: 0.5s;
+        transform: translateY(0);
+        transition: 0.5s;
     }
+
     .filmsItem:hover p {
-      transform: translateY(-84px);
-      height: 80px;
-      overflow: visible;
-      text-overflow: clip;
-      white-space: normal;
-      font-size: 20px;
-    
+        transform: translateY(-84px);
+        height: 80px;
+        overflow: visible;
+        text-overflow: clip;
+        white-space: normal;
+        font-size: 20px;
+
     }
+
     .filmsItem:hover .overlay {
-      display: block;
+        display: block;
     }
 
     .opasityHover:hover {
@@ -670,4 +674,36 @@ a{
 
 .active {
     color: #9b2121;
+}
+
+.donations, .containerBetween {
+    display: flex;
+}
+
+.mask {
+    width: 100%;
+    height: 100%;
+    background: black;
+    position: fixed;
+    top: 0;
+    z-index: 200;
+    transition: 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    width: 100px;
+    height: 100px;
+    border: 8px solid rgba(155, 33, 33, 0.6);
+    border-radius: 50%;
+    border-left-color: rgba(155, 33, 33, 1);
+    animation: loader 1.3s linear infinite;
+}
+
+@keyframes loader {
+    100% {
+        transform: rotate(360deg);
+    }
 }

@@ -76,6 +76,8 @@ export const elementsOfDom = {
     divClassSearch: document.querySelector(selectorsCss.classSearch),
     classErrorHolder: document.querySelector(selectorsCss.classErrorHolder),
     classSignInErr: document.querySelector(selectorsCss.classSignInErr),
+    classMask: document.querySelector(selectorsCss.classMark),
+    classHeaderOne: document.querySelector(selectorsCss.classHeaderOne),
 };
 
 export const elemsQuerySelectors = {

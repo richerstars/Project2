@@ -16,6 +16,7 @@ export default async function checkAuthorize(): Promise<void> {
             localStorage.setItem('token', token);
             elementsOfDom.sectionClassPopUp.classList.add(selectorsCss.classHidden);
             elementsOfDom.buttonShowMoreBtn.classList.remove(selectorsCss.classHidden);
+            elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
             getMovies(20);
             return;
         }
@@ -24,5 +25,6 @@ export default async function checkAuthorize(): Promise<void> {
         // eslint-disable-next-line no-console
         elementsOfDom.classSignInErr.classList.add('error');
         elementsOfDom.classSignInErr.textContent = 'Wrong login or password';
+        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     }
 }
