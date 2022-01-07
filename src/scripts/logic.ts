@@ -54,6 +54,7 @@ export async function getMovies(attr: number): Promise<void> {
 
 export async function renderNewFilm(): Promise<IGetMovieParam> {
     try {
+        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
         const {
             data: {
                 totalCount,
@@ -68,6 +69,7 @@ export async function renderNewFilm(): Promise<IGetMovieParam> {
 
         if (!totalCount) {
             elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
+            elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
             return;
         }
         movies.forEach((element: IMovies, index: number) => {
@@ -76,6 +78,7 @@ export async function renderNewFilm(): Promise<IGetMovieParam> {
             }
         });
         count++;
+        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     } catch (err) {
         // eslint-disable-next-line no-console
         console.error('renderNewFilm: ', err);
