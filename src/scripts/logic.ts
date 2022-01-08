@@ -145,6 +145,7 @@ export async function getFilters():Promise<void> {
     try {
         elementsOfDom.sectionClassSection.classList.toggle('filters-item');
         elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
+        elementsOfDom.bigWindow.classList.toggle('hidden');
 
         const { data: { message: { languages, genres } } } = await axios
             .get(constants.SERVER_FILTERS);
@@ -200,15 +201,10 @@ export function resetFilters():void {
     elementsOfDom.inputIdAdult.parentElement.classList.remove('checkedAdult');
     elementsOfDom.inputIdAdult.parentElement.classList.add('filters-input');
     elementsOfDom.selectIdSelectLanguages.value = '';
-    elementsOfDom.inputIdInputTitle.value = '';
     elementsOfDom.inputIdBudgetMinNumber.value = '';
     elementsOfDom.inputIdBudgetMaxNumber.value = '';
-    elementsOfDom.inputIdPopularityMinNumber.value = '';
-    elementsOfDom.inputIdPopularityMaxNumber.value = '';
     elementsOfDom.inputIdReleaseDayFirst.value = '';
     elementsOfDom.inputIdReleaseDayLast.value = '';
-    elementsOfDom.inputIdRevenueMinNumber.value = '';
-    elementsOfDom.inputIdRevenueMaxNumber.value = '';
     elementsOfDom.inputIdFilters.classList.remove('active');
     elementsOfDom.selectIdSelectGenres.value = '';
 }
@@ -216,28 +212,19 @@ export function resetFilters():void {
 export function saveFilters():void {
     const adult:boolean = elementsOfDom.inputIdAdult.checked;
     const language:string = elementsOfDom.selectIdSelectLanguages.value;
-    const title:string = elementsOfDom.inputIdInputTitle.value;
     const budgetMin:number = elementsOfDom.inputIdBudgetMinNumber.value;
     const budgetMax:number = elementsOfDom.inputIdBudgetMaxNumber.value;
-    const popularityMin:number = elementsOfDom.inputIdPopularityMinNumber.value;
-    const popularityMax:number = elementsOfDom.inputIdPopularityMaxNumber.value;
     const releaseDateFirst:string = elementsOfDom.inputIdReleaseDayFirst.value;
     const releaseDateLast:string = elementsOfDom.inputIdReleaseDayLast.value;
-    const revenueMin:number = elementsOfDom.inputIdRevenueMinNumber.value;
-    const revenueMax:number = elementsOfDom.inputIdRevenueMaxNumber.value;
     elementsOfDom.inputIdFilters.classList.add('active');
+    elementsOfDom.bigWindow.classList.toggle('hidden');
     createDynamic({
         adult,
         language,
-        title,
         budget_min: budgetMin,
         budget_max: budgetMax,
-        popularity_min: popularityMin,
-        popularity_max: popularityMax,
         release_date_first: releaseDateFirst,
         release_date_last: releaseDateLast,
-        revenue_min: revenueMin,
-        revenue_max: revenueMax,
     });
     elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     elementsOfDom.sectionClassSection.classList.toggle('filters-item');

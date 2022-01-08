@@ -37,6 +37,7 @@
         </div>
     </header>
     <main class="wrapper">
+        <div class="big-window hidden">
         <section class="section filters-item-none">
             <div class="container-filters-item">
                 <div class="filters-input container-adult">
@@ -51,47 +52,21 @@
                 </div>
                 <div class="filters-input">
                     <div class="container-filters-selectors">
-
-                        <input type="text" name="" id="inputTitle" placeholder="Title" class="filters-input">
-                    </div>
-                </div>
-                <div class="filters-input">
-                    <div class="container-filters-selectors">
                         <label class="mainLabel" for="selectGenres">Genres</label>
                         <select name="Genres" id="selectGenres"></select>
                     </div>
                 </div>
             </div>
-            <div class="container-input-range container-filters-item">
+            <div class="container-filters-item">
                 <div class="filter-item-p">
-                    <p>Budget min</p>
-                    <p>0</p>
+                    <p>Budget min</p>            
                     <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider" id="budget-min">
-                    <p>1000000</p>
                     <input type="number" class="inputValueNumber" id="budget-min-number">
                 </div>
                 <div class="filter-item-p">
                     <p>Budget max</p>
-                    <p>0</p>
                     <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider" id="budget-max">
-                    <p>1000000</p>
                     <input type="number" class="inputValueNumber" id="budget-max-number">
-                </div>
-                <div class="filter-item-p">
-                    <p>Popularity min</p>
-                    <p>0</p>
-                    <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider"
-                        id="popularity-min">
-                    <p>1000000</p>
-                    <input type="number" class="inputValueNumber" id="popularity-min-number">
-                </div>
-                <div class="filter-item-p">
-                    <p>Popularity max</p>
-                    <p>0</p>
-                    <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider"
-                        id="popularity-max">
-                    <p>1000000</p>
-                    <input type="number" class="inputValueNumber" id="popularity-max-number">
                 </div>
             </div>
             <div class="container-items">
@@ -99,25 +74,6 @@
                 min="1900-01-01" max="2021-12-31" placeholder="Release day first" class="filters-input" id="release-day-first">
                 <input type="date" value=""
                 min="1900-01-01" max="2021-12-31" placeholder="Release day last" class="filters-input" id="release-day-last">
-                <div class="container-items">
-                    <div class="filter-item-p">
-                        <p>Revenue min</p>
-                        <p>0</p>
-                        <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider"
-                            id="revenue-min">
-                        <p>1000000</p>
-                        <input type="number" class="inputValueNumber" id="revenue-min-number">
-                    </div>
-                    <div class="filter-item-p">
-                        <p>Revenue max</p>
-                        <p>0</p>
-                        <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider"
-                            id="revenue-max">
-                        <p>1000000</p>
-                        <input type="number" class="inputValueNumber" id="revenue-max-number">
-
-                    </div>
-                </div>
             </div>
             <div class="wrapper-buttons">
                 <div class="container-btn-filter">
@@ -126,6 +82,7 @@
                 </div>
             </div>
         </section>
+    </div>
         </div>
         <template id="templateCard">
             <div class="newFilmsItem">
