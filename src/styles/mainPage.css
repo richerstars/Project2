@@ -286,107 +286,7 @@ footer {
     width: 100px;
 }
 
-.filters-item {
-    display: flex;
-    position: fixed;
-    margin-top: 78px;
-    width: 100%;
-    height: 93%;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: column;
-    flex-wrap: wrap;
-    z-index: 10;
-    background-image: url('../img/space.jpg');
-}
 
-.filters-item-none {
-    display: none;
-}
-
-.container-adult {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-#Adult {
-    position: absolute;
-    top: -2000px;
-}
-
-input[type="range"] {
-    position: absolute;
-    /* -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none; */
-    height: 20px;
-    width: 200px;
-    background-color: #4215F4;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.filter-item-p {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    width: 300px;
-    height: 160px;
-    background-image: url('../img/space.jpg');
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
-    border: 2px solid #FFFFFF;
-    border-radius: 15px;
-    color: #fff;
-    margin: 0px 10px;
-    color: #FFF;
-}
-
-.container-input-range, .container-items {
-    display: flex;
-    flex-direction: row;
-}
-
-.container-filters-item {
-    height: 150px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-#saveBtn {
-    background-color: #9b2121;
-    border: 2px solid #9b2121;
-    border-radius: 10px;
-    width: 325.6px;
-    height: 74.49px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
-    color: #FFF;
-}
-
-#resetBtn {
-    background-color: #9b2121;
-    border: 2px solid #9b2121;
-    border-radius: 10px;
-    width: 325.6px;
-    height: 74.49px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
-    color: #FFF;
-}
 
 
 #showMoreBtn {
@@ -411,23 +311,7 @@ input[type="range"] {
     background-color: #777777;
 }
 
-.filters-input {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 300px;
-    height: 100px;
-    background-image: url('../img/space.jpg');
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
-    border: 2px solid #FFFFFF;
-    border-radius: 15px;
-    color: #fff;
-    margin: 0px 10px;
-}
+
 
 select {
     appearance: none;
@@ -442,31 +326,6 @@ select[value] {
 /*.mainLabel {*/
 /*    cursor: pointer;*/
 /*}*/
-
-.filters-input::placeholder {
-    color: #fff;
-    text-align: center;
-}
-
-.checkedAdult {
-    background-color: #9b2121;
-    border: 2px solid #9b2121;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 300px;
-    height: 100px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 28px;
-    border: 2px solid #FFFFFF;
-    border-radius: 15px;
-    color: #fff;
-    margin: 0px 10px;
-}
-
 .container-filters-selectors {
     display: flex;
     flex-direction: column;
@@ -643,9 +502,7 @@ a, .donate {
     cursor: pointer;
 }
 
-.container-btn-filter {
-    margin-bottom: 90px;
-}
+
 
 @media (hover: hover) {
     .filmsItem p {

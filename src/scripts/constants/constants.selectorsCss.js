@@ -79,4 +79,5 @@ export default {
     classSignInErr: '.sign-in-err',
     classMark: '.mask',
     classHeaderOne: '.HeaderOne',
+    bigWindow: '.big-window'
 };

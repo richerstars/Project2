@@ -78,6 +78,7 @@ export const elementsOfDom = {
     classSignInErr: document.querySelector(selectorsCss.classSignInErr),
     classMask: document.querySelector(selectorsCss.classMark),
     classHeaderOne: document.querySelector(selectorsCss.classHeaderOne),
+    bigWindow: document.querySelector(selectorsCss.bigWindow),
 };
 
 export const elemsQuerySelectors = {
