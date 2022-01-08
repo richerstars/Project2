@@ -35,10 +35,9 @@ html {
     position: fixed;
     left: 0;
     top: 9%;
-    width: 2000px;
-    height: 1500px;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.027);
-    overflow:none
 }
 
 .container-btn-filter {

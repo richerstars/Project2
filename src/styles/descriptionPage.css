@@ -128,4 +128,8 @@ h2 {
 .trailer{
   width: calc(100% - 34px);
   height: calc(100% - 399px);
+  margin-top: 50px;
+}
+.wrapper_about_film{
+  margin-top: 100px;
 }
