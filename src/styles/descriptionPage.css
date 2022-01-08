@@ -84,8 +84,6 @@ h2 {
 
 .advertising {
   float: right;
-  width: 300px;
-  margin-left: 50px;
 }
 
 .wrapper_about_film {
@@ -125,6 +123,9 @@ h2 {
 @media screen {
   .movie_page {
     max-width: 1400px;
-    margin: 0 auto;
   }
+}
+.trailer{
+  width: calc(100% - 34px);
+  height: calc(100% - 399px);
 }
