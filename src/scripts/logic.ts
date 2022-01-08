@@ -6,6 +6,7 @@ import { constants } from './constants/configConstants';
 // eslint-disable-next-line import/no-cycle
 import checkAuthorize from './signIn';
 import { checkInputs } from './signUp';
+
 import {
     IGetMovieParam,
     IMovies,
@@ -123,18 +124,18 @@ export function checkAdult(e:Event):void {
 }
 
 function renderLangsOptionsTemplate({
-    value,
-    name,
-}):void {
-    elementsOfDom.templateIdLangOptions.value = value;
-    elementsOfDom.templateIdLangOptions.textContent = `${name}`;
+    iso_639_1,
+    english_name,
+}):HTMLElement {
+    elementsOfDom.templateIdLangOptions.value = iso_639_1;
+    elementsOfDom.templateIdLangOptions.textContent = `${english_name}`;
     return elementsOfDom.templateIdLangOptions.cloneNode(true);
 }
 
 function renderGenresOptionsTemplate({
     id,
     name,
-}):void {
+}):HTMLElement {
     elementsOfDom.templateIdLangOptions.value = id;
     elementsOfDom.templateIdLangOptions.textContent = name;
     return elementsOfDom.templateIdLangOptions.cloneNode(true);
@@ -145,15 +146,16 @@ export async function getFilters():Promise<void> {
         elementsOfDom.sectionClassSection.classList.toggle('filters-item');
         elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
 
-        const { data: { languages } } = await axios.get(constants.WOW_ME_UP_LANGUAGES);
-        const { data: { genres } } = await axios.get(constants.WOW_ME_UP_GENRES);
-
+        const { data: { message: { languages, genres } } } = await axios
+            .get(constants.SERVER_FILTERS);
         languages.forEach((elem:ILanguages) => {
             elementsOfDom.selectIdSelectLanguages.appendChild(renderLangsOptionsTemplate(elem));
         });
         genres.forEach((elem:IGenres) => {
             (elementsOfDom.selectIdSelectGenres.appendChild(renderGenresOptionsTemplate(elem)));
         });
+        elementsOfDom.selectIdSelectLanguages.value = '';
+        elementsOfDom.selectIdSelectGenres.value = '';
     } catch (err) {
         // eslint-disable-next-line no-console
         console.error('getFilters: ', err);
@@ -208,6 +210,7 @@ export function resetFilters():void {
     elementsOfDom.inputIdRevenueMinNumber.value = '';
     elementsOfDom.inputIdRevenueMaxNumber.value = '';
     elementsOfDom.inputIdFilters.classList.remove('active');
+    elementsOfDom.selectIdSelectGenres.value = '';
 }
 
 export function saveFilters():void {

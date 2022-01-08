@@ -12,6 +12,10 @@ const id = document.URL.split('#')[1];
 const taskItemTemplate = (<HTMLElement>document.getElementById('taskMovieTemplate')).innerHTML;
 const mainMovie = <HTMLElement>document.querySelector('.movie_page');
 
+function loader() {
+    document.querySelector('.masks').classList.add('hidden');
+}
+
 const htmlToElement = (html: string) => {
     const template: HTMLTemplateElement = document.createElement('template');
     html = html.trim();
@@ -46,6 +50,7 @@ const showFilm = async (movieInfo: TMovie) => {
     const normalGenres = genres.reduce((acc: string, element: TGenres) => (genreIds.includes(element.id) ? acc = `${acc} ${element.name}` : acc), ' ');
 
     if (taskItemTemplate) {
+        document.querySelector('.title').textContent = title;
         const html: string = taskItemTemplate
             .replace('{{poster_path}}', (`https://image.tmdb.org/t/p/original${posterPath}`))
             .replace('{{release_date}}', normaliseDate(releaseDate))
@@ -67,6 +72,7 @@ const showFilm = async (movieInfo: TMovie) => {
 
 const getFilm = async (movieId: string) => {
     try {
+        setTimeout(loader, 1000);
         const { data: { message: movieData } } = await axios.get(`http://localhost:5000/movies/id?id=${movieId}`);
         showFilm(movieData[0]);
     } catch (error) {
