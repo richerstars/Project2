@@ -8,7 +8,8 @@ import selectorsCss from './constants/constants.selectorsCss';
 
 export default async function checkAuthorize(): Promise<void> {
     try {
-        const { data: { token } } = await axios.post(constants.WOW_ME_UP_SING_IN, {
+        // eslint-disable-next-line max-len
+        const { data: { message: { accessToken: token } } } = await axios.post(constants.WOW_ME_UP_SING_IN, {
             login: elementsOfDom.inputIdUsernameSignIn.value,
             password: elementsOfDom.inputIdPasswordSignIn.value,
         });

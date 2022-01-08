@@ -12,6 +12,7 @@ export async function useAPI():Promise<void> {
             password: elementsOfDom.inputIdPassword.value,
             first_name: elementsOfDom.inputIdFirstName.value,
             last_name: elementsOfDom.inputIdLastName.value,
+            user_role: 'users',
         });
         elementsOfDom.divClassContainerSignUP.classList.toggle(selectorsCss.classHidden, true);
         elementsOfDom.divClassContainerSignIn.classList.toggle(selectorsCss.classHidden, false);

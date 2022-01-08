@@ -39,7 +39,7 @@ function createTemplateShowMore({
 
 export async function getMovies(attr: number): Promise<void> {
     try {
-        const { data: { movies } } = await axios.get(constants.WOW_ME_UP_MOVIES);
+        const { data: { message: movies } } = await axios.get('http://localhost:5000/movies');
         movies.forEach((element: IMovies, index: number) => {
             if (index <= attr) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));

@@ -1,4 +1,4 @@
-type TMovie = {
+export type TMovie = {
     id: number,
     adult: boolean,
     backdrop_path: string,
@@ -16,12 +16,8 @@ type TMovie = {
     status: string,
     tagline: string,
     title: string,
-    genre_ids: number[],
+    genres: number[],
     movie_rate: number
-};
-
-export type TData = {
-    movie: TMovie
 };
 
 export type TGenres = {

@@ -1,6 +1,6 @@
 import '../styles/descriptionPage.css';
 import axios from 'axios';
-import { TData, TGenres } from './types/types';
+import { TMovie, TGenres } from './types/types';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pokerok = require('../img/reklama.gif');
 
@@ -21,8 +21,9 @@ const htmlToElement = (html: string) => {
 
 const normoleseGenres = async (): Promise<TGenres[]> => {
     try {
-        const response = await axios.get('https://wowmeup.pp.ua/genres');
-        return response.data.genres;
+        const response = await axios.get('http://localhost:5000/filters');
+        const { message: { genres } } = response.data;
+        return genres;
     } catch (error) {
         return [];
     }
@@ -33,12 +34,12 @@ const normaliseDate = (date: string): string => {
     return normalDate.replace('-', '/').replace('-', '/');
 };
 
-const showFilm = async (movieInfo: TData) => {
+const showFilm = async (movieInfo: TMovie) => {
     const {
-        poster_path: posterPath, release_date: releaseDate, genre_ids: genreIds,
+        poster_path: posterPath, release_date: releaseDate, genres: genreIds,
         movie_rate: movieRate, original_language: originalLanguage,
         adult, popularity, title, overview, original_title: originalTitle,
-    } = movieInfo.movie;
+    } = movieInfo;
 
     const genres = await normoleseGenres();
     // eslint-disable-next-line no-return-assign
@@ -66,8 +67,8 @@ const showFilm = async (movieInfo: TData) => {
 
 const getFilm = async (movieId: string) => {
     try {
-        const { data } = await axios.get(`https://wowmeup.pp.ua/movie/${movieId}`);
-        showFilm(data);
+        const { data: { message: movieData } } = await axios.get(`http://localhost:5000/movies/id?id=${movieId}`);
+        showFilm(movieData[0]);
     } catch (error) {
         // eslint-disable-next-line no-console
         console.log(error);
