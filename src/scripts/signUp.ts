@@ -7,7 +7,7 @@ import constantsString from './constants/constantsString';
 
 export async function useAPI():Promise<void> {
     try {
-        await axios.post(constants.WOW_ME_UP_SING_UP, {
+        await axios.post(constants.SERVER_SING_UP, {
             login: elementsOfDom.inputIdUsername.value,
             password: elementsOfDom.inputIdPassword.value,
             first_name: elementsOfDom.inputIdFirstName.value,

@@ -8,13 +8,12 @@ import selectorsCss from './constants/constants.selectorsCss';
 
 export default async function checkAuthorize(): Promise<void> {
     try {
-        // eslint-disable-next-line max-len
-        const { data: { message: { accessToken: token } } } = await axios.post(constants.WOW_ME_UP_SING_IN, {
+        const { data: { message: { accessToken } } } = await axios.post(constants.SERVER_SING_IN, {
             login: elementsOfDom.inputIdUsernameSignIn.value,
             password: elementsOfDom.inputIdPasswordSignIn.value,
         });
-        if (token) {
-            localStorage.setItem('token', token);
+        if (accessToken) {
+            document.cookie = `token=${accessToken}`;
             elementsOfDom.sectionClassPopUp.classList.add(selectorsCss.classHidden);
             elementsOfDom.buttonShowMoreBtn.classList.remove(selectorsCss.classHidden);
             elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
