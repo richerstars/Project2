@@ -37,8 +37,8 @@ export interface IMovies {
 }
 
 export interface ILanguages {
-    value: string,
-    name: string
+    iso_639_1: string,
+    english_name: string
 }
 
 export interface IGenres {

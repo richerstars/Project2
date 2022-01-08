@@ -45,7 +45,7 @@ export function checkInputs():void {
         // case (!usernameValue.match(/[^a-zA-Z0-9]/i)):
         //     error.innerText = constantsString.loginValidate;
         //     break;
-        case (!passwordValue.match(/(?=.*[0-9])(?=.*[a-zA-Z])/i)):
+        case (!passwordValue.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/s)):
             setError(error, constantsString.passCheck);
             break;
         // case (passwordValue.length < 8 || firstNameValue.length < 8
