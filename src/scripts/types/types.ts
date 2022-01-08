@@ -17,7 +17,8 @@ export type TMovie = {
     tagline: string,
     title: string,
     genres: number[],
-    movie_rate: number
+    movie_rate: number,
+    trailer: string
 };
 
 export type TGenres = {

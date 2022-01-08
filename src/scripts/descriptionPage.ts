@@ -41,7 +41,7 @@ const normaliseDate = (date: string): string => {
 const showFilm = async (movieInfo: TMovie) => {
     const {
         poster_path: posterPath, release_date: releaseDate, genres: genreIds,
-        movie_rate: movieRate, original_language: originalLanguage,
+        movie_rate: movieRate, original_language: originalLanguage, trailer,
         adult, popularity, title, overview, original_title: originalTitle,
     } = movieInfo;
 
@@ -54,6 +54,7 @@ const showFilm = async (movieInfo: TMovie) => {
         const html: string = taskItemTemplate
             .replace('{{poster_path}}', (`https://image.tmdb.org/t/p/original${posterPath}`))
             .replace('{{release_date}}', normaliseDate(releaseDate))
+            .replace('{{movieSrc}}', trailer)
             .replace('{{title}}', title)
             .replace('{{pokerok}}', pokerok)
             .replace('{{overview}}', overview)
