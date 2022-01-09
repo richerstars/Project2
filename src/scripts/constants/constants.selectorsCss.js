@@ -14,7 +14,7 @@ export default {
     idResetBtn: '#resetBtn',
     classFiltersItemNone: '.filters-item-none',
     classSection: '.section',
-    classRangeSlider: '.rangeSlider',
+    classRangeSlider: '.range-slider',
     idAdult: '#Adult',
     idInputTitle: '#inputTitle',
     idRevenueMax: '#revenue-max',
@@ -79,5 +79,10 @@ export default {
     classSignInErr: '.sign-in-err',
     classMark: '.mask',
     classHeaderOne: '.HeaderOne',
-    bigWindow: '.big-window'
+    bigWindow: '.big-window',
+    idNotFoundTemplate: '#not-found-template',
+    idMinValueRange: '#minRange',
+    idMaxValueRange: '#maxRange',
+    idMinVNumberRange: '#minNumberRange',
+    idMaxNumberRange: '#maxNumberRange',
 };

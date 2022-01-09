@@ -6,14 +6,15 @@ import {
     checkAdult,
     setSignUp, setSignIn,
     openFilmCard,
-    getInputValues, showInputSearch,
+    showInputSearch,
+    getInputValues,
 } from './logic';
 import {
     getFilters, saveFilters, resetFilters, getFilmBySearchInput,
 } from './filters';
 
 document.addEventListener('DOMContentLoaded', checkToken);
-document.querySelector('.section').addEventListener('change', getInputValues);
+elementsOfDom.classRangeSlider.addEventListener('input', getInputValues);
 elementsOfDom.inputIdFilters.addEventListener('click', getFilters);
 elementsOfDom.inputIdAuth.addEventListener('click', logOut);
 elementsOfDom.buttonIdSaveBtn.addEventListener('click', saveFilters);

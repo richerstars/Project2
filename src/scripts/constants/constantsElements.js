@@ -79,6 +79,12 @@ export const elementsOfDom = {
     classMask: document.querySelector(selectorsCss.classMark),
     classHeaderOne: document.querySelector(selectorsCss.classHeaderOne),
     bigWindow: document.querySelector(selectorsCss.bigWindow),
+    templateIdNotFoundTemplate: document.querySelector(selectorsCss.idNotFoundTemplate).content,
+    classRangeSlider: document.querySelector(selectorsCss.classRangeSlider),
+    inputIdMinValueRange: document.querySelector(selectorsCss.idMinValueRange),
+    inputIdMaxValueRange: document.querySelector(selectorsCss.idMaxValueRange),
+    inputIdMinVNumberRange: document.querySelector(selectorsCss.idMinVNumberRange),
+    inputIdMaxVNumberRange: document.querySelector(selectorsCss.idMaxNumberRange),
 };
 
 export const elemsQuerySelectors = {
@@ -86,4 +92,6 @@ export const elemsQuerySelectors = {
     linkPage: elementsOfDom.templateFilmsShowMore.querySelector('.linkPage'),
     imgFilmsItem: elementsOfDom.templateFilmsShowMore.querySelector('.imgFilmsItem'),
     descriptionFilm: elementsOfDom.templateFilmsShowMore.querySelector('.descriptionFilm'),
+    notFound: elementsOfDom.templateIdNotFoundTemplate.querySelector('.par-not-found'),
 };
+
