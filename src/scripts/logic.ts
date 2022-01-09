@@ -129,33 +129,21 @@ export function openFilmCard(event:MouseEvent):void {
     }
 }
 
-export function getInputValues(e:Event):void {
-    if ((<HTMLElement>e.target).classList.contains('inputValueNumber')) {
-        (<HTMLInputElement>(<HTMLElement>e.target).previousElementSibling
-            .previousElementSibling).value = (<HTMLInputElement>e.target).value;
-    }
-}
-
 export function showInputSearch():void {
     elementsOfDom.inputClassSearchInput.classList.toggle(selectorsCss.classHidden);
 }
 
-const minVal:HTMLInputElement = document.querySelector('#minRange');
-const maxVal:HTMLInputElement = document.querySelector('#maxRange');
-const minNumVal:HTMLInputElement = document.querySelector('#minNumberRange');
-const maxNumVal:HTMLInputElement = document.querySelector('#maxNumberRange');
-const slider = document.querySelector('.range-slider');
-
-function getInputValuess(e) {
+export function getInputValues(e) {
     e.preventDefault();
     if ((<HTMLElement>e.target).classList.contains('inputValueNumber')) {
         (<HTMLInputElement>(<HTMLElement>e.target).previousElementSibling
             .previousElementSibling).value = (<HTMLInputElement>e.target).value;
     }
-    if (+minVal.value >= (+maxVal.value - 10000)) {
-        minVal.value = (Number(maxVal.value) - 10000).toString();
+    if (+elementsOfDom.inputIdMinValueRange.value >= (+elementsOfDom.inputIdMaxValueRange
+        .value - 10000)) {
+        elementsOfDom.inputIdMinValueRange.value = (Number(elementsOfDom.inputIdMaxValueRange
+            .value) - 10000).toString();
     }
-    minNumVal.value = minVal.value;
-    maxNumVal.value = maxVal.value;
+    elementsOfDom.inputIdMinVNumberRange.value = elementsOfDom.inputIdMinValueRange.value;
+    elementsOfDom.inputIdMaxVNumberRange.value = elementsOfDom.inputIdMaxValueRange.value;
 }
-slider.addEventListener('input', getInputValuess);

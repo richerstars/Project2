@@ -37,6 +37,9 @@
     </div>
 </header>
 <main class="wrapper">
+    <template id="not-found-template">
+        <p class="par-not-found"> Not found film. Set valid name of film </p>
+    </template>
     <div class="big-window hidden">
         <section class="section filters-item-none">
             <div class="container-filters-item">
@@ -60,11 +63,11 @@
             <div class="container-filters-item">
                 <div id="app">
                     <div class='range-slider'>
-                        <input type="range" min="0" max="1000000" step="1" id="minRange" value="0">
-                        <input type="range" min="0" max="1000000" step="1" id="maxRange" value="1000000">
-                        <input type="number" min="0" max="1000000" step="1" id="minNumberRange"
+                        <input type="range" min="0" max="365000000" step="1" id="minRange" value="0">
+                        <input type="range" min="0" max="365000000" step="1" id="maxRange" value="365000000">
+                        <input type="number" min="0" max="365000000" step="1" id="minNumberRange"
                                class="inputValueNumber">
-                        <input type="number" min="0" max="1000000" step="1" id="maxNumberRange"
+                        <input type="number" min="0" max="365000000" step="1" id="maxNumberRange"
                                class="inputValueNumber">
                     </div>
                 </div>
