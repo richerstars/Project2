@@ -13,7 +13,7 @@ export default async function checkAuthorize(): Promise<void> {
             password: elementsOfDom.inputIdPasswordSignIn.value,
         });
         if (accessToken) {
-            document.cookie = `token=${accessToken}`;
+            document.cookie = `token=${accessToken};max-age=3600`;
             elementsOfDom.sectionClassPopUp.classList.add(selectorsCss.classHidden);
             elementsOfDom.buttonShowMoreBtn.classList.remove(selectorsCss.classHidden);
             elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
