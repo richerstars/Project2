@@ -7,9 +7,8 @@ import { constants } from './constants/configConstants';
 import checkAuthorize from './signIn';
 import { checkInputs } from './signUp';
 
-import {
-    IMovies,
-}
+import { IMovies }
+
     from './interface/interfaces';
 import { createTemplateShowMore } from './getmovie';
 
