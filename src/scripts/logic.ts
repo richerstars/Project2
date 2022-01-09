@@ -1,18 +1,13 @@
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
-import { elementsOfDom, elemsQuerySelectors } from './constants/constantsElements';
+import { elementsOfDom } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
 import { constants } from './constants/configConstants';
 // eslint-disable-next-line import/no-cycle
 import checkAuthorize from './signIn';
 import { checkInputs } from './signUp';
 
-import {
-    IGetMovieParam,
-    IMovies,
-    ILanguages,
-    IGenres,
-}
+import { IMovies }
     from './interface/interfaces';
 import { createTemplateShowMore } from './getmovie';
 
@@ -56,7 +51,6 @@ export async function renderNewFilm():Promise<void> {
         //     elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
         //     return;
         // }
-        console.log(movies);
         movies.forEach((element:IMovies, index:number) => {
             if (index <= 20) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
