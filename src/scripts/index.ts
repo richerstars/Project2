@@ -1,21 +1,18 @@
 import { elementsOfDom } from './constants/constantsElements';
 import '../styles/main.css';
 import {
-    changeModalWindow,
+    changeModalWindow, renderNewFilm,
     checkToken, logOut,
     checkAdult,
     setSignUp, setSignIn,
     openFilmCard,
-    getInputValues, showInputSearch, getInputValuess,
-
+    showInputSearch,
 } from './logic';
 import {
     getFilters, saveFilters, resetFilters, getFilmBySearchInput,
 } from './filters';
-import { renderNewFilm } from './renderMovie';
 
 document.addEventListener('DOMContentLoaded', checkToken);
-elementsOfDom.classRangeSlider.addEventListener('input', getInputValues);
 elementsOfDom.inputIdFilters.addEventListener('click', getFilters);
 elementsOfDom.inputIdAuth.addEventListener('click', logOut);
 elementsOfDom.buttonIdSaveBtn.addEventListener('click', saveFilters);
@@ -29,4 +26,3 @@ elementsOfDom.buttonShowMoreBtn.addEventListener('click', renderNewFilm);
 elementsOfDom.sectionFilmsShowMore.addEventListener('click', openFilmCard);
 elementsOfDom.divClassSearch.addEventListener('click', showInputSearch);
 elementsOfDom.inputClassSearchInput.addEventListener('change', getFilmBySearchInput);
-elementsOfDom.slider.addEventListener('input', getInputValuess);

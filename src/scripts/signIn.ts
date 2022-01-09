@@ -3,8 +3,8 @@ import axios from 'axios';
 import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
 // eslint-disable-next-line import/no-cycle
+import { getMovies } from './logic';
 import selectorsCss from './constants/constants.selectorsCss';
-import { getMovies } from './renderMovie';
 
 export default async function checkAuthorize(): Promise<void> {
     try {
