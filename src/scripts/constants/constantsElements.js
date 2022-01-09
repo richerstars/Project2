@@ -79,6 +79,11 @@ export const elementsOfDom = {
     classMask: document.querySelector(selectorsCss.classMark),
     classHeaderOne: document.querySelector(selectorsCss.classHeaderOne),
     bigWindow: document.querySelector(selectorsCss.bigWindow),
+    minVal: document.querySelector('#minRange'),
+    maxVal: document.querySelector('#maxRange'),
+    minNumVal: document.querySelector('#minNumberRange'),
+    maxNumVal: document.querySelector('#maxNumberRange'),
+    slider: document.querySelector('.range-slider'),
 };
 
 export const elemsQuerySelectors = {
