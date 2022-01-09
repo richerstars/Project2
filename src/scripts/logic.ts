@@ -5,7 +5,7 @@ import selectorsCss from './constants/constants.selectorsCss';
 import checkAuthorize from './signIn';
 import { checkInputs } from './signUp';
 import {
-    clearImputs, loader
+    clearImputs, loader, renderGenresLanguges,
 } from './helpers';
 import { renderNewFilm } from './renderMovie';
 
@@ -64,7 +64,6 @@ export function openFilmCard(event:MouseEvent):void {
 export function showInputSearch():void {
     elementsOfDom.inputClassSearchInput.classList.toggle(selectorsCss.classHidden);
 }
-
 
 export function getInputValues(e) {
     e.preventDefault();

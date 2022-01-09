@@ -6,7 +6,7 @@ import {
     checkAdult,
     setSignUp, setSignIn,
     openFilmCard,
-    getInputValues, showInputSearch, getInputValuess,
+    getInputValues, showInputSearch,
 
 } from './logic';
 import {
@@ -29,4 +29,3 @@ elementsOfDom.buttonShowMoreBtn.addEventListener('click', renderNewFilm);
 elementsOfDom.sectionFilmsShowMore.addEventListener('click', openFilmCard);
 elementsOfDom.divClassSearch.addEventListener('click', showInputSearch);
 elementsOfDom.inputClassSearchInput.addEventListener('change', getFilmBySearchInput);
-elementsOfDom.slider.addEventListener('input', getInputValuess);

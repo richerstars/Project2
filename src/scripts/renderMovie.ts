@@ -1,5 +1,5 @@
-import { loader } from './helpers';
 import axios from 'axios';
+import { loader } from './helpers';
 import { constants } from './constants/configConstants';
 import { IMovies } from './interface/interfaces';
 import { elementsOfDom } from './constants/constantsElements';

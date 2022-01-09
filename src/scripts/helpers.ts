@@ -1,7 +1,7 @@
+import axios from 'axios';
 import { elementsOfDom } from './constants/constantsElements';
 import { constants } from './constants/configConstants';
-import { IGenres, ILanguages} from './interface/interfaces';
-import axios from 'axios';
+import { IGenres, ILanguages } from './interface/interfaces';
 
 export function renderLangsOptionsTemplate({
     iso_639_1,
@@ -39,7 +39,7 @@ export function clearImputs() {
     elementsOfDom.divClassContainerSignIn.classList.toggle('hidden');
 }
 
-async function renderGenresLanguges() {
+export async function renderGenresLanguges() {
     try {
         const { data: { message: { languages, genres } } } = await axios
             .get(constants.SERVER_FILTERS);
