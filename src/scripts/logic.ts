@@ -61,30 +61,23 @@ export function openFilmCard(event:MouseEvent):void {
     }
 }
 
-export function getInputValues(e:Event):void {
-    if ((<HTMLElement>e.target).classList.contains('inputValueNumber')) {
-        (<HTMLInputElement>(<HTMLElement>e.target).previousElementSibling
-            .previousElementSibling).value = (<HTMLInputElement>e.target).value;
-    }
-}
-
 export function showInputSearch():void {
     elementsOfDom.inputClassSearchInput.classList.toggle(selectorsCss.classHidden);
 }
 
-export function getInputValuess(e) {
+
+export function getInputValues(e) {
     e.preventDefault();
     if ((<HTMLElement>e.target).classList.contains('inputValueNumber')) {
         (<HTMLInputElement>(<HTMLElement>e.target).previousElementSibling
             .previousElementSibling).value = (<HTMLInputElement>e.target).value;
     }
-    if (+elementsOfDom.minVal.value >= (+elementsOfDom.maxVal.value - 10000)) {
-        elementsOfDom.minVal.value = (Number(elementsOfDom.maxVal.value) - 10000).toString();
-    }
-    elementsOfDom.minNumVal.value = elementsOfDom.minVal.value;
-    elementsOfDom.maxNumVal.value = elementsOfDom.maxVal.value;
-}
-function renderGenresLanguges() {
-    throw new Error('Function not implemented.');
-}
 
+    if (+elementsOfDom.inputIdMinValueRange.value >= (+elementsOfDom.inputIdMaxValueRange
+        .value - 10000)) {
+        elementsOfDom.inputIdMinValueRange.value = (Number(elementsOfDom.inputIdMaxValueRange
+            .value) - 10000).toString();
+    }
+    elementsOfDom.inputIdMinVNumberRange.value = elementsOfDom.inputIdMinValueRange.value;
+    elementsOfDom.inputIdMaxVNumberRange.value = elementsOfDom.inputIdMaxValueRange.value;
+}

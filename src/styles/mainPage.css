@@ -577,3 +577,6 @@ a, .donate {
     background: rgba(155, 33, 33, 1);
     border-radius: 10px;
 }
+.par-not-found{
+    color: #f7f7f7;
+}

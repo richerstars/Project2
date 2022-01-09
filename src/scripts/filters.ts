@@ -1,6 +1,6 @@
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
-import { elementsOfDom } from './constants/constantsElements';
+import { elementsOfDom, elemsQuerySelectors } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
 import { constants } from './constants/configConstants';
 // eslint-disable-next-line import/no-cycle
@@ -22,11 +22,19 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
             }
         }
         const { data: { message: movies } } = await axios.get(request);
+        if (movies === 'Not found') {
+            elementsOfDom.sectionFilmsShowMore
+                .appendChild(elemsQuerySelectors.notFound.cloneNode(true));
+            elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
+            elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
+            return;
+        }
         movies.forEach((element:IMovies, index:number) => {
             if (index <= 20) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
             }
         });
+        elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
         elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     } catch (err) {
         // eslint-disable-next-line no-console
@@ -44,8 +52,24 @@ function createDynamic(obj:IGetMovieParam):void {
     getMoviesByDynamicParams(url);
 }
 
+export function resetFilters():void {
+    elementsOfDom.inputIdAdult.checked = false;
+    elementsOfDom.inputIdAdult.parentElement.classList.remove('checkedAdult');
+    elementsOfDom.inputIdAdult.parentElement.classList.add('filters-input');
+    elementsOfDom.selectIdSelectLanguages.value = '';
+    elementsOfDom.inputIdMinVNumberRange.value = '';
+    elementsOfDom.inputIdMaxVNumberRange.value = '';
+    elementsOfDom.inputIdMinValueRange.value = '0';
+    elementsOfDom.inputIdMaxValueRange.value = '365000000';
+    elementsOfDom.inputIdReleaseDayFirst.value = '';
+    elementsOfDom.inputIdReleaseDayLast.value = '';
+    elementsOfDom.inputIdFilters.classList.remove('active');
+    elementsOfDom.selectIdSelectGenres.value = '';
+}
+
 export async function getFilters():Promise<void> {
     try {
+        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
         elementsOfDom.sectionClassSection.classList.toggle('filters-item');
         elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
         elementsOfDom.bigWindow.classList.toggle('hidden');
@@ -58,36 +82,25 @@ export async function getFilters():Promise<void> {
 export function saveFilters():void {
     const adult:boolean = elementsOfDom.inputIdAdult.checked;
     const languages:string = elementsOfDom.selectIdSelectLanguages.value;
-    // const budgetMin:number = elementsOfDom.inputIdBudgetMinNumber.value;
-    // const budgetMax:number = elementsOfDom.inputIdBudgetMaxNumber.value;
+    const budgetMin:number = elementsOfDom.inputIdMinVNumberRange.value;
+    const budgetMax:number = elementsOfDom.inputIdMaxVNumberRange.value;
     const releaseDateFirst:string = elementsOfDom.inputIdReleaseDayFirst.value;
     const releaseDateLast:string = elementsOfDom.inputIdReleaseDayLast.value;
+    const genres:string = elementsOfDom.selectIdSelectGenres.value;
     elementsOfDom.inputIdFilters.classList.add('active');
     elementsOfDom.bigWindow.classList.toggle('hidden');
     createDynamic({
         adult,
         languages,
-        // budget_min: budgetMin,
-        // budget_max: budgetMax,
+        budget_min: budgetMin,
+        budget_max: budgetMax,
         release_date_first: releaseDateFirst,
         release_date_last: releaseDateLast,
+        genre_id: genres,
     });
     elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     elementsOfDom.sectionClassSection.classList.toggle('filters-item');
     elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
-}
-
-export function resetFilters():void {
-    elementsOfDom.inputIdAdult.checked = false;
-    elementsOfDom.inputIdAdult.parentElement.classList.remove('checkedAdult');
-    elementsOfDom.inputIdAdult.parentElement.classList.add('filters-input');
-    elementsOfDom.selectIdSelectLanguages.value = '';
-    // elementsOfDom.inputIdBudgetMinNumber.value = '';
-    // elementsOfDom.inputIdBudgetMaxNumber.value = '';
-    elementsOfDom.inputIdReleaseDayFirst.value = '';
-    elementsOfDom.inputIdReleaseDayLast.value = '';
-    elementsOfDom.inputIdFilters.classList.remove('active');
-    elementsOfDom.selectIdSelectGenres.value = '';
 }
 
 export function getFilmBySearchInput():void {

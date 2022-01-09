@@ -7,6 +7,7 @@ import {
     setSignUp, setSignIn,
     openFilmCard,
     getInputValues, showInputSearch, getInputValuess,
+
 } from './logic';
 import {
     getFilters, saveFilters, resetFilters, getFilmBySearchInput,
@@ -14,7 +15,7 @@ import {
 import { renderNewFilm } from './renderMovie';
 
 document.addEventListener('DOMContentLoaded', checkToken);
-document.querySelector('.section').addEventListener('change', getInputValues);
+elementsOfDom.classRangeSlider.addEventListener('input', getInputValues);
 elementsOfDom.inputIdFilters.addEventListener('click', getFilters);
 elementsOfDom.inputIdAuth.addEventListener('click', logOut);
 elementsOfDom.buttonIdSaveBtn.addEventListener('click', saveFilters);

@@ -12,6 +12,7 @@ export interface IGetMovieParam {
     release_date_last?: string,
     revenue_min?: number,
     revenue_max?: number,
+    genre_id?:string
 }
 
 export interface IMovies {
