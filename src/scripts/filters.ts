@@ -8,29 +8,9 @@ import { constants } from './constants/configConstants';
 import {
     IGetMovieParam,
     IMovies,
-    ILanguages,
-    IGenres,
 }
     from './interface/interfaces';
 import { createTemplateShowMore } from './getmovie';
-
-function renderLangsOptionsTemplate({
-    iso_639_1,
-    english_name,
-}):HTMLElement {
-    elementsOfDom.templateIdLangOptions.value = iso_639_1;
-    elementsOfDom.templateIdLangOptions.textContent = `${english_name}`;
-    return elementsOfDom.templateIdLangOptions.cloneNode(true);
-}
-
-function renderGenresOptionsTemplate({
-    id,
-    name,
-}):HTMLElement {
-    elementsOfDom.templateIdLangOptions.value = id;
-    elementsOfDom.templateIdLangOptions.textContent = name;
-    return elementsOfDom.templateIdLangOptions.cloneNode(true);
-}
 
 export async function getMoviesByDynamicParams(request):Promise<void> {
     try {
@@ -93,17 +73,6 @@ export async function getFilters():Promise<void> {
         elementsOfDom.sectionClassSection.classList.toggle('filters-item');
         elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
         elementsOfDom.bigWindow.classList.toggle('hidden');
-
-        const { data: { message: { languages, genres } } } = await axios
-            .get(constants.SERVER_FILTERS);
-        languages.forEach((elem:ILanguages) => {
-            elementsOfDom.selectIdSelectLanguages.appendChild(renderLangsOptionsTemplate(elem));
-        });
-        genres.forEach((elem:IGenres) => {
-            (elementsOfDom.selectIdSelectGenres.appendChild(renderGenresOptionsTemplate(elem)));
-        });
-        resetFilters();
-        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     } catch (err) {
         // eslint-disable-next-line no-console
         console.error('getFilters: ', err);

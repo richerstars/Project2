@@ -1,6 +1,7 @@
 import '../styles/descriptionPage.css';
 import axios from 'axios';
 import { TMovie, TGenres } from './types/types';
+import { loader } from './helpers';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const pokerok = require('../img/reklama.gif');
 
@@ -11,10 +12,6 @@ const id = document.URL.split('#')[1];
 
 const taskItemTemplate = (<HTMLElement>document.getElementById('taskMovieTemplate')).innerHTML;
 const mainMovie = <HTMLElement>document.querySelector('.movie_page');
-
-function loader() {
-    document.querySelector('.masks').classList.add('hidden');
-}
 
 const htmlToElement = (html: string) => {
     const template: HTMLTemplateElement = document.createElement('template');
