@@ -58,16 +58,12 @@
                 </div>
             </div>
             <div class="container-filters-item">
-                <div class="filter-item-p">
-                    <p>Budget min</p>            
-                    <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider" id="budget-min">
-                    <input type="number" class="inputValueNumber" id="budget-min-number">
-                </div>
-                <div class="filter-item-p">
-                    <p>Budget max</p>
-                    <input type="range" min="0" max="1000000" value="0" step="1" class="rangeSlider" id="budget-max">
-                    <input type="number" class="inputValueNumber" id="budget-max-number">
-                </div>
+                <div class='range-slider'>
+                    <input type="number" min="0" max="180" step="1" v-model="sliderMin">
+                    <input type="range" min="0" max="180" step="1" v-model="sliderMin">
+                    <input type="number" min="0" max="180" step="1" v-model="sliderMax">
+                    <input type="range" min="0" max="180" step="1" v-model="sliderMax">
+                  </div>
             </div>
             <div class="container-items">
                 <input type="date" value=""

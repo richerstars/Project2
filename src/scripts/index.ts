@@ -2,13 +2,15 @@ import { elementsOfDom } from './constants/constantsElements';
 import '../styles/main.css';
 import {
     changeModalWindow, renderNewFilm,
-    checkToken, getFilters, logOut,
-    saveFilters, checkAdult,
+    checkToken, logOut,
+    checkAdult,
     setSignUp, setSignIn,
-    resetFilters, openFilmCard,
+    openFilmCard,
     getInputValues, showInputSearch,
-    getFilmBySearchInput,
 } from './logic';
+import {
+    getFilters, saveFilters, resetFilters, getFilmBySearchInput,
+} from './filters';
 
 document.addEventListener('DOMContentLoaded', checkToken);
 document.querySelector('.section').addEventListener('change', getInputValues);

@@ -4,7 +4,7 @@ export interface IGetMovieParam {
     pre_page?: number,
     budget_min?: number,
     budget_max?: number,
-    language?: string,
+    languages?: string,
     title?: string,
     popularity_min?: number,
     popularity_max?: number,
