@@ -1,6 +1,6 @@
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
-import { elementsOfDom, elemsQuerySelectors } from './constants/constantsElements';
+import { elementsOfDom } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
 import { constants } from './constants/configConstants';
 // eslint-disable-next-line import/no-cycle
@@ -41,7 +41,6 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
                     .removeChild(elementsOfDom.sectionFilmsShowMore.firstChild);
             }
         }
-        console.log(request);
         const { data: { message: movies } } = await axios.get(request);
         movies.forEach((element:IMovies, index:number) => {
             if (index <= 20) {
@@ -57,14 +56,11 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
 
 function createDynamic(obj:IGetMovieParam):void {
     let url = `${constants.SERVER_MOVIES}?`;
-    console.log(obj);
     Object.keys(obj)
         .forEach((element) => {
             if (obj[element]) url += `${element}=${obj[element]}&`;
         });
-    console.log(url);
     url = url.substring(0, url.length - 1);
-    console.log(url);
     getMoviesByDynamicParams(url);
 }
 

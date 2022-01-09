@@ -14,30 +14,30 @@
 <div class="mask">
     <div class="loader"></div>
 </div>
-    <header>
-        <div class="headerConteiner">
-            <div class="donations">
+<header>
+    <div class="headerConteiner">
+        <div class="donations">
             <div class="logo"><a class="mainA" href=""><img src="../img/logo.svg" alt="devEducation"
-                        class="imgLogo"></a></div>
+                                                            class="imgLogo"></a></div>
             <section class="donate"><a class="mainA" target="_blank"
-                    href="https://github.com/richerstars/Team_Project2">Donate</a>
+                                       href="https://github.com/richerstars/Team_Project2">Donate</a>
             </section>
-            </div>
-            <div class="containerBetween">
-                <input type="text" class="searchInput hidden" placeholder="Enter Some film">
-            </div>
-            <nav class="headerNav">
-                <div class="search opasityHover"><i class="fas fa-search" alt="logoSearch"></i>
-                </div>
-                <div class="filters opasityHover">
-                    <i class="fas fa-filter" id="filters"></i>
-                </div>
-                <div class="logoUsers opasityHover"><i class="fas fa-sign-out-alt" id="auth"></i></div>
-            </nav>
         </div>
-    </header>
-    <main class="wrapper">
-        <div class="big-window hidden">
+        <div class="containerBetween">
+            <input type="text" class="searchInput hidden" placeholder="Enter Some film">
+        </div>
+        <nav class="headerNav">
+            <div class="search opasityHover"><i class="fas fa-search" alt="logoSearch"></i>
+            </div>
+            <div class="filters opasityHover">
+                <i class="fas fa-filter" id="filters"></i>
+            </div>
+            <div class="logoUsers opasityHover"><i class="fas fa-sign-out-alt" id="auth"></i></div>
+        </nav>
+    </div>
+</header>
+<main class="wrapper">
+    <div class="big-window hidden">
         <section class="section filters-item-none">
             <div class="container-filters-item">
                 <div class="filters-input container-adult">
@@ -58,18 +58,24 @@
                 </div>
             </div>
             <div class="container-filters-item">
-                <div class='range-slider'>
-                    <input type="number" min="0" max="180" step="1" v-model="sliderMin">
-                    <input type="range" min="0" max="180" step="1" v-model="sliderMin">
-                    <input type="number" min="0" max="180" step="1" v-model="sliderMax">
-                    <input type="range" min="0" max="180" step="1" v-model="sliderMax">
-                  </div>
+                <div id="app">
+                    <div class='range-slider'>
+                        <input type="range" min="0" max="1000000" step="1" id="minRange" value="0">
+                        <input type="range" min="0" max="1000000" step="1" id="maxRange" value="1000000">
+                        <input type="number" min="0" max="1000000" step="1" id="minNumberRange"
+                               class="inputValueNumber">
+                        <input type="number" min="0" max="1000000" step="1" id="maxNumberRange"
+                               class="inputValueNumber">
+                    </div>
+                </div>
             </div>
             <div class="container-items">
                 <input type="date" value=""
-                min="1900-01-01" max="2021-12-31" placeholder="Release day first" class="filters-input" id="release-day-first">
+                       min="1900-01-01" max="2021-12-31" placeholder="Release day first" class="filters-input"
+                       id="release-day-first">
                 <input type="date" value=""
-                min="1900-01-01" max="2021-12-31" placeholder="Release day last" class="filters-input" id="release-day-last">
+                       min="1900-01-01" max="2021-12-31" placeholder="Release day last" class="filters-input"
+                       id="release-day-last">
             </div>
             <div class="wrapper-buttons">
                 <div class="container-btn-filter">
@@ -79,82 +85,82 @@
             </div>
         </section>
     </div>
+    </div>
+    <template id="templateCard">
+        <div class="newFilmsItem">
+            <img class="imgPoster" src="../img/space.jpg" alt="film poster">
+            <p class="descriptionNewFilm"></p>
         </div>
-        <template id="templateCard">
-            <div class="newFilmsItem">
-                <img class="imgPoster" src="../img/space.jpg" alt="film poster">
-                <p class="descriptionNewFilm"></p>
-            </div>
-        </template>
-        <section class="filmsShowMore">
-        </section>
-        <template id="filmsShowMore">
-            <div class="containerFilmsItem">
-                <div class="filmsItem">
-                    <div class="linkPage">
-                        <img class="imgFilmsItem" src="../img/logo.svg">
-                    </div>
-                    <div class="overlay"></div>
-                    <p class="descriptionFilm"></p>
-                </div>
-            </div>
-        </template>
-        <template id="langOptions">
-            <option value=""></option>
-        </template>
-        <div class="container-btn-showMore">
-            <button id="showMoreBtn" class="hidden" data="2">Show More</button>
-        </div>
-    </main>
-    <section class="popUp">
-        <div class="containerSignUp">
-            <div class="header">
-                <h2>Create Account</h2>
-            </div>
-            <form id="form" class="form">
-                <div class="form-control">
-                    <label class="mainLabel" for="username">Username</label>
-                    <input type="text" placeholder="Enter your username" id="username" />
-                </div>
-
-                <div class="form-control">
-                    <label class="mainLabel" for="password">Password</label>
-                    <input type="password" placeholder="Enter your password" id="password" />
-                </div>
-
-                <div class="form-control">
-                    <label class="mainLabel" for="first_name">First Name</label>
-                    <input type="text" placeholder="Enter your first name" id="first_name" />
-                </div>
-
-                <div class="form-control">
-                    <label class="mainLabel" for="last_name">Last name</label>
-                    <input type="text" placeholder="Enter your last name" id="last_name" />
-                </div>
-                <div class="error-holder-msg">Error message holder</div>
-                <button class="SignUpBtn" id="checkSignIn">Already have account?</button>
-                <button class="SignUpBtn" id="setSignUpBtn">Submit</button>
-            </form>
-        </div>
-        <div class="containerSignIn hidden">
-            <div class="header">
-                <h2>Sign in</h2>
-            </div>
-            <form id="formSignIn" class="form">
-                <div class="form-control">
-                    <label for="username">Username</label>
-                    <input type="text" placeholder="Enter your username" id="usernameSignIn" />
-                </div>
-                <div class="form-control name">
-                    <label for="password">Password</label>
-                    <input type="password" placeholder="Enter your password" id="passwordSignIn" />
-                </div>
-                <div class="sign-in-err"></div>
-                <button class="SignUpBtn" id="checkSignUp">Don`t have account?</button>
-                <button id="setSignInBtn">Submit</button>
-            </form>
-        </div>
+    </template>
+    <section class="filmsShowMore">
     </section>
+    <template id="filmsShowMore">
+        <div class="containerFilmsItem">
+            <div class="filmsItem">
+                <div class="linkPage">
+                    <img class="imgFilmsItem" src="../img/logo.svg">
+                </div>
+                <div class="overlay"></div>
+                <p class="descriptionFilm"></p>
+            </div>
+        </div>
+    </template>
+    <template id="langOptions">
+        <option value=""></option>
+    </template>
+    <div class="container-btn-showMore">
+        <button id="showMoreBtn" class="hidden" data="2">Show More</button>
+    </div>
+</main>
+<section class="popUp">
+    <div class="containerSignUp">
+        <div class="header">
+            <h2>Create Account</h2>
+        </div>
+        <form id="form" class="form">
+            <div class="form-control">
+                <label class="mainLabel" for="username">Username</label>
+                <input type="text" placeholder="Enter your username" id="username"/>
+            </div>
+
+            <div class="form-control">
+                <label class="mainLabel" for="password">Password</label>
+                <input type="password" placeholder="Enter your password" id="password"/>
+            </div>
+
+            <div class="form-control">
+                <label class="mainLabel" for="first_name">First Name</label>
+                <input type="text" placeholder="Enter your first name" id="first_name"/>
+            </div>
+
+            <div class="form-control">
+                <label class="mainLabel" for="last_name">Last name</label>
+                <input type="text" placeholder="Enter your last name" id="last_name"/>
+            </div>
+            <div class="error-holder-msg">Error message holder</div>
+            <button class="SignUpBtn" id="checkSignIn">Already have account?</button>
+            <button class="SignUpBtn" id="setSignUpBtn">Submit</button>
+        </form>
+    </div>
+    <div class="containerSignIn hidden">
+        <div class="header">
+            <h2>Sign in</h2>
+        </div>
+        <form id="formSignIn" class="form">
+            <div class="form-control">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Enter your username" id="usernameSignIn"/>
+            </div>
+            <div class="form-control name">
+                <label for="password">Password</label>
+                <input type="password" placeholder="Enter your password" id="passwordSignIn"/>
+            </div>
+            <div class="sign-in-err"></div>
+            <button class="SignUpBtn" id="checkSignUp">Don`t have account?</button>
+            <button id="setSignInBtn">Submit</button>
+        </form>
+    </div>
+</section>
 </body>
 
 </html>

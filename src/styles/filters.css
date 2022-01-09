@@ -1,6 +1,6 @@
 .filters-item {
     padding-top: 50px;
-    left: calc((100% - 1150px)/2);
+    left: calc((100% - 1150px) / 2);
     top: 10%;
     display: flex;
     position: fixed;
@@ -25,6 +25,7 @@
 .hidden {
     display: none;
 }
+
 /*body,
 html {
     overflow-y: hidden;
@@ -170,38 +171,43 @@ input[type="range"] {
     text-align: center;
     position: relative;
     height: 6em;
-  }
-  
-  .range-slider input[type=range] {
+}
+
+.range-slider input[type=range] {
     position: absolute;
     left: 0;
     bottom: 0;
-  }
-  
-  
-  input[type=range] {
+    background-color: #9b2121;
+}
+
+input[type=number] {
+    padding: 5px;
+    width: 100px;
+    border-radius: 15px;
+}
+
+input[type=range] {
     -webkit-appearance: none;
     width: 100%;
-  }
-  
-  input[type=range]:focus {
+    border-radius: 15px;
+}
+
+input[type=range]:focus {
     outline: none;
-  }
-  
-  
-  
-  input[type=range]::-webkit-slider-runnable-track {
+}
+
+
+input[type=range]::-webkit-slider-runnable-track {
     width: 100%;
     height: 5px;
     cursor: pointer;
     animate: 0.2s;
-    background: #eee;
-    border-radius: none;
+    background: #9b2121;
     box-shadow: none;
     border: 0;
-  }
-  
-  input[type=range]::-webkit-slider-thumb {
+}
+
+input[type=range]::-webkit-slider-thumb {
     z-index: 2;
     position: relative;
     box-shadow: none;
@@ -209,8 +215,8 @@ input[type="range"] {
     height: 16px;
     width: 16px;
     border-radius: 25px;
-    background: #9b2121;
+    background: #E5E5E5;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -5px;
-  }
+}
