@@ -8,6 +8,7 @@ import checkAuthorize from './signIn';
 import { checkInputs } from './signUp';
 
 import { IMovies }
+
     from './interface/interfaces';
 import { createTemplateShowMore } from './getmovie';
 
@@ -19,7 +20,7 @@ function loader() {
 
 export async function getMovies(attr:number):Promise<void> {
     try {
-        const { data: { message: movies } } = await axios.get(constants.WOW_ME_UP_MOVIES);
+        const { data: { message: movies } } = await axios.get(constants.SERVER_MOVIES);
         movies.forEach((element:IMovies, index:number) => {
             if (index <= attr) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
@@ -138,3 +139,23 @@ export function getInputValues(e:Event):void {
 export function showInputSearch():void {
     elementsOfDom.inputClassSearchInput.classList.toggle(selectorsCss.classHidden);
 }
+
+const minVal:HTMLInputElement = document.querySelector('#minRange');
+const maxVal:HTMLInputElement = document.querySelector('#maxRange');
+const minNumVal:HTMLInputElement = document.querySelector('#minNumberRange');
+const maxNumVal:HTMLInputElement = document.querySelector('#maxNumberRange');
+const slider = document.querySelector('.range-slider');
+
+function getInputValuess(e) {
+    e.preventDefault();
+    if ((<HTMLElement>e.target).classList.contains('inputValueNumber')) {
+        (<HTMLInputElement>(<HTMLElement>e.target).previousElementSibling
+            .previousElementSibling).value = (<HTMLInputElement>e.target).value;
+    }
+    if (+minVal.value >= (+maxVal.value - 10000)) {
+        minVal.value = (Number(maxVal.value) - 10000).toString();
+    }
+    minNumVal.value = minVal.value;
+    maxNumVal.value = maxVal.value;
+}
+slider.addEventListener('input', getInputValuess);
