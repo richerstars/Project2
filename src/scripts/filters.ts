@@ -13,7 +13,7 @@ import {
 }
     from './interface/interfaces';
 import { createTemplateShowMore } from './getmovie';
-import { loader } from './logic';
+import { loader, showInputSearch } from './logic';
 
 function renderLangsOptionsTemplate({
     iso_639_1,
@@ -94,6 +94,9 @@ export function resetFilters():void {
 export async function getFilters():Promise<void> {
     try {
         loader();
+        if (!elementsOfDom.inputClassSearchInput.classList.contains('hidden')) {
+            showInputSearch();
+        }
         elementsOfDom.sectionClassSection.classList.toggle('filters-item');
         elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
         elementsOfDom.bigWindow.classList.toggle('hidden');
