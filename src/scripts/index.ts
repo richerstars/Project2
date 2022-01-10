@@ -7,6 +7,7 @@ import {
     setSignUp, setSignIn,
     openFilmCard,
     showInputSearch,
+    getInputValues,
 } from './logic';
 import {
     getFilters, saveFilters, resetFilters, getFilmBySearchInput,
@@ -26,3 +27,4 @@ elementsOfDom.buttonShowMoreBtn.addEventListener('click', renderNewFilm);
 elementsOfDom.sectionFilmsShowMore.addEventListener('click', openFilmCard);
 elementsOfDom.divClassSearch.addEventListener('click', showInputSearch);
 elementsOfDom.inputClassSearchInput.addEventListener('change', getFilmBySearchInput);
+elementsOfDom.classRangeSlider.addEventListener('input', getInputValues);

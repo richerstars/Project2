@@ -502,8 +502,6 @@ a, .donate {
     cursor: pointer;
 }
 
-
-
 @media (hover: hover) {
     .filmsItem p {
         transform: translateY(0);

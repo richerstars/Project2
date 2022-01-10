@@ -13,6 +13,7 @@ import {
 }
     from './interface/interfaces';
 import { createTemplateShowMore } from './getmovie';
+import { loader } from './logic';
 
 function renderLangsOptionsTemplate({
     iso_639_1,
@@ -45,8 +46,9 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
         if (movies === 'Not found') {
             elementsOfDom.sectionFilmsShowMore
                 .appendChild(elemsQuerySelectors.notFound.cloneNode(true));
-            elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
             elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
+            if (elementsOfDom.buttonShowMoreBtn.classList.contains('hidden')) return;
+            elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
             return;
         }
         movies.forEach((element:IMovies, index:number) => {
@@ -54,8 +56,10 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
             }
         });
-        elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
-        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
+        setTimeout(loader, 200);
+        if (elementsOfDom.buttonShowMoreBtn.classList.contains('hidden')) {
+            elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
+        }
     } catch (err) {
         // eslint-disable-next-line no-console
         console.error('getMoviesByDynamicParams: ', err);
@@ -89,7 +93,7 @@ export function resetFilters():void {
 
 export async function getFilters():Promise<void> {
     try {
-        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
+        loader();
         elementsOfDom.sectionClassSection.classList.toggle('filters-item');
         elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
         elementsOfDom.bigWindow.classList.toggle('hidden');
@@ -102,8 +106,8 @@ export async function getFilters():Promise<void> {
         genres.forEach((elem:IGenres) => {
             (elementsOfDom.selectIdSelectGenres.appendChild(renderGenresOptionsTemplate(elem)));
         });
-        elementsOfDom.selectIdSelectLanguages.value = '';
-        elementsOfDom.selectIdSelectGenres.value = '';
+        resetFilters();
+        setTimeout(loader, 100);
     } catch (err) {
         // eslint-disable-next-line no-console
         console.error('getFilters: ', err);
@@ -135,7 +139,7 @@ export function saveFilters():void {
 }
 
 export function getFilmBySearchInput():void {
-    elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
+    loader();
     const inputValue = elementsOfDom.inputClassSearchInput.value;
     createDynamic({ title: inputValue });
 }

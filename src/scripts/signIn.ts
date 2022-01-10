@@ -3,7 +3,7 @@ import axios from 'axios';
 import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
 // eslint-disable-next-line import/no-cycle
-import { getMovies } from './logic';
+import { renderNewFilm } from './logic';
 import selectorsCss from './constants/constants.selectorsCss';
 
 export default async function checkAuthorize(): Promise<void> {
@@ -17,7 +17,7 @@ export default async function checkAuthorize(): Promise<void> {
             elementsOfDom.sectionClassPopUp.classList.add(selectorsCss.classHidden);
             elementsOfDom.buttonShowMoreBtn.classList.remove(selectorsCss.classHidden);
             elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
-            getMovies(20);
+            await renderNewFilm();
             return;
         }
         return;

@@ -14,28 +14,28 @@ import { createTemplateShowMore } from './getmovie';
 
 let count = 1;
 
-function loader() {
-    elementsOfDom.classMask.classList.add('hidden');
+export function loader() {
+    elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
 }
 
-export async function getMovies(attr:number):Promise<void> {
-    try {
-        const { data: { message: movies } } = await axios.get(constants.SERVER_MOVIES);
-        movies.forEach((element:IMovies, index:number) => {
-            if (index <= attr) {
-                elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
-            }
-        });
-        loader();
-    } catch (error) {
-        // eslint-disable-next-line no-console
-        console.error(error);
-    }
-}
+// export async function getMovies(attr:number):Promise<void> {
+//     try {
+//         const { data: { message: movies } } = await axios.get(constants.SERVER_MOVIES);
+//         movies.forEach((element:IMovies, index:number) => {
+//             if (index <= attr) {
+//                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
+//             }
+//         });
+//         loader();
+//     } catch (error) {
+//         // eslint-disable-next-line no-console
+//         console.error(error);
+//     }
+// }
 
 export async function renderNewFilm():Promise<void> {
     try {
-        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
+        setTimeout(loader, 700);
         const {
             data: {
                 message: movies,
@@ -69,7 +69,7 @@ export async function renderNewFilm():Promise<void> {
 }
 
 export function checkToken():void {
-    setTimeout(loader, 1000);
+    setTimeout(loader, 700);
     if (document.cookie.length > 6) {
         elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden);
         elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
@@ -133,22 +133,17 @@ export function showInputSearch():void {
     elementsOfDom.inputClassSearchInput.classList.toggle(selectorsCss.classHidden);
 }
 
-const minVal:HTMLInputElement = document.querySelector('#minRange');
-const maxVal:HTMLInputElement = document.querySelector('#maxRange');
-const minNumVal:HTMLInputElement = document.querySelector('#minNumberRange');
-const maxNumVal:HTMLInputElement = document.querySelector('#maxNumberRange');
-const slider = document.querySelector('.range-slider');
-
-function getInputValues(e) {
+export function getInputValues(e) {
     e.preventDefault();
     if ((<HTMLElement>e.target).classList.contains('inputValueNumber')) {
         (<HTMLInputElement>(<HTMLElement>e.target).previousElementSibling
             .previousElementSibling).value = (<HTMLInputElement>e.target).value;
     }
-    if (+minVal.value >= (+maxVal.value - 10000)) {
-        minVal.value = (Number(maxVal.value) - 10000).toString();
+    if (+elementsOfDom.inputIdMinValueRange.value >= (+elementsOfDom.inputIdMaxValueRange
+        .value - 1000000)) {
+        elementsOfDom.inputIdMinValueRange.value = (Number(elementsOfDom.inputIdMaxValueRange
+            .value) - 1000000).toString();
     }
-    minNumVal.value = minVal.value;
-    maxNumVal.value = maxVal.value;
+    elementsOfDom.inputIdMinVNumberRange.value = elementsOfDom.inputIdMinValueRange.value;
+    elementsOfDom.inputIdMaxVNumberRange.value = elementsOfDom.inputIdMaxValueRange.value;
 }
-slider.addEventListener('input', getInputValues);
