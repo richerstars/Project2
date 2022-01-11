@@ -8,14 +8,24 @@ import {
     clearImputs, loader, renderGenresLanguges,
 } from './helpers';
 import { renderNewFilm } from './renderMovie';
+import { constants } from './constants/configConstants';
+import { createDynamic, getFilterData } from './filters';
 
 export function checkToken():void {
     setTimeout(loader, 1000);
     if (document.cookie.length > 6) {
         elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden);
         elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
-        renderNewFilm();
+        renderNewFilm(constants.SERVER_MOVIES);
         renderGenresLanguges();
+    }
+}
+
+export function showMoreMovies() {
+    if (!elementsOfDom.inputIdFilters.classList.contains('active')) {
+        renderNewFilm(constants.SERVER_MOVIES);
+    } else {
+        createDynamic(getFilterData());
     }
 }
 

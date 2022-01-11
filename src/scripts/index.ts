@@ -6,13 +6,12 @@ import {
     checkAdult,
     setSignUp, setSignIn,
     openFilmCard,
-    getInputValues, showInputSearch,
+    getInputValues, showInputSearch, showMoreMovies,
 
 } from './logic';
 import {
     getFilters, saveFilters, resetFilters, getFilmBySearchInput,
 } from './filters';
-import { renderNewFilm } from './renderMovie';
 
 document.addEventListener('DOMContentLoaded', checkToken);
 elementsOfDom.classRangeSlider.addEventListener('input', getInputValues);
@@ -25,7 +24,7 @@ elementsOfDom.buttonIdCheckSignIn.addEventListener('click', changeModalWindow);
 elementsOfDom.buttonIdCheckSignUp.addEventListener('click', changeModalWindow);
 elementsOfDom.buttonIdSetSignUpBtn.addEventListener('click', setSignUp);
 elementsOfDom.buttonIdSetSignInBtn.addEventListener('click', setSignIn);
-elementsOfDom.buttonShowMoreBtn.addEventListener('click', renderNewFilm);
+elementsOfDom.buttonShowMoreBtn.addEventListener('click', showMoreMovies);
 elementsOfDom.sectionFilmsShowMore.addEventListener('click', openFilmCard);
 elementsOfDom.divClassSearch.addEventListener('click', showInputSearch);
 elementsOfDom.inputClassSearchInput.addEventListener('change', getFilmBySearchInput);

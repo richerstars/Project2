@@ -23,14 +23,14 @@ export async function getMovies(attr:number):Promise<void> {
     }
 }
 
-export async function renderNewFilm():Promise<void> {
+export async function renderNewFilm(url: string):Promise<void> {
     try {
         elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
         const {
             data: {
                 message: movies,
             },
-        } = await axios.get(`${constants.SERVER_MOVIES}?${constants.GET_PARAMS.PAGE}${count}`);
+        } = await axios.get(`${url}?${constants.GET_PARAMS.PAGE}${count}`);
         movies.forEach((element:IMovies, index:number) => {
             if (index <= 20) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));

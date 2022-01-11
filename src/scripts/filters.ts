@@ -12,43 +12,49 @@ import {
     from './interface/interfaces';
 import { createTemplateShowMore } from './getmovie';
 
-export async function getMoviesByDynamicParams(request):Promise<void> {
-    try {
-        if (elementsOfDom.sectionFilmsShowMore.children) {
-            // eslint-disable-next-line no-loops/no-loops
-            while (elementsOfDom.sectionFilmsShowMore.firstChild) {
-                elementsOfDom.sectionFilmsShowMore
-                    .removeChild(elementsOfDom.sectionFilmsShowMore.firstChild);
-            }
-        }
-        const { data: { message: movies } } = await axios.get(request);
-        if (movies === 'Not found') {
-            elementsOfDom.sectionFilmsShowMore
-                .appendChild(elemsQuerySelectors.notFound.cloneNode(true));
-            elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
-            elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
-            return;
-        }
-        movies.forEach((element:IMovies, index:number) => {
-            if (index <= 20) {
-                elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
-            }
-        });
-        elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
-        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
-    } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error('getMoviesByDynamicParams: ', err);
+let countFilters = 1;
+
+function clearMovies() {
+    if (elementsOfDom.sectionFilmsShowMore.children && countFilters < 3) {
+        elementsOfDom.sectionFilmsShowMore.innerHTML = '';
     }
 }
 
-function createDynamic(obj:IGetMovieParam):void {
+export async function getMoviesByDynamicParams(request):Promise<void> {
+    try {
+        clearMovies();
+        elementsOfDom.classMask.classList.remove(selectorsCss.classHidden);
+        const { data: { message: movies } } = await axios.get(request);
+        if (movies === 'Not found') {
+            // notFound();
+            elementsOfDom.sectionFilmsShowMore
+                .appendChild(elemsQuerySelectors.notFound.cloneNode(true));
+            elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
+            return;
+        }
+        movies.forEach((element:IMovies) => {
+            elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
+        });
+    } catch (err) {
+        // eslint-disable-next-line no-console
+        console.error('getMoviesByDynamicParams: ', err);
+    } finally {
+        elementsOfDom.classMask.classList.add(selectorsCss.classHidden);
+    }
+}
+
+export function createDynamic(obj:IGetMovieParam):void {
+    console.log('Im trying');
     let url = `${constants.SERVER_MOVIES}?`;
     Object.keys(obj)
         .forEach((element) => {
             if (obj[element]) url += `${element}=${obj[element]}&`;
         });
-    url = url.substring(0, url.length - 1);
+    url += `${constants.GET_PARAMS.PAGE}${countFilters}`;
+    console.log(url);
+    // url = url.substring(0, url.length - 1);
+    // console.log(url);
+    countFilters++;
     getMoviesByDynamicParams(url);
 }
 
@@ -78,7 +84,7 @@ export async function getFilters():Promise<void> {
     }
 }
 
-export function saveFilters():void {
+export function getFilterData() {
     const adult:boolean = elementsOfDom.inputIdAdult.checked;
     const languages:string = elementsOfDom.selectIdSelectLanguages.value;
     const budgetMin:number = elementsOfDom.inputIdMinVNumberRange.value;
@@ -86,9 +92,7 @@ export function saveFilters():void {
     const releaseDateFirst:string = elementsOfDom.inputIdReleaseDayFirst.value;
     const releaseDateLast:string = elementsOfDom.inputIdReleaseDayLast.value;
     const genres:string = elementsOfDom.selectIdSelectGenres.value;
-    elementsOfDom.inputIdFilters.classList.add('active');
-    elementsOfDom.bigWindow.classList.toggle('hidden');
-    createDynamic({
+    return {
         adult,
         languages,
         budget_min: budgetMin,
@@ -96,7 +100,14 @@ export function saveFilters():void {
         release_date_first: releaseDateFirst,
         release_date_last: releaseDateLast,
         genre_id: genres,
-    });
+    };
+}
+
+export function saveFilters():void {
+    const request = getFilterData();
+    elementsOfDom.inputIdFilters.classList.add('active');
+    elementsOfDom.bigWindow.classList.toggle('hidden');
+    createDynamic(request);
     elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     elementsOfDom.sectionClassSection.classList.toggle('filters-item');
     elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
