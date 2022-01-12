@@ -46,7 +46,8 @@ export function checkInputs():void {
         case (elementsOfDom.inputIdPassword.classList.contains('placeError')):
             setError(error, constantsString.passCheck);
             break;
-        case (elementsOfDom.inputIdFirstName.classList.contains('placeError') || elementsOfDom.inputIdLastName.classList.contains('placeError')):
+        case (elementsOfDom.inputIdFirstName.classList.contains('placeError')
+            || elementsOfDom.inputIdLastName.classList.contains('placeError')):
             setError(error, constantsString.fistLastCheckLetter);
             break;
         case (elementsOfDom.inputIdUsername.classList.contains('placeError')

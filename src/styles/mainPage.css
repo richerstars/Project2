@@ -578,3 +578,20 @@ a, .donate {
 .par-not-found{
     color: #f7f7f7;
 }
+#app{
+    background-color: #fff;
+    border: 2px solid #FFFFFF;
+    border-radius: 15px;
+    text-align: center;
+}
+#title-range{
+    margin: 7px 0;
+    font-size: 18px;
+}
+.full-link{
+    width: 157px;
+    height: 40px;
+}
+#text-donate{
+    margin-left: 40px;
+}
