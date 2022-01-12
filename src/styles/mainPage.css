@@ -325,7 +325,7 @@ a, .donate {
 
     .filmsItem:hover p {
         transform: translateY(-84px);
-        height: 80px;
+        height: 120px;
         overflow: visible;
         text-overflow: clip;
         white-space: normal;
