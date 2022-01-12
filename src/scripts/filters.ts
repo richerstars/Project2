@@ -3,8 +3,6 @@ import 'regenerator-runtime/runtime';
 import { elementsOfDom, elemsQuerySelectors } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
 import { constants } from './constants/configConstants';
-// eslint-disable-next-line import/no-cycle
-import { showInputSearch } from './logic';
 import {
     IGetMovieParam,
     IMovies,
@@ -12,6 +10,8 @@ import {
     from './interface/interfaces';
 import { createTemplateShowMore } from './getmovie';
 import { loader } from './helpers';
+// eslint-disable-next-line import/no-cycle
+import { showInputSearch } from './logic';
 
 let countFilters = 1;
 
