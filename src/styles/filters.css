@@ -38,7 +38,7 @@ html {
 }
 
 .container-btn-filter {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .filters-item-none {
@@ -105,6 +105,7 @@ input[type="range"] {
     font-size: 24px;
     line-height: 28px;
     color: #FFF;
+    cursor: pointer;
 }
 
 #resetBtn {
@@ -112,6 +113,7 @@ input[type="range"] {
     border: 2px solid #9b2121;
     border-radius: 10px;
     width: 325.6px;
+
     height: 64px;
     font-family: Roboto;
     font-style: normal;
@@ -119,6 +121,7 @@ input[type="range"] {
     font-size: 24px;
     line-height: 28px;
     color: #FFF;
+    cursor: pointer;
 }
 
 .filters-input {
@@ -127,7 +130,6 @@ input[type="range"] {
     align-items: center;
     width: 300px;
     height: 60px;
-    font-family: Roboto;
     font-style: normal;
     font-weight: normal;
     font-size: 24px;
@@ -136,6 +138,7 @@ input[type="range"] {
     border-radius: 15px;
     margin: 0px 10px;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .filters-input::placeholder {
@@ -184,8 +187,10 @@ input[type=number] {
 
 input[type=range] {
     -webkit-appearance: none;
-    width: 100%;
+    width: 90%;
     border-radius: 15px;
+    margin-left: 15px;
+    margin-bottom: 25px;
 }
 
 input[type=range]:focus {
@@ -214,4 +219,17 @@ input[type=range]::-webkit-slider-thumb {
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -5px;
+}
+.container-filters-selectors,#selectLanguages, #selectGenres{
+    cursor: pointer;
+}
+.filters-input:hover {
+    border: 2px solid #282440d9;
+    box-shadow: 0 0 5px #282440d9;
+}
+#resetBtn:hover,#saveBtn:hover{
+    border: 2px solid #9b2121;
+    color: #9b2121;
+    background-color: #f7f7f7;
+    font-weight:bold;
 }

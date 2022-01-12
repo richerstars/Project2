@@ -2,6 +2,7 @@ import axios from 'axios';
 import { elementsOfDom } from './constants/constantsElements';
 import { constants } from './constants/configConstants';
 import { IGenres, ILanguages } from './interface/interfaces';
+import selectorsCss from './constants/constants.selectorsCss';
 
 export function renderLangsOptionsTemplate({
     iso_639_1,
@@ -22,7 +23,7 @@ export function renderGenresOptionsTemplate({
 }
 
 export function loader() {
-    elementsOfDom.classMask.classList.add('hidden');
+    elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
 }
 
 export function clearImputs() {
@@ -35,6 +36,10 @@ export function clearImputs() {
     elementsOfDom.inputIdPassword.parentElement.classList.remove('error');
     elementsOfDom.inputIdFirstName.parentElement.classList.remove('error');
     elementsOfDom.inputIdLastName.parentElement.classList.remove('error');
+    elementsOfDom.inputIdUsername.classList.remove('placeError');
+    elementsOfDom.inputIdPassword.classList.remove('placeError');
+    elementsOfDom.inputIdFirstName.classList.remove('placeError');
+    elementsOfDom.inputIdLastName.classList.remove('placeError');
     elementsOfDom.divClassContainerSignUP.classList.toggle('hidden');
     elementsOfDom.divClassContainerSignIn.classList.toggle('hidden');
 }

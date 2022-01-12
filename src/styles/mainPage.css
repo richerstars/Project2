@@ -407,5 +407,23 @@ a, .donate {
     z-index: 3;
     background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/257418/andy-holmes-698828-unsplash.jpg) top fixed;
     background-size: cover;
-    background-repeat: no-repeat;
+  background-repeat: no-repeat;
+}
+
+#app{
+    background-color: #fff;
+    border: 2px solid #FFFFFF;
+    border-radius: 15px;
+    text-align: center;
+}
+#title-range{
+    margin: 7px 0;
+    font-size: 18px;
+}
+.full-link{
+    width: 157px;
+    height: 40px;
+}
+#text-donate{
+    margin-left: 40px;
 }

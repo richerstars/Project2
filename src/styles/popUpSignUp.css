@@ -1,4 +1,3 @@
-
 .hidden{
   display: none;
 }
@@ -18,6 +17,7 @@
   border-bottom: 1px solid #f0f0f0;
   background-color: #f7f7f7;
   padding: 20px 40px;
+  cursor: default;
 }
 
 .header h2 {
@@ -34,6 +34,8 @@
   padding-bottom: 20px;
   position: relative;
   text-align: center;
+  font-size: 18px;
+  font-weight:bold;
 }
 
 .form-control label {
@@ -42,13 +44,18 @@
 }
 
 .form-control input {
-  border: 2px solid #f0f0f0;
+  /*border: 2px solid #f0f0f0;*/
   border-radius: 4px;
   display: block;
   font-family: inherit;
   font-size: 16px;
-  padding: 10px;
-  width: 100%;
+  padding: 10px 0;
+  width: 99%;
+}
+
+.placeError{
+  border: 2px solid #ff0000;
+  box-shadow: 0 0 10px #ff0000;
 }
 
 .form-control input:focus {
@@ -88,6 +95,34 @@ label{
   border: 2px solid #9b2121;
   padding: 10px;
 }
-.mainLabel {
-  font-size: 18px;
+.SignUpBtn{
+  cursor: pointer;
+  font-weight:bold;
+}
+.containerSignIn {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 450px;
+  max-width: 100%;
+}
+.form-control-login-password {
+  margin-bottom: 10px;
+  position: relative;
+}
+.sign-redirect {
+  text-decoration: underline;
+  color: #9b2121;
+  padding-left: 2px;
+}
+.SignUpBtn:hover{
+  border: 2px solid #9b2121;
+  color: #9b2121;
+  background-color: #f7f7f7;
+  font-weight:bold;
+}
+.hover-input:hover{
+  border: 2px solid #282440d9;
+  box-shadow: 0 0 5px #282440d9;
 }

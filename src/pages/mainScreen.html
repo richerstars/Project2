@@ -19,8 +19,9 @@
         <div class="donations">
             <div class="logo"><a class="mainA" href=""><img src="../img/logo.svg" alt="devEducation"
                                                             class="imgLogo"></a></div>
-            <section class="donate"><a class="mainA" target="_blank"
-                                       href="https://github.com/richerstars/Team_Project2">Donate</a>
+            <section class="donate"><a class="mainA full-link" target="_blank"
+                                       href="https://github.com/richerstars/Team_Project2">
+                <p id="text-donate">Donate</p></a>
             </section>
         </div>
         <div class="containerBetween">
@@ -65,6 +66,7 @@
             </div>
             <div class="container-filters-item">
                 <div id="app">
+                    <div id="title-range">Budget film</div>
                     <div class='range-slider'>
                         <input type="range" min="0" max="365000000" step="1" id="minRange" value="0">
                         <input type="range" min="0" max="365000000" step="1" id="maxRange" value="365000000">
@@ -140,22 +142,22 @@
         <form id="form" class="form">
             <div class="form-control">
                 <label class="mainLabel" for="username">Username</label>
-                <input type="text" placeholder="Enter your username" id="username"/>
+                <input type="text" placeholder="Enter your username" id="username" class="hover-input"/>
             </div>
 
             <div class="form-control">
                 <label class="mainLabel" for="password">Password</label>
-                <input type="password" placeholder="Enter your password" id="password"/>
+                <input type="password" placeholder="Enter your password" id="password" class="hover-input"/>
             </div>
 
             <div class="form-control">
                 <label class="mainLabel" for="first_name">First Name</label>
-                <input type="text" placeholder="Enter your first name" id="first_name"/>
+                <input type="text" placeholder="Enter your first name" id="first_name" class="hover-input"/>
             </div>
 
             <div class="form-control">
                 <label class="mainLabel" for="last_name">Last name</label>
-                <input type="text" placeholder="Enter your last name" id="last_name"/>
+                <input type="text" placeholder="Enter your last name" id="last_name" class="hover-input"/>
             </div>
             <div class="error-holder-msg">Error message holder</div>
             <button class="SignUpBtn" id="checkSignIn">Already have account?</button>
@@ -169,15 +171,15 @@
         <form id="formSignIn" class="form">
             <div class="form-control">
                 <label for="username">Username</label>
-                <input type="text" placeholder="Enter your username" id="usernameSignIn"/>
+                <input type="text" placeholder="Enter your username" id="usernameSignIn" class="hover-input"/>
             </div>
             <div class="form-control name">
                 <label for="password">Password</label>
-                <input type="password" placeholder="Enter your password" id="passwordSignIn"/>
+                <input type="password" placeholder="Enter your password" id="passwordSignIn" class="hover-input"/>
             </div>
             <div class="sign-in-err"></div>
             <button class="SignUpBtn" id="checkSignUp">Don`t have account?</button>
-            <button id="setSignInBtn">Submit</button>
+            <button id="setSignInBtn" class="SignUpBtn">Submit</button>
         </form>
     </div>
 </section>
