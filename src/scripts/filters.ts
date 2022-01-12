@@ -44,14 +44,12 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
 }
 
 export function createDynamic(obj:IGetMovieParam):void {
-    console.log('Im trying');
     let url = `${constants.SERVER_MOVIES}?`;
     Object.keys(obj)
         .forEach((element) => {
             if (obj[element]) url += `${element}=${obj[element]}&`;
         });
     url += `${constants.GET_PARAMS.PAGE}${countFilters}`;
-    console.log(url);
     // url = url.substring(0, url.length - 1);
     // console.log(url);
     countFilters++;
@@ -71,6 +69,7 @@ export function resetFilters():void {
     elementsOfDom.inputIdReleaseDayLast.value = '';
     elementsOfDom.inputIdFilters.classList.remove('active');
     elementsOfDom.selectIdSelectGenres.value = '';
+    countFilters = 1;
 }
 
 export async function getFilters():Promise<void> {
@@ -104,6 +103,7 @@ export function getFilterData() {
 }
 
 export function saveFilters():void {
+    countFilters = 1;
     const request = getFilterData();
     elementsOfDom.inputIdFilters.classList.add('active');
     elementsOfDom.bigWindow.classList.toggle('hidden');
