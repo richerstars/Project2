@@ -38,7 +38,6 @@ a:not([class]) {
 }
 
 img {
-    max-width: 100%;
     display: block;
 }
 
@@ -82,7 +81,7 @@ html, body {
 body {
     background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/257418/andy-holmes-698828-unsplash.jpg') top fixed;
     background-size: cover;
-    background-repeat: no-repeat;   
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     width: 100%;
@@ -134,11 +133,12 @@ h1 {
 }
 
 .imgLogo {
-    width: 40px;
-    height: 66px;
+    width: 52px;
+    height: 53px;
     opacity: 1;
+    margin-top: 7px;
 }
-    
+
 .headerNav {
     display: flex;
     flex-direction: row;
@@ -203,11 +203,11 @@ input[type="text"] {
     transition: width .2s cubic-bezier(0.000, 0.795, 0.000, 1.000);
     cursor: pointer;
   }
-  
+
   input[type="text"]:focus:hover {
     border-bottom: 1px solid rgb(255, 255, 255);
   }
-  
+
   input[type="text"]:focus {
     width: 700px;
     z-index: 1;
