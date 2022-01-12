@@ -38,7 +38,6 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
         movies.forEach((element:IMovies) => {
             elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
         });
-        setTimeout(loader, 200);
         if (elementsOfDom.buttonShowMoreBtn.classList.contains('hidden')) {
             elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
         }
@@ -81,7 +80,6 @@ export function resetFilters():void {
 
 export async function getFilters():Promise<void> {
     try {
-        loader();
         if (!elementsOfDom.inputClassSearchInput.classList.contains('hidden')) {
             showInputSearch();
         }
@@ -114,12 +112,12 @@ export function getFilterData() {
 }
 
 export function saveFilters():void {
+    elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     countFilters = 1;
     const request = getFilterData();
     elementsOfDom.inputIdFilters.classList.add('active');
     elementsOfDom.bigWindow.classList.toggle('hidden');
     createDynamic(request);
-    elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     elementsOfDom.sectionClassSection.classList.toggle('filters-item');
     elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
 }

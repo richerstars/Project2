@@ -1,7 +1,6 @@
 import 'regenerator-runtime/runtime';
 import { elementsOfDom } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
-// eslint-disable-next-line import/no-cycle
 import checkAuthorize from './signIn';
 import { checkInputs } from './signUp';
 import {
@@ -13,7 +12,7 @@ import { constants } from './constants/configConstants';
 import { createDynamic, getFilterData } from './filters';
 
 export function checkToken():void {
-    setTimeout(loader, 1000);
+    loader();
     if (document.cookie.length > 6) {
         elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden);
         elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
@@ -36,6 +35,8 @@ export function changeModalWindow(e:Event):void {
         clearImputs();
         return;
     }
+    elementsOfDom.classSignInErr.classList.remove('error');
+    elementsOfDom.classSignInErr.innerHTML = '';
     elementsOfDom.inputIdUsernameSignIn.value = '';
     elementsOfDom.inputIdPasswordSignIn.value = '';
     elementsOfDom.divClassContainerSignUP.classList.toggle('hidden');

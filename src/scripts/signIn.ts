@@ -1,4 +1,4 @@
-import '../styles/popUpSignIn.css';
+import '../styles/popUpSignUp.css';
 import axios from 'axios';
 import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
@@ -22,7 +22,6 @@ export default async function checkAuthorize(): Promise<void> {
         }
         return;
     } catch (error) {
-        // eslint-disable-next-line no-console
         elementsOfDom.classSignInErr.classList.add('error');
         elementsOfDom.classSignInErr.textContent = 'Wrong login or password';
         elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
