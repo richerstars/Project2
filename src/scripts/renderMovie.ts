@@ -22,7 +22,7 @@ export default async (url: string):Promise<void> => {
             }
         });
         count++;
-        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
+        loader();
     } catch (err) {
         // eslint-disable-next-line no-console
         console.error('renderNewFilm: ', err);

@@ -4,6 +4,7 @@ import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
 import constantsString from './constants/constantsString';
+import { clearImputs } from './helpers';
 
 export async function useAPI():Promise<void> {
     try {
@@ -39,24 +40,62 @@ export function checkInputs():void {
         || lastNameValue.length === 0):
             setError(error, constantsString.blankString);
             break;
-        case (!usernameValue[0].match(/[a-zA-Z]/i)):
+        case (elementsOfDom.inputIdUsername.classList.contains('placeError')):
             setError(error, constantsString.loginErrLetter);
             break;
-        // case (!usernameValue.match(/[^a-zA-Z0-9]/i)):
-        //     error.innerText = constantsString.loginValidate;
-        //     break;
-        case (!passwordValue.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/s)):
+        case (elementsOfDom.inputIdPassword.classList.contains('placeError')):
             setError(error, constantsString.passCheck);
             break;
-        // case (passwordValue.length < 8 || firstNameValue.length < 8
-        // || lastNameValue.length < 15):
-        //     error.classList.add('error');
-        //     error.innerText = constantsString.firstLastLength;
-        //     break;
-        case (!firstNameValue.match(/^[a-zA-Z]+$/) || !lastNameValue.match(/^[a-zA-Z]+$/)):
+        case (elementsOfDom.inputIdFirstName.classList.contains('placeError') || elementsOfDom.inputIdLastName.classList.contains('placeError')):
             setError(error, constantsString.fistLastCheckLetter);
             break;
+        case (elementsOfDom.inputIdUsername.classList.contains('placeError')
+            || elementsOfDom.inputIdPassword.classList.contains('placeError')
+            || elementsOfDom.inputIdFirstName.classList.contains('placeError')
+            || elementsOfDom.inputIdLastName.classList.contains('placeError')):
+            setError(error, constantsString.invalidInputs);
+            break;
         default:
+            clearImputs();
             useAPI();
     }
 }
+elementsOfDom.inputIdUsername.addEventListener('change', () => {
+    if (elementsOfDom.inputIdUsername.value.trim().length === 0) {
+        elementsOfDom.inputIdUsername.classList.add('placeError');
+    } else if (!elementsOfDom.inputIdUsername.value.trim().match(/^\D[\S]+/i)) {
+        elementsOfDom.inputIdUsername.classList.add('placeError');
+    } else {
+        elementsOfDom.inputIdUsername.classList.remove('placeError');
+    }
+});
+
+elementsOfDom.inputIdPassword.addEventListener('change', () => {
+    if (elementsOfDom.inputIdPassword.value.trim().length === 0) {
+        elementsOfDom.inputIdPassword.classList.add('placeError');
+    } else if (!elementsOfDom.inputIdPassword.value.trim()
+        .match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/s)) {
+        elementsOfDom.inputIdPassword.classList.add('placeError');
+    } else {
+        elementsOfDom.inputIdPassword.classList.remove('placeError');
+    }
+});
+
+elementsOfDom.inputIdFirstName.addEventListener('change', () => {
+    if (elementsOfDom.inputIdFirstName.value.trim().length === 0) {
+        elementsOfDom.inputIdFirstName.classList.add('placeError');
+    } else if (!elementsOfDom.inputIdFirstName.value.trim().match(/^[a-zA-Z]+$/)) {
+        elementsOfDom.inputIdFirstName.classList.add('placeError');
+    } else {
+        elementsOfDom.inputIdFirstName.classList.remove('placeError');
+    }
+});
+elementsOfDom.inputIdLastName.addEventListener('change', () => {
+    if (elementsOfDom.inputIdLastName.value.trim().length === 0) {
+        elementsOfDom.inputIdLastName.classList.add('placeError');
+    } else if (!elementsOfDom.inputIdLastName.value.trim().match(/^[a-zA-Z]+$/)) {
+        elementsOfDom.inputIdLastName.classList.add('placeError');
+    } else {
+        elementsOfDom.inputIdLastName.classList.remove('placeError');
+    }
+});
