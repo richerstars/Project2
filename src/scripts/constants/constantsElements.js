@@ -90,6 +90,9 @@ export const elementsOfDom = {
     inputIdMaxValueRange: document.querySelector(selectorsCss.idMaxValueRange),
     inputIdMinVNumberRange: document.querySelector(selectorsCss.idMinVNumberRange),
     inputIdMaxVNumberRange: document.querySelector(selectorsCss.idMaxNumberRange),
+    bigWindow: document.querySelector('.big-window'),
+    adultBlock: document.querySelector('#adult'),
+    svgContainer: document.getElementById('svgContainer'),
 };
 
 export const elemsQuerySelectors = {

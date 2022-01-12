@@ -1,6 +1,6 @@
 import axios from 'axios';
 import 'regenerator-runtime/runtime';
-import { elementsOfDom, elemsQuerySelectors } from './constants/constantsElements';
+import { elementsOfDom } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
 import { constants } from './constants/configConstants';
 import {
@@ -10,11 +10,8 @@ import {
     from './interface/interfaces';
 import { createTemplateShowMore } from './getmovie';
 import { loader } from './helpers';
-// eslint-disable-next-line import/no-cycle
-import { showInputSearch } from './logic';
 
 let countFilters = 1;
-
 function clearMovies() {
     if (elementsOfDom.sectionFilmsShowMore.children && countFilters < 3) {
         elementsOfDom.sectionFilmsShowMore.innerHTML = '';
@@ -28,11 +25,7 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
         const { data: { message: movies } } = await axios.get(request);
         if (movies === 'Not found') {
             // notFound();
-            elementsOfDom.sectionFilmsShowMore
-                .appendChild(elemsQuerySelectors.notFound.cloneNode(true));
-            elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
-            if (elementsOfDom.buttonShowMoreBtn.classList.contains('hidden')) return;
-            elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
+            elementsOfDom.svgContainer.classList.remove('hidden');
             return;
         }
         movies.forEach((element:IMovies) => {
@@ -56,8 +49,6 @@ export function createDynamic(obj:IGetMovieParam):void {
             if (obj[element]) url += `${element}=${obj[element]}&`;
         });
     url += `${constants.GET_PARAMS.PAGE}${countFilters}`;
-    // url = url.substring(0, url.length - 1);
-    // console.log(url);
     countFilters++;
     getMoviesByDynamicParams(url);
 }
@@ -80,9 +71,9 @@ export function resetFilters():void {
 
 export async function getFilters():Promise<void> {
     try {
-        if (!elementsOfDom.inputClassSearchInput.classList.contains('hidden')) {
-            showInputSearch();
-        }
+
+        loader();
+        development
         elementsOfDom.sectionClassSection.classList.toggle('filters-item');
         elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
         elementsOfDom.bigWindow.classList.toggle('hidden');
@@ -117,6 +108,7 @@ export function saveFilters():void {
     const request = getFilterData();
     elementsOfDom.inputIdFilters.classList.add('active');
     elementsOfDom.bigWindow.classList.toggle('hidden');
+    elementsOfDom.svgContainer.classList.add('hidden');
     createDynamic(request);
     elementsOfDom.sectionClassSection.classList.toggle('filters-item');
     elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
@@ -124,7 +116,16 @@ export function saveFilters():void {
 
 export function getFilmBySearchInput():void {
     loader();
-    countFilters = 1;
     const inputValue = elementsOfDom.inputClassSearchInput.value.trim();
+    elementsOfDom.svgContainer.classList.add('hidden');
     createDynamic({ title: inputValue });
+}
+
+export function inputSearch() {
+    countFilters = 1;
+    getFilmBySearchInput();
+}
+
+export function hidetFilters(event:MouseEvent) {
+    if ((<HTMLElement>event.target).classList.contains('big-window')) getFilters();
 }
