@@ -26,6 +26,7 @@
   margin-bottom: 10px;
   padding-bottom: 20px;
   position: relative;
+  font-size: 18px;
 }
 
 .form-control-login-password {
@@ -43,7 +44,7 @@
   border-radius: 4px;
   display: block;
   font-family: inherit;
-  font-size: 14px;
+  font-size: 16px;
   padding: 10px;
   width: 100%;
 }

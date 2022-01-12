@@ -323,9 +323,9 @@ select[value] {
     color: #fff;
 }
 
-/*.mainLabel {*/
-/*    cursor: pointer;*/
-/*}*/
+.mainLabel {
+    font-size: 18px ;
+}
 .container-filters-selectors {
     display: flex;
     flex-direction: column;

@@ -3,8 +3,8 @@ import axios from 'axios';
 import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
 // eslint-disable-next-line import/no-cycle
-import { renderNewFilm } from './logic';
 import selectorsCss from './constants/constants.selectorsCss';
+import renderNewFilm from './renderMovie';
 
 export default async function checkAuthorize(): Promise<void> {
     try {
@@ -17,7 +17,7 @@ export default async function checkAuthorize(): Promise<void> {
             elementsOfDom.sectionClassPopUp.classList.add(selectorsCss.classHidden);
             elementsOfDom.buttonShowMoreBtn.classList.remove(selectorsCss.classHidden);
             elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
-            await renderNewFilm();
+            await renderNewFilm(constants.SERVER_MOVIES);
             return;
         }
         return;

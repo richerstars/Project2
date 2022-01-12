@@ -7,8 +7,9 @@ import { checkInputs } from './signUp';
 import {
     clearImputs, loader, renderGenresLanguges,
 } from './helpers';
-import { renderNewFilm } from './renderMovie';
+import renderNewFilm from './renderMovie';
 import { constants } from './constants/configConstants';
+// eslint-disable-next-line import/no-cycle
 import { createDynamic, getFilterData } from './filters';
 
 export function checkToken():void {

@@ -4,13 +4,14 @@ import { elementsOfDom, elemsQuerySelectors } from './constants/constantsElement
 import selectorsCss from './constants/constants.selectorsCss';
 import { constants } from './constants/configConstants';
 // eslint-disable-next-line import/no-cycle
-
+import { showInputSearch } from './logic';
 import {
     IGetMovieParam,
     IMovies,
 }
     from './interface/interfaces';
 import { createTemplateShowMore } from './getmovie';
+import { loader } from './helpers';
 
 let countFilters = 1;
 
@@ -125,6 +126,7 @@ export function saveFilters():void {
 
 export function getFilmBySearchInput():void {
     loader();
-    const inputValue = elementsOfDom.inputClassSearchInput.value;
+    countFilters = 1;
+    const inputValue = elementsOfDom.inputClassSearchInput.value.trim();
     createDynamic({ title: inputValue });
 }
