@@ -1,96 +1,38 @@
-import axios from 'axios';
 import 'regenerator-runtime/runtime';
 import { elementsOfDom } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
-import { constants } from './constants/configConstants';
 // eslint-disable-next-line import/no-cycle
 import checkAuthorize from './signIn';
 import { checkInputs } from './signUp';
-
-import { IMovies }
-
-    from './interface/interfaces';
-import { createTemplateShowMore } from './getmovie';
-
-let count = 1;
-
-export function loader() {
-    elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
-}
-
-// export async function getMovies(attr:number):Promise<void> {
-//     try {
-//         const { data: { message: movies } } = await axios.get(constants.SERVER_MOVIES);
-//         movies.forEach((element:IMovies, index:number) => {
-//             if (index <= attr) {
-//                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
-//             }
-//         });
-//         loader();
-//     } catch (error) {
-//         // eslint-disable-next-line no-console
-//         console.error(error);
-//     }
-// }
-
-export async function renderNewFilm():Promise<void> {
-    try {
-        setTimeout(loader, 700);
-        const {
-            data: {
-                message: movies,
-            },
-        } = await axios.get(`${constants.SERVER_MOVIES}?${constants.GET_PARAMS.PAGE}${count}`);
-        // this.attributes[1].value++;
-        // if (this.attributes[1].value > 20) {
-        //     this.style.disabled = true;
-        //     return;
-        // }
-
-        // if (!totalCount) {
-        //     elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
-        //     elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
-        //     return;
-        // }
-        movies.forEach((element:IMovies, index:number) => {
-            if (index <= 20) {
-                elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
-            }
-        });
-        count++;
-        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
-    } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error('renderNewFilm: ', err);
-        elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
-        elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
-        loader();
-    }
-}
+import {
+    clearImputs, loader, renderGenresLanguges,
+} from './helpers';
+import { renderNewFilm } from './renderMovie';
+import { constants } from './constants/configConstants';
+import { createDynamic, getFilterData } from './filters';
 
 export function checkToken():void {
-    setTimeout(loader, 700);
+    setTimeout(loader, 1000);
     if (document.cookie.length > 6) {
         elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden);
         elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
-        renderNewFilm();
+        renderNewFilm(constants.SERVER_MOVIES);
+        renderGenresLanguges();
+    }
+}
+
+export function showMoreMovies() {
+    if (!elementsOfDom.inputIdFilters.classList.contains('active')) {
+        renderNewFilm(constants.SERVER_MOVIES);
+    } else {
+        createDynamic(getFilterData());
     }
 }
 
 export function changeModalWindow(e:Event):void {
     e.preventDefault();
     if ((<HTMLElement>e.target).id === 'checkSignIn') {
-        elementsOfDom.inputIdUsername.value = '';
-        elementsOfDom.inputIdPassword.value = '';
-        elementsOfDom.inputIdFirstName.value = '';
-        elementsOfDom.inputIdLastName.value = '';
-        elementsOfDom.classErrorHolder.classList.remove('error');
-        elementsOfDom.inputIdUsername.parentElement.classList.remove('error');
-        elementsOfDom.inputIdPassword.parentElement.classList.remove('error');
-        elementsOfDom.inputIdFirstName.parentElement.classList.remove('error');
-        elementsOfDom.inputIdLastName.parentElement.classList.remove('error');
-        elementsOfDom.divClassContainerSignUP.classList.toggle('hidden');
-        elementsOfDom.divClassContainerSignIn.classList.toggle('hidden');
+        clearImputs();
         return;
     }
     elementsOfDom.inputIdUsernameSignIn.value = '';
@@ -139,10 +81,11 @@ export function getInputValues(e) {
         (<HTMLInputElement>(<HTMLElement>e.target).previousElementSibling
             .previousElementSibling).value = (<HTMLInputElement>e.target).value;
     }
+
     if (+elementsOfDom.inputIdMinValueRange.value >= (+elementsOfDom.inputIdMaxValueRange
-        .value - 1000000)) {
+        .value - 10000)) {
         elementsOfDom.inputIdMinValueRange.value = (Number(elementsOfDom.inputIdMaxValueRange
-            .value) - 1000000).toString();
+            .value) - 10000).toString();
     }
     elementsOfDom.inputIdMinVNumberRange.value = elementsOfDom.inputIdMinValueRange.value;
     elementsOfDom.inputIdMaxVNumberRange.value = elementsOfDom.inputIdMaxValueRange.value;

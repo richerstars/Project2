@@ -8,42 +8,25 @@ import { constants } from './constants/configConstants';
 import {
     IGetMovieParam,
     IMovies,
-    ILanguages,
-    IGenres,
 }
     from './interface/interfaces';
 import { createTemplateShowMore } from './getmovie';
-import { loader, showInputSearch } from './logic';
 
-function renderLangsOptionsTemplate({
-    iso_639_1,
-    english_name,
-}):HTMLElement {
-    elementsOfDom.templateIdLangOptions.value = iso_639_1;
-    elementsOfDom.templateIdLangOptions.textContent = `${english_name}`;
-    return elementsOfDom.templateIdLangOptions.cloneNode(true);
-}
+let countFilters = 1;
 
-function renderGenresOptionsTemplate({
-    id,
-    name,
-}):HTMLElement {
-    elementsOfDom.templateIdLangOptions.value = id;
-    elementsOfDom.templateIdLangOptions.textContent = name;
-    return elementsOfDom.templateIdLangOptions.cloneNode(true);
+function clearMovies() {
+    if (elementsOfDom.sectionFilmsShowMore.children && countFilters < 3) {
+        elementsOfDom.sectionFilmsShowMore.innerHTML = '';
+    }
 }
 
 export async function getMoviesByDynamicParams(request):Promise<void> {
     try {
-        if (elementsOfDom.sectionFilmsShowMore.children) {
-            // eslint-disable-next-line no-loops/no-loops
-            while (elementsOfDom.sectionFilmsShowMore.firstChild) {
-                elementsOfDom.sectionFilmsShowMore
-                    .removeChild(elementsOfDom.sectionFilmsShowMore.firstChild);
-            }
-        }
+        clearMovies();
+        elementsOfDom.classMask.classList.remove(selectorsCss.classHidden);
         const { data: { message: movies } } = await axios.get(request);
         if (movies === 'Not found') {
+            // notFound();
             elementsOfDom.sectionFilmsShowMore
                 .appendChild(elemsQuerySelectors.notFound.cloneNode(true));
             elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
@@ -51,10 +34,8 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
             elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
             return;
         }
-        movies.forEach((element:IMovies, index:number) => {
-            if (index <= 20) {
-                elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
-            }
+        movies.forEach((element:IMovies) => {
+            elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
         });
         setTimeout(loader, 200);
         if (elementsOfDom.buttonShowMoreBtn.classList.contains('hidden')) {
@@ -63,16 +44,21 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
     } catch (err) {
         // eslint-disable-next-line no-console
         console.error('getMoviesByDynamicParams: ', err);
+    } finally {
+        elementsOfDom.classMask.classList.add(selectorsCss.classHidden);
     }
 }
 
-function createDynamic(obj:IGetMovieParam):void {
+export function createDynamic(obj:IGetMovieParam):void {
     let url = `${constants.SERVER_MOVIES}?`;
     Object.keys(obj)
         .forEach((element) => {
             if (obj[element]) url += `${element}=${obj[element]}&`;
         });
-    url = url.substring(0, url.length - 1);
+    url += `${constants.GET_PARAMS.PAGE}${countFilters}`;
+    // url = url.substring(0, url.length - 1);
+    // console.log(url);
+    countFilters++;
     getMoviesByDynamicParams(url);
 }
 
@@ -89,6 +75,7 @@ export function resetFilters():void {
     elementsOfDom.inputIdReleaseDayLast.value = '';
     elementsOfDom.inputIdFilters.classList.remove('active');
     elementsOfDom.selectIdSelectGenres.value = '';
+    countFilters = 1;
 }
 
 export async function getFilters():Promise<void> {
@@ -100,24 +87,13 @@ export async function getFilters():Promise<void> {
         elementsOfDom.sectionClassSection.classList.toggle('filters-item');
         elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
         elementsOfDom.bigWindow.classList.toggle('hidden');
-
-        const { data: { message: { languages, genres } } } = await axios
-            .get(constants.SERVER_FILTERS);
-        languages.forEach((elem:ILanguages) => {
-            elementsOfDom.selectIdSelectLanguages.appendChild(renderLangsOptionsTemplate(elem));
-        });
-        genres.forEach((elem:IGenres) => {
-            (elementsOfDom.selectIdSelectGenres.appendChild(renderGenresOptionsTemplate(elem)));
-        });
-        resetFilters();
-        setTimeout(loader, 100);
     } catch (err) {
         // eslint-disable-next-line no-console
         console.error('getFilters: ', err);
     }
 }
 
-export function saveFilters():void {
+export function getFilterData() {
     const adult:boolean = elementsOfDom.inputIdAdult.checked;
     const languages:string = elementsOfDom.selectIdSelectLanguages.value;
     const budgetMin:number = elementsOfDom.inputIdMinVNumberRange.value;
@@ -125,9 +101,7 @@ export function saveFilters():void {
     const releaseDateFirst:string = elementsOfDom.inputIdReleaseDayFirst.value;
     const releaseDateLast:string = elementsOfDom.inputIdReleaseDayLast.value;
     const genres:string = elementsOfDom.selectIdSelectGenres.value;
-    elementsOfDom.inputIdFilters.classList.add('active');
-    elementsOfDom.bigWindow.classList.toggle('hidden');
-    createDynamic({
+    return {
         adult,
         languages,
         budget_min: budgetMin,
@@ -135,7 +109,15 @@ export function saveFilters():void {
         release_date_first: releaseDateFirst,
         release_date_last: releaseDateLast,
         genre_id: genres,
-    });
+    };
+}
+
+export function saveFilters():void {
+    countFilters = 1;
+    const request = getFilterData();
+    elementsOfDom.inputIdFilters.classList.add('active');
+    elementsOfDom.bigWindow.classList.toggle('hidden');
+    createDynamic(request);
     elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     elementsOfDom.sectionClassSection.classList.toggle('filters-item');
     elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
