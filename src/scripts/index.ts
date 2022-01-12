@@ -13,7 +13,6 @@ import {
 import {
     getFilters, saveFilters, resetFilters, hidetFilters, inputSearch,
 } from './filters';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 
 document.addEventListener('DOMContentLoaded', checkToken);
 elementsOfDom.classRangeSlider.addEventListener('input', getInputValues);

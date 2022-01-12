@@ -123,6 +123,7 @@ label{
   font-weight:bold;
 }
 .hover-input:hover{
-  border: 2px solid #282440d9;
-  box-shadow: 0 0 5px #282440d9;
+  border: 2px solid rgba(77, 69, 121, 0.85);
+  box-shadow: 0 0 5px rgba(77, 69, 121, 0.85);
 }
+
