@@ -54,7 +54,8 @@
 }
 
 .placeError{
-  border: 2px solid #e74c3c;
+  border: 2px solid #ff0000;
+  box-shadow: 0 0 10px #ff0000;
 }
 
 .form-control input:focus {
@@ -94,9 +95,6 @@ label{
   border: 2px solid #9b2121;
   padding: 10px;
 }
-.mainLabel {
-  font-size: 18px;
-}
 .SignUpBtn{
   cursor: pointer;
   font-weight:bold;
@@ -125,5 +123,6 @@ label{
   font-weight:bold;
 }
 .hover-input:hover{
-  border: 2px solid #9b2121;
+  border: 2px solid #282440d9;
+  box-shadow: 0 0 5px #282440d9;
 }
