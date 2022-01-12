@@ -226,6 +226,7 @@ input[type=range]::-webkit-slider-thumb {
 .filters-input:hover {
     border: 2px solid #282440d9;
     box-shadow: 0 0 5px #282440d9;
+    cursor: pointer;
 }
 #resetBtn:hover,#saveBtn:hover{
     border: 2px solid #9b2121;
