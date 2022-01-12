@@ -71,9 +71,6 @@ export function resetFilters():void {
 
 export async function getFilters():Promise<void> {
     try {
-
-        loader();
-        development
         elementsOfDom.sectionClassSection.classList.toggle('filters-item');
         elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
         elementsOfDom.bigWindow.classList.toggle('hidden');
