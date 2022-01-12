@@ -5,7 +5,9 @@
 html {
   margin-top: 50px;
   margin-right: 200px;
-  background-image: url('../img/space.jpg');
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/257418/andy-holmes-698828-unsplash.jpg') top fixed;
+  background-size: cover;
+  background-repeat: no-repeat;   
   font-family: "Helvetica", sans-serif;
   color: black;
 }
@@ -87,7 +89,6 @@ h2 {
 }
 
 .wrapper_about_film {
-  width: 1100px;
   height: 1000px;
 }
 .masks {
@@ -128,6 +129,7 @@ h2 {
 .trailer{
   width: calc(100% - 34px);
   height: calc(100% - 399px);
+  max-width: 1000px;
   margin-top: 50px;
 }
 .wrapper_about_film{
@@ -138,7 +140,7 @@ h2 {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #000;
+  background: #282440d9;
 }
 ::-webkit-scrollbar-thumb {
   background: rgba(155, 33, 33, 1);

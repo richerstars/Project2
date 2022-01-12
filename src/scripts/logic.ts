@@ -10,7 +10,7 @@ import {
 import renderNewFilm from './renderMovie';
 import { constants } from './constants/configConstants';
 // eslint-disable-next-line import/no-cycle
-import { createDynamic, getFilterData } from './filters';
+import { createDynamic, getFilmBySearchInput, getFilterData } from './filters';
 
 export function checkToken():void {
     setTimeout(loader, 1000);
@@ -23,7 +23,9 @@ export function checkToken():void {
 }
 
 export function showMoreMovies() {
-    if (!elementsOfDom.inputIdFilters.classList.contains('active')) {
+    if ((<HTMLInputElement>elementsOfDom.inputClassSearchInput).value) {
+        getFilmBySearchInput();
+    } else if (!elementsOfDom.inputIdFilters.classList.contains('active')) {
         renderNewFilm(constants.SERVER_MOVIES);
     } else {
         createDynamic(getFilterData());
@@ -73,7 +75,7 @@ export function openFilmCard(event:MouseEvent):void {
 }
 
 export function showInputSearch():void {
-    elementsOfDom.inputClassSearchInput.classList.toggle(selectorsCss.classHidden);
+    elementsOfDom.inputClassSearchInput.focus();
 }
 
 export function getInputValues(e) {
