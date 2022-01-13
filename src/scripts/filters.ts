@@ -20,21 +20,18 @@ function clearMovies() {
 
 export async function getMoviesByDynamicParams(request):Promise<void> {
     try {
+        // childElementCount
         clearMovies();
         elementsOfDom.classMask.classList.remove(selectorsCss.classHidden);
-        const { data: { message: movies } } = await axios.get(request);
-        if (movies === 'Not found') {
-            // notFound();
-            elementsOfDom.svgContainer.classList.remove('hidden');
-            return;
-        }
+        const { data: { message: { data: movies, totalCount } } } = await axios.get(request);
         movies.forEach((element:IMovies) => {
             elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
         });
-        if (elementsOfDom.buttonShowMoreBtn.classList.contains('hidden')) {
-            elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
+        if (elementsOfDom.sectionFilmsShowMore.childElementCount === Number(totalCount)) {
+            elementsOfDom.buttonShowMoreBtn.classList.add(selectorsCss.classHidden);
         }
     } catch (err) {
+        elementsOfDom.svgContainer.classList.remove('hidden');
         // eslint-disable-next-line no-console
         console.error('getMoviesByDynamicParams: ', err);
     } finally {
@@ -43,12 +40,14 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
 }
 
 export function createDynamic(obj:IGetMovieParam):void {
+    elementsOfDom.buttonShowMoreBtn.classList.remove(selectorsCss.classHidden);
     let url = `${constants.SERVER_MOVIES}?`;
+    const token = document.cookie;
     Object.keys(obj)
         .forEach((element) => {
             if (obj[element]) url += `${element}=${obj[element]}&`;
         });
-    url += `${constants.GET_PARAMS.PAGE}${countFilters}`;
+    url += `${constants.GET_PARAMS.PAGE}${countFilters}&${token}`;
     countFilters++;
     getMoviesByDynamicParams(url);
 }

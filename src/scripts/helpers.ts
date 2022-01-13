@@ -44,18 +44,26 @@ export function clearImputs() {
     elementsOfDom.divClassContainerSignIn.classList.toggle('hidden');
 }
 
+function setLanguages(languages: ILanguages[]):void {
+    languages.forEach((elem:ILanguages) => {
+        elementsOfDom.selectIdSelectLanguages.appendChild(renderLangsOptionsTemplate(elem));
+    });
+    elementsOfDom.selectIdSelectLanguages.value = '';
+}
+
+function setGenres(genres: IGenres[]):void {
+    genres.forEach((elem:IGenres) => {
+        (elementsOfDom.selectIdSelectGenres.appendChild(renderGenresOptionsTemplate(elem)));
+    });
+    elementsOfDom.selectIdSelectGenres.value = '';
+}
+
 export async function renderGenresLanguges() {
     try {
         const { data: { message: { languages, genres } } } = await axios
             .get(constants.SERVER_FILTERS);
-        languages.forEach((elem:ILanguages) => {
-            elementsOfDom.selectIdSelectLanguages.appendChild(renderLangsOptionsTemplate(elem));
-        });
-        genres.forEach((elem:IGenres) => {
-            (elementsOfDom.selectIdSelectGenres.appendChild(renderGenresOptionsTemplate(elem)));
-        });
-        elementsOfDom.selectIdSelectLanguages.value = '';
-        elementsOfDom.selectIdSelectGenres.value = '';
+        setLanguages(languages);
+        setGenres(genres);
     } catch (err) {
         // eslint-disable-next-line no-console
         console.error('getFilters: ', err);

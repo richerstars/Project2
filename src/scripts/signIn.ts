@@ -1,5 +1,5 @@
 import '../styles/popUpSignUp.css';
-import axios, { AxiosResponseHeaders } from 'axios';
+import axios from 'axios';
 import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
 // eslint-disable-next-line import/no-cycle

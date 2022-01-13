@@ -1,8 +1,6 @@
 import '../styles/descriptionPage.css';
 import axios from 'axios';
 import { TMovie, TGenres } from './types/types';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const pokerok = require('../img/reklama.gif');
 
 require('babel-core/register');
 require('babel-polyfill');
@@ -41,7 +39,7 @@ const normaliseDate = (date: string): string => {
 const showFilm = async (movieInfo: TMovie) => {
     const {
         poster_path: posterPath, release_date: releaseDate, genres: genreIds,
-        movie_rate: movieRate, original_language: originalLanguage, trailer,
+        original_language: originalLanguage, trailer,
         adult, popularity, title, overview, original_title: originalTitle,
     } = movieInfo;
 
@@ -56,11 +54,9 @@ const showFilm = async (movieInfo: TMovie) => {
             .replace('{{release_date}}', normaliseDate(releaseDate))
             .replace('{{movieSrc}}', trailer)
             .replace('{{title}}', title)
-            .replace('{{pokerok}}', pokerok)
             .replace('{{overview}}', overview)
             .replace('{{original_title}}', originalTitle)
             .replace('{{genre_ids}}', normalGenres)
-            .replace('{{movie_rate}}', movieRate ? movieRate.toString() : 'No rate')
             .replace('{{original_language}}', originalLanguage)
             .replace('{{adult}}', adult ? '18+' : '13+')
             .replace('{{popularity}}', popularity.toString());
@@ -75,7 +71,7 @@ const getFilm = async (movieId: string) => {
     try {
         setTimeout(loader, 1000);
         const { data: { message: movieData } } = await axios.get(`http://localhost:5000/movies/id?id=${movieId}`);
-        showFilm(movieData[0]);
+        showFilm(movieData);
     } catch (error) {
         // eslint-disable-next-line no-console
         console.log(error);

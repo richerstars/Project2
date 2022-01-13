@@ -50,15 +50,6 @@
     align-self: center;
 }
 
-.searchInput {
-    position: relative;
-    top: 10px;
-    height: 40px;
-    left: 50%;
-    width: 250px;
-}
-
-
 .filters {
     width: 40px;
     height: 40px;
@@ -402,9 +393,6 @@ a, .donate {
     height: 721px;
     background-color: white;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
     bottom: 0;
     margin: auto;
     z-index: 3;

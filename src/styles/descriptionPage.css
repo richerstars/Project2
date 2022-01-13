@@ -3,8 +3,6 @@
   padding: 0;
 }
 html {
-  margin-top: 50px;
-  margin-right: 200px;
   background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/257418/andy-holmes-698828-unsplash.jpg') top fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -67,10 +65,9 @@ h2 {
 }
 
 .movie_page {
-  margin-left: 200px;
   background-color: white;
   padding: 50px;
-  height: 2000px;
+  margin: 40px auto;
 }
 
 .film_data {
@@ -123,7 +120,7 @@ h2 {
 }
 @media screen {
   .movie_page {
-    max-width: 1400px;
+    max-width: 1000px;
   }
 }
 .trailer{

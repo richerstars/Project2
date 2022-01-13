@@ -9,6 +9,7 @@ import selectorsCss from './constants/constants.selectorsCss';
 let count = 1;
 
 export default async (url: string): Promise<void> => {
+    elementsOfDom.buttonShowMoreBtn.classList.remove(selectorsCss.classHidden);
     try {
         elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
         const token = document.cookie;
@@ -19,10 +20,8 @@ export default async (url: string): Promise<void> => {
                 },
             },
         } = await axios.get(`${url}?${constants.GET_PARAMS.PAGE}${count}&${token}`);
-        movies.forEach((element: IMovies, index: number) => {
-            if (index <= 20) {
-                elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
-            }
+        movies.forEach((element: IMovies) => {
+            elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
         });
         count++;
         loader();

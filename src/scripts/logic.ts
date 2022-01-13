@@ -9,7 +9,9 @@ import {
 import renderNewFilm from './renderMovie';
 import { constants } from './constants/configConstants';
 // eslint-disable-next-line import/no-cycle
-import { createDynamic, getFilmBySearchInput, getFilterData } from './filters';
+import {
+    createDynamic, getFilmBySearchInput, getFilterData,
+} from './filters';
 
 export function checkToken():void {
     loader();
@@ -22,12 +24,13 @@ export function checkToken():void {
 }
 
 export function showMoreMovies() {
-    if ((<HTMLInputElement>elementsOfDom.inputClassSearchInput).value) {
-        getFilmBySearchInput();
-    } else if (!elementsOfDom.inputIdFilters.classList.contains('active')) {
-        renderNewFilm(constants.SERVER_MOVIES);
-    } else {
+    if (elementsOfDom.inputIdFilters.classList.contains('active')) {
+        elementsOfDom.inputClassSearchInput.value = '';
         createDynamic(getFilterData());
+    } else if ((<HTMLInputElement>elementsOfDom.inputClassSearchInput).value) {
+        getFilmBySearchInput();
+    } else {
+        renderNewFilm(constants.SERVER_MOVIES);
     }
 }
 
