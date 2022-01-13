@@ -25,3 +25,10 @@ export type TGenres = {
     id: number
     name: string
 };
+
+export type TBodySignUp = {
+    login: string,
+    password: string,
+    first_name: string,
+    last_name: string
+}

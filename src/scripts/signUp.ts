@@ -5,14 +5,12 @@ import { elementsOfDom } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
 import constantsString from './constants/constantsString';
 import { clearImputs } from './helpers';
+import { TBodySignUp } from './types/types';
 
-export async function useAPI():Promise<void> {
+export async function useAPI(userObj: TBodySignUp): Promise<void> {
     try {
         await axios.post(constants.SERVER_SING_UP, {
-            login: elementsOfDom.inputIdUsername.value,
-            password: elementsOfDom.inputIdPassword.value,
-            first_name: elementsOfDom.inputIdFirstName.value,
-            last_name: elementsOfDom.inputIdLastName.value,
+            ...userObj,
             user_role: 'users',
         });
         elementsOfDom.divClassContainerSignUP.classList.toggle(selectorsCss.classHidden, true);
@@ -23,12 +21,12 @@ export async function useAPI():Promise<void> {
     }
 }
 
-function setError(element:HTMLElement, textMessage:string) {
+function setError(element: HTMLElement, textMessage: string) {
     element.classList.add('error');
     element.innerText = textMessage;
 }
 
-export function checkInputs():void {
+export function checkInputs(): void {
     const error = elementsOfDom.classErrorHolder;
     const usernameValue = elementsOfDom.inputIdUsername.value.trim();
     const passwordValue = elementsOfDom.inputIdPassword.value.trim();
@@ -36,8 +34,8 @@ export function checkInputs():void {
     const lastNameValue = elementsOfDom.inputIdLastName.value.trim();
     switch (true) {
         case (usernameValue.length === 0 || passwordValue.length === 0
-        || firstNameValue.length === 0
-        || lastNameValue.length === 0):
+            || firstNameValue.length === 0
+            || lastNameValue.length === 0):
             setError(error, constantsString.blankString);
             break;
         case (elementsOfDom.inputIdUsername.classList.contains('placeError')):
@@ -52,7 +50,12 @@ export function checkInputs():void {
             break;
         default:
             clearImputs();
-            useAPI();
+            useAPI({
+                login: usernameValue,
+                password: passwordValue,
+                first_name: firstNameValue,
+                last_name: lastNameValue,
+            });
     }
 }
 
