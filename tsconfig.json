@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "noEmitOnError": true,
+        "target": "es2015",
+        "watch": true,
+        "moduleResolution": "node"
+    },
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" href="../img/logo.svg" type="image/png">
+    <title class="title"></title>
+</head>
+<body>
+<div class="masks">
+    <div class="loaders"></div>
+</div>
+<div class="movie_page">
+</div>
+<script type="text/template" id="taskMovieTemplate">
+    <div class="description_block">
+        <h1>{{title}}</h1>
+        <div class="wrapper">
+            <div>
+                <img src="{{poster_path}}" alt="poster" class="poster"/>
+            </div>
+            <table class="table_film_data">
+                <tbody>
+                <tr>
+                    <td>
+                        <h2>Release date</h2>
+                    </td>
+                    <td class="film_data">{{release_date}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>Genres</h2>
+                    </td>
+                    <td class="film_data">{{genre_ids}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>Original language</h2>
+                    </td>
+                    <td class="film_data">{{original_language}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>Age limits</h2>
+                    </td>
+                    <td class="film_data">{{adult}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>Original title</h2>
+                    </td>
+                    <td class="film_data">{{original_title}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <h2>Populariy</h2>
+                    </td>
+                    <td class="film_data">{{popularity}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="wrapper_about_film">
+        <h2>Description</h2>
+        <div class="description">
+            {{overview}}
+        </div>
+        <iframe class="trailer" src="http://www.youtube.com/embed/{{movieSrc}}" allowfullscreen></iframe>
+    </div>
+</script>
+</body>
+</html>

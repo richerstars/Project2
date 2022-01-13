@@ -1,0 +1,146 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html {
+  background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/257418/andy-holmes-698828-unsplash.jpg') top fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: "Helvetica", sans-serif;
+  color: black;
+}
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  border-radius: 0px;
+  justify-content: start;
+}
+
+.poster {
+  height: 600px;
+  width: 350px;
+  left: 371px;
+  top: 418px;
+  border-radius: 0px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 40px;
+  margin: 0;
+  margin-bottom: 50px;
+
+}
+
+table {
+  float: right;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 100%;
+  text-indent: initial;
+
+}
+
+.poster {
+  float: left;
+}
+
+tr {
+  line-height: 20px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+h2 {
+  margin-right: 15px;
+}
+
+.movie_page {
+  background-color: white;
+  padding: 50px;
+  margin: 40px auto;
+}
+
+.film_data {
+  font-size: 20px;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 22px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+}
+
+.advertising {
+  float: right;
+}
+
+.wrapper_about_film {
+  height: 1000px;
+}
+.masks {
+  width: 100%;
+  height: 100%;
+  background: black;
+  position: fixed;
+  top: 0;
+  z-index: 200;
+  transition: 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loaders {
+  width: 100px;
+  height: 100px;
+  border: 8px solid rgba(40, 36, 64, 0.6);
+  border-radius: 50%;
+  border-left-color: rgba(40, 36, 64, 1);
+  animation: loader 1.3s linear infinite;
+}
+
+@keyframes loader {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.hidden{
+  display: none;
+}
+@media screen {
+  .movie_page {
+    max-width: 1000px;
+  }
+}
+.trailer{
+  width: calc(100% - 34px);
+  height: calc(100% - 399px);
+  max-width: 1000px;
+  margin-top: 50px;
+}
+.wrapper_about_film{
+  margin-top: 100px;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+  background: #282440d9;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
+  background: rgba(155, 33, 33, 1);
+  border-radius: 10px;
+}

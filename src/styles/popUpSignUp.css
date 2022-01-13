@@ -1,0 +1,129 @@
+.hidden{
+  display: none;
+}
+.show{
+  display: block;
+}
+.containerSignUp {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 450px;
+  max-width: 100%;
+}
+
+.header {
+  border-bottom: 1px solid #f0f0f0;
+  background-color: #f7f7f7;
+  padding: 20px 40px;
+  cursor: default;
+}
+
+.header h2 {
+  margin: 0;
+  text-align: center;
+}
+
+.form {
+  padding: 30px 34px;
+}
+
+.form-control {
+  margin-bottom: 10px;
+  padding-bottom: 20px;
+  position: relative;
+  text-align: center;
+  font-size: 18px;
+  font-weight:bold;
+}
+
+.form-control label {
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.form-control input {
+  /*border: 2px solid #f0f0f0;*/
+  border-radius: 4px;
+  display: block;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 10px 0;
+  width: 99%;
+}
+
+.placeError{
+  border: 2px solid #ff0000;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+.form-control input:focus {
+  outline: 0;
+  border-color: #777;
+}
+
+.form-control.success input {
+  border-color: #2ecc71;
+}
+
+.form-control.error input {
+  border-color: #e74c3c;
+}
+
+.form button {
+  background-color: #9b2121;
+  border: 2px solid #9b2121;
+  border-radius: 6px;
+  color: #fff;
+  display: block;
+  font-family: inherit;
+  font-size: 16px;
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+}
+label{
+  text-align: center;
+}
+.error-holder-msg{
+  display: none;
+}
+.error{
+  display: block;
+  text-align: center;
+  border: 2px solid #9b2121;
+  padding: 10px;
+}
+.SignUpBtn{
+  cursor: pointer;
+  font-weight:bold;
+}
+.containerSignIn {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  width: 450px;
+  max-width: 100%;
+}
+.form-control-login-password {
+  margin-bottom: 10px;
+  position: relative;
+}
+.sign-redirect {
+  text-decoration: underline;
+  color: #9b2121;
+  padding-left: 2px;
+}
+.SignUpBtn:hover{
+  border: 2px solid #9b2121;
+  color: #9b2121;
+  background-color: #f7f7f7;
+  font-weight:bold;
+}
+.hover-input:hover{
+  border: 2px solid rgba(77, 69, 121, 0.85);
+  box-shadow: 0 0 5px rgba(77, 69, 121, 0.85);
+}
+
