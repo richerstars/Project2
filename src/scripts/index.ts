@@ -13,6 +13,7 @@ import {
 import {
     getFilters, saveFilters, resetFilters, hidetFilters, inputSearch,
 } from './filters';
+import { nameCheck, passCheck, userCheck } from './signUp';
 
 document.addEventListener('DOMContentLoaded', checkToken);
 elementsOfDom.classRangeSlider.addEventListener('input', getInputValues);
@@ -30,3 +31,7 @@ elementsOfDom.sectionFilmsShowMore.addEventListener('click', openFilmCard);
 elementsOfDom.divClassSearch.addEventListener('click', showInputSearch);
 elementsOfDom.inputClassSearchInput.addEventListener('change', inputSearch);
 elementsOfDom.bigWindow.addEventListener('click', hidetFilters);
+elementsOfDom.inputIdUsername.addEventListener('change', () => userCheck(elementsOfDom.inputIdUsername));
+elementsOfDom.inputIdPassword.addEventListener('change', () => passCheck(elementsOfDom.inputIdPassword));
+elementsOfDom.inputIdFirstName.addEventListener('change', () => nameCheck(elementsOfDom.inputIdFirstName));
+elementsOfDom.inputIdLastName.addEventListener('change', () => nameCheck(elementsOfDom.inputIdLastName));

@@ -50,53 +50,39 @@ export function checkInputs():void {
             || elementsOfDom.inputIdLastName.classList.contains('placeError')):
             setError(error, constantsString.fistLastCheckLetter);
             break;
-        case (elementsOfDom.inputIdUsername.classList.contains('placeError')
-            || elementsOfDom.inputIdPassword.classList.contains('placeError')
-            || elementsOfDom.inputIdFirstName.classList.contains('placeError')
-            || elementsOfDom.inputIdLastName.classList.contains('placeError')):
-            setError(error, constantsString.invalidInputs);
-            break;
         default:
             clearImputs();
             useAPI();
     }
 }
-elementsOfDom.inputIdUsername.addEventListener('change', () => {
-    if (elementsOfDom.inputIdUsername.value.trim().length === 0) {
-        elementsOfDom.inputIdUsername.classList.add('placeError');
-    } else if (!elementsOfDom.inputIdUsername.value.trim().match(/^\D[\S]+/i)) {
-        elementsOfDom.inputIdUsername.classList.add('placeError');
-    } else {
-        elementsOfDom.inputIdUsername.classList.remove('placeError');
-    }
-});
 
-elementsOfDom.inputIdPassword.addEventListener('change', () => {
-    if (elementsOfDom.inputIdPassword.value.trim().length === 0) {
-        elementsOfDom.inputIdPassword.classList.add('placeError');
-    } else if (!elementsOfDom.inputIdPassword.value.trim()
+export function userCheck(elem) {
+    if (elem.value.trim().length === 0) {
+        elem.classList.add('placeError');
+    } else if (!elem.value.trim()
+        .match(/^\D[\S]+/i)) {
+        elem.classList.add('placeError');
+    } else {
+        elem.classList.remove('placeError');
+    }
+}
+
+export function passCheck(elem) {
+    if (elem.value.trim().length === 0) {
+        elem.classList.add('placeError');
+    } else if (!elem.value.trim()
         .match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/s)) {
-        elementsOfDom.inputIdPassword.classList.add('placeError');
+        elem.classList.add('placeError');
     } else {
-        elementsOfDom.inputIdPassword.classList.remove('placeError');
+        elem.classList.remove('placeError');
     }
-});
-
-elementsOfDom.inputIdFirstName.addEventListener('change', () => {
-    if (elementsOfDom.inputIdFirstName.value.trim().length === 0) {
-        elementsOfDom.inputIdFirstName.classList.add('placeError');
-    } else if (!elementsOfDom.inputIdFirstName.value.trim().match(/^[a-zA-Z]+$/)) {
-        elementsOfDom.inputIdFirstName.classList.add('placeError');
+}
+export function nameCheck(elem) {
+    if (elem.value.trim().length === 0) {
+        elem.classList.add('placeError');
+    } else if (!elem.value.trim().match(/^[a-zA-Z]+$/)) {
+        elem.classList.add('placeError');
     } else {
-        elementsOfDom.inputIdFirstName.classList.remove('placeError');
+        elem.classList.remove('placeError');
     }
-});
-elementsOfDom.inputIdLastName.addEventListener('change', () => {
-    if (elementsOfDom.inputIdLastName.value.trim().length === 0) {
-        elementsOfDom.inputIdLastName.classList.add('placeError');
-    } else if (!elementsOfDom.inputIdLastName.value.trim().match(/^[a-zA-Z]+$/)) {
-        elementsOfDom.inputIdLastName.classList.add('placeError');
-    } else {
-        elementsOfDom.inputIdLastName.classList.remove('placeError');
-    }
-});
+}
