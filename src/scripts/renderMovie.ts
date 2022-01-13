@@ -12,10 +12,11 @@ export default async (url: string): Promise<void> => {
     try {
         elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
         const token = document.cookie;
-        console.log(token);
         const {
             data: {
-                message: movies,
+                message: {
+                    data: movies,
+                },
             },
         } = await axios.get(`${url}?${constants.GET_PARAMS.PAGE}${count}&${token}`);
         movies.forEach((element: IMovies, index: number) => {
