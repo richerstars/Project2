@@ -67,10 +67,10 @@ const showFilm = async (movieInfo: TMovie) => {
     }
 };
 
-const getFilm = async (movieId: string) => {
+const getFilm = async (movieId: string, token: string) => {
     try {
         setTimeout(loader, 1000);
-        const { data: { message: movieData } } = await axios.get(`http://localhost:5000/movies/id?id=${movieId}`);
+        const { data: { message: movieData } } = await axios.get(`http://localhost:5000/movies/id?movie_id=${movieId}&${token}`);
         showFilm(movieData);
     } catch (error) {
         // eslint-disable-next-line no-console
@@ -78,4 +78,4 @@ const getFilm = async (movieId: string) => {
     }
 };
 
-getFilm(id);
+getFilm(id, document.cookie);
