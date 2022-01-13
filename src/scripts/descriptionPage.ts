@@ -21,9 +21,9 @@ const htmlToElement = (html: string) => {
     return template.content;
 };
 
-const normoleseGenres = async (): Promise<TGenres[]> => {
+const normoleseGenres = async (token: string): Promise<TGenres[]> => {
     try {
-        const response = await axios.get('http://localhost:5000/filters');
+        const response = await axios.get(`http://localhost:5000/filters?${token}`);
         const { message: { genres } } = response.data;
         return genres;
     } catch (error) {
@@ -43,7 +43,7 @@ const showFilm = async (movieInfo: TMovie) => {
         adult, popularity, title, overview, original_title: originalTitle,
     } = movieInfo;
 
-    const genres = await normoleseGenres();
+    const genres = await normoleseGenres(document.cookie);
     // eslint-disable-next-line no-return-assign
     const normalGenres = genres.reduce((acc: string, element: TGenres) => (genreIds.includes(element.id) ? acc = `${acc} ${element.name}` : acc), ' ');
 

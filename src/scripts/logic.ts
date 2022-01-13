@@ -13,13 +13,13 @@ import {
     createDynamic, getFilmBySearchInput, getFilterData,
 } from './filters';
 
-export function checkToken():void {
+export function checkToken(): void {
     loader();
     if (document.cookie.length > 6) {
         elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden);
         elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
         renderNewFilm(constants.SERVER_MOVIES);
-        renderGenresLanguges();
+        renderGenresLanguges(document.cookie);
     }
 }
 
@@ -34,7 +34,7 @@ export function showMoreMovies() {
     }
 }
 
-export function changeModalWindow(e:Event):void {
+export function changeModalWindow(e: Event): void {
     e.preventDefault();
     if ((<HTMLElement>e.target).id === 'checkSignIn') {
         clearImputs();
@@ -48,37 +48,37 @@ export function changeModalWindow(e:Event):void {
     elementsOfDom.divClassContainerSignIn.classList.toggle('hidden');
 }
 
-export function checkAdult(e:Event):void {
+export function checkAdult(e: Event): void {
     (<HTMLElement>e.target).parentElement.classList.toggle('checkedAdult');
     (<HTMLElement>e.target).parentElement.classList.toggle('filters-input');
 }
 
-export function logOut():void {
+export function logOut(): void {
     elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     document.cookie = 'token=;';
     document.location.reload();
     elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden, false);
 }
 
-export function setSignIn(e:Event):void {
+export function setSignIn(e: Event): void {
     elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     e.preventDefault();
     checkAuthorize();
 }
 
-export function setSignUp(e:Event):void {
+export function setSignUp(e: Event): void {
     e.preventDefault();
     checkInputs();
 }
 
-export function openFilmCard(event:MouseEvent):void {
+export function openFilmCard(event: MouseEvent): void {
     if ((<HTMLElement>event.target).parentElement.classList.contains('filmsItem')) {
         const movieId = Number((<HTMLElement>event.target).parentElement.id);
         window.open(`./descriptionFilm.html#${movieId}`);
     }
 }
 
-export function showInputSearch():void {
+export function showInputSearch(): void {
     elementsOfDom.inputClassSearchInput.focus();
 }
 

@@ -7,7 +7,7 @@ import selectorsCss from './constants/constants.selectorsCss';
 export function renderLangsOptionsTemplate({
     iso_639_1,
     english_name,
-}):HTMLElement {
+}): HTMLElement {
     elementsOfDom.templateIdLangOptions.value = iso_639_1;
     elementsOfDom.templateIdLangOptions.textContent = `${english_name}`;
     return elementsOfDom.templateIdLangOptions.cloneNode(true);
@@ -16,7 +16,7 @@ export function renderLangsOptionsTemplate({
 export function renderGenresOptionsTemplate({
     id,
     name,
-}):HTMLElement {
+}): HTMLElement {
     elementsOfDom.templateIdLangOptions.value = id;
     elementsOfDom.templateIdLangOptions.textContent = name;
     return elementsOfDom.templateIdLangOptions.cloneNode(true);
@@ -44,24 +44,24 @@ export function clearImputs() {
     elementsOfDom.divClassContainerSignIn.classList.toggle('hidden');
 }
 
-function setLanguages(languages: ILanguages[]):void {
-    languages.forEach((elem:ILanguages) => {
+function setLanguages(languages: ILanguages[]): void {
+    languages.forEach((elem: ILanguages) => {
         elementsOfDom.selectIdSelectLanguages.appendChild(renderLangsOptionsTemplate(elem));
     });
     elementsOfDom.selectIdSelectLanguages.value = '';
 }
 
-function setGenres(genres: IGenres[]):void {
-    genres.forEach((elem:IGenres) => {
+function setGenres(genres: IGenres[]): void {
+    genres.forEach((elem: IGenres) => {
         (elementsOfDom.selectIdSelectGenres.appendChild(renderGenresOptionsTemplate(elem)));
     });
     elementsOfDom.selectIdSelectGenres.value = '';
 }
 
-export async function renderGenresLanguges() {
+export async function renderGenresLanguges(token: string) {
     try {
         const { data: { message: { languages, genres } } } = await axios
-            .get(constants.SERVER_FILTERS);
+            .get(`${constants.SERVER_FILTERS}?${token}`);
         setLanguages(languages);
         setGenres(genres);
     } catch (err) {

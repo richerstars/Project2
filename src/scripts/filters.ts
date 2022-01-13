@@ -18,13 +18,13 @@ function clearMovies() {
     }
 }
 
-export async function getMoviesByDynamicParams(request):Promise<void> {
+export async function getMoviesByDynamicParams(request): Promise<void> {
     try {
         // childElementCount
         clearMovies();
         elementsOfDom.classMask.classList.remove(selectorsCss.classHidden);
         const { data: { message: { data: movies, totalCount } } } = await axios.get(request);
-        movies.forEach((element:IMovies) => {
+        movies.forEach((element: IMovies) => {
             elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
         });
         if (elementsOfDom.sectionFilmsShowMore.childElementCount === Number(totalCount)) {
@@ -39,7 +39,7 @@ export async function getMoviesByDynamicParams(request):Promise<void> {
     }
 }
 
-export function createDynamic(obj:IGetMovieParam):void {
+export function createDynamic(obj: IGetMovieParam): void {
     elementsOfDom.buttonShowMoreBtn.classList.remove(selectorsCss.classHidden);
     let url = `${constants.SERVER_MOVIES}?`;
     const token = document.cookie;
@@ -52,7 +52,7 @@ export function createDynamic(obj:IGetMovieParam):void {
     getMoviesByDynamicParams(url);
 }
 
-export function resetFilters():void {
+export function resetFilters(): void {
     elementsOfDom.inputIdAdult.checked = false;
     elementsOfDom.inputIdAdult.parentElement.classList.remove('checkedAdult');
     elementsOfDom.inputIdAdult.parentElement.classList.add('filters-input');
@@ -68,7 +68,7 @@ export function resetFilters():void {
     countFilters = 1;
 }
 
-export async function getFilters():Promise<void> {
+export async function getFilters(): Promise<void> {
     try {
         elementsOfDom.sectionClassSection.classList.toggle('filters-item');
         elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
@@ -80,25 +80,25 @@ export async function getFilters():Promise<void> {
 }
 
 export function getFilterData() {
-    const adult:boolean = elementsOfDom.inputIdAdult.checked;
-    const languages:string = elementsOfDom.selectIdSelectLanguages.value;
-    const budgetMin:number = elementsOfDom.inputIdMinVNumberRange.value;
-    const budgetMax:number = elementsOfDom.inputIdMaxVNumberRange.value;
-    const releaseDateFirst:string = elementsOfDom.inputIdReleaseDayFirst.value;
-    const releaseDateLast:string = elementsOfDom.inputIdReleaseDayLast.value;
-    const genres:string = elementsOfDom.selectIdSelectGenres.value;
+    const adult: boolean = elementsOfDom.inputIdAdult.checked;
+    const languages: string = elementsOfDom.selectIdSelectLanguages.value;
+    const budgetMin: number = elementsOfDom.inputIdMinVNumberRange.value;
+    const budgetMax: number = elementsOfDom.inputIdMaxVNumberRange.value;
+    const releaseDateFirst: string = elementsOfDom.inputIdReleaseDayFirst.value;
+    const releaseDateLast: string = elementsOfDom.inputIdReleaseDayLast.value;
+    const genres: string = elementsOfDom.selectIdSelectGenres.value;
     return {
         adult,
         languages,
         budget_min: budgetMin,
         budget_max: budgetMax,
-        release_date_first: releaseDateFirst,
-        release_date_last: releaseDateLast,
+        release_date_min: releaseDateFirst,
+        release_date_max: releaseDateLast,
         genre_id: genres,
     };
 }
 
-export function saveFilters():void {
+export function saveFilters(): void {
     elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     countFilters = 1;
     const request = getFilterData();
@@ -110,7 +110,7 @@ export function saveFilters():void {
     elementsOfDom.sectionClassSection.classList.toggle('filters-item-none');
 }
 
-export function getFilmBySearchInput():void {
+export function getFilmBySearchInput(): void {
     loader();
     const inputValue = elementsOfDom.inputClassSearchInput.value.trim();
     elementsOfDom.svgContainer.classList.add('hidden');
@@ -122,6 +122,6 @@ export function inputSearch() {
     getFilmBySearchInput();
 }
 
-export function hidetFilters(event:MouseEvent) {
+export function hidetFilters(event: MouseEvent) {
     if ((<HTMLElement>event.target).classList.contains('big-window')) getFilters();
 }
