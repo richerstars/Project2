@@ -1,5 +1,5 @@
 import '../styles/popUpSignUp.css';
-import axios from 'axios';
+import axios, { AxiosResponseHeaders } from 'axios';
 import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
 // eslint-disable-next-line import/no-cycle
@@ -8,10 +8,12 @@ import renderNewFilm from './renderMovie';
 
 export default async function checkAuthorize(): Promise<void> {
     try {
-        const { data: { message: { accessToken } } } = await axios.post(constants.SERVER_SING_IN, {
-            login: elementsOfDom.inputIdUsernameSignIn.value,
-            password: elementsOfDom.inputIdPasswordSignIn.value,
-        });
+        const { headers: { token: accessToken } } = await axios
+            .post(constants.SERVER_SING_IN, {
+                login: elementsOfDom.inputIdUsernameSignIn.value,
+                password: elementsOfDom.inputIdPasswordSignIn.value,
+            });
+
         if (accessToken) {
             document.cookie = `token=${accessToken};max-age=3600`;
             elementsOfDom.sectionClassPopUp.classList.add(selectorsCss.classHidden);

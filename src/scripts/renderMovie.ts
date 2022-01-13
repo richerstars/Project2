@@ -8,15 +8,17 @@ import selectorsCss from './constants/constants.selectorsCss';
 
 let count = 1;
 
-export default async (url: string):Promise<void> => {
+export default async (url: string): Promise<void> => {
     try {
         elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
+        const token = document.cookie;
+        console.log(token);
         const {
             data: {
                 message: movies,
             },
-        } = await axios.get(`${url}?${constants.GET_PARAMS.PAGE}${count}`);
-        movies.forEach((element:IMovies, index:number) => {
+        } = await axios.get(`${url}?${constants.GET_PARAMS.PAGE}${count}&${token}`);
+        movies.forEach((element: IMovies, index: number) => {
             if (index <= 20) {
                 elementsOfDom.sectionFilmsShowMore.appendChild(createTemplateShowMore(element));
             }
