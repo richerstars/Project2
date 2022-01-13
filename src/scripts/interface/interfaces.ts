@@ -8,8 +8,8 @@ export interface IGetMovieParam {
     title?: string,
     popularity_min?: number,
     popularity_max?: number,
-    release_date_first?: string,
-    release_date_last?: string,
+    release_date_min?: string,
+    release_date_max?: string,
     revenue_min?: number,
     revenue_max?: number,
     genre_id?:string

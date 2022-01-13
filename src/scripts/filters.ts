@@ -12,15 +12,14 @@ import { createTemplateShowMore } from './getmovie';
 import { loader } from './helpers';
 
 let countFilters = 1;
-function clearMovies() {
+function clearMovies(): void {
     if (elementsOfDom.sectionFilmsShowMore.children && countFilters < 3) {
         elementsOfDom.sectionFilmsShowMore.innerHTML = '';
     }
 }
 
-export async function getMoviesByDynamicParams(request): Promise<void> {
+export async function getMoviesByDynamicParams(request: string): Promise<void> {
     try {
-        // childElementCount
         clearMovies();
         elementsOfDom.classMask.classList.remove(selectorsCss.classHidden);
         const { data: { message: { data: movies, totalCount } } } = await axios.get(request);
@@ -32,6 +31,7 @@ export async function getMoviesByDynamicParams(request): Promise<void> {
         }
     } catch (err) {
         elementsOfDom.svgContainer.classList.remove('hidden');
+        elementsOfDom.buttonShowMoreBtn.classList.add(selectorsCss.classHidden);
         // eslint-disable-next-line no-console
         console.error('getMoviesByDynamicParams: ', err);
     } finally {
@@ -79,7 +79,7 @@ export async function getFilters(): Promise<void> {
     }
 }
 
-export function getFilterData() {
+export function getFilterData():IGetMovieParam {
     const adult: boolean = elementsOfDom.inputIdAdult.checked;
     const languages: string = elementsOfDom.selectIdSelectLanguages.value;
     const budgetMin: number = elementsOfDom.inputIdMinVNumberRange.value;
@@ -101,7 +101,7 @@ export function getFilterData() {
 export function saveFilters(): void {
     elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     countFilters = 1;
-    const request = getFilterData();
+    const request: IGetMovieParam = getFilterData();
     elementsOfDom.inputIdFilters.classList.add('active');
     elementsOfDom.bigWindow.classList.toggle('hidden');
     elementsOfDom.svgContainer.classList.add('hidden');
@@ -112,16 +112,16 @@ export function saveFilters(): void {
 
 export function getFilmBySearchInput(): void {
     loader();
-    const inputValue = elementsOfDom.inputClassSearchInput.value.trim();
+    const inputValue: string = elementsOfDom.inputClassSearchInput.value.trim();
     elementsOfDom.svgContainer.classList.add('hidden');
     createDynamic({ title: inputValue });
 }
 
-export function inputSearch() {
+export function inputSearch(): void {
     countFilters = 1;
     getFilmBySearchInput();
 }
 
-export function hidetFilters(event: MouseEvent) {
+export function hidetFilters(event: MouseEvent): void {
     if ((<HTMLElement>event.target).classList.contains('big-window')) getFilters();
 }

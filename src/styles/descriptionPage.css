@@ -134,12 +134,13 @@ h2 {
 }
 ::-webkit-scrollbar {
   width: 10px;
-  height: 10px;
 }
 ::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
   background: #282440d9;
 }
 ::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 1);
   background: rgba(155, 33, 33, 1);
   border-radius: 10px;
 }

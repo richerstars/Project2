@@ -2,9 +2,10 @@ import '../styles/popUpSignUp.css';
 import axios from 'axios';
 import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
-// eslint-disable-next-line import/no-cycle
 import selectorsCss from './constants/constants.selectorsCss';
 import renderNewFilm from './renderMovie';
+import constantsString from './constants/constantsString';
+import { renderGenresLanguges } from './helpers';
 
 export default async function checkAuthorize(): Promise<void> {
     try {
@@ -20,12 +21,13 @@ export default async function checkAuthorize(): Promise<void> {
             elementsOfDom.buttonShowMoreBtn.classList.remove(selectorsCss.classHidden);
             elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
             await renderNewFilm(constants.SERVER_MOVIES);
+            await renderGenresLanguges(document.cookie);
             return;
         }
         return;
     } catch (error) {
         elementsOfDom.classSignInErr.classList.add('error');
-        elementsOfDom.classSignInErr.textContent = 'Wrong login or password';
+        elementsOfDom.classSignInErr.textContent = constantsString.wrongLogin;
         elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
     }
 }

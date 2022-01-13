@@ -4,6 +4,7 @@ import { constants } from './constants/configConstants';
 import { elementsOfDom } from './constants/constantsElements';
 import selectorsCss from './constants/constants.selectorsCss';
 import constantsString from './constants/constantsString';
+import regExp from './constants/regExp';
 import { clearImputs } from './helpers';
 import { TBodySignUp } from './types/types';
 
@@ -21,7 +22,7 @@ export async function useAPI(userObj: TBodySignUp): Promise<void> {
     }
 }
 
-function setError(element: HTMLElement, textMessage: string) {
+function setError(element: HTMLElement, textMessage: string): void {
     element.classList.add('error');
     element.innerText = textMessage;
 }
@@ -59,31 +60,31 @@ export function checkInputs(): void {
     }
 }
 
-export function userCheck(elem) {
+export function userCheck(elem): void {
     if (elem.value.trim().length === 0) {
         elem.classList.add('placeError');
     } else if (!elem.value.trim()
-        .match(/^\D[\S]+/i)) {
+        .match(regExp.USER_REG_EXP)) {
         elem.classList.add('placeError');
     } else {
         elem.classList.remove('placeError');
     }
 }
 
-export function passCheck(elem) {
+export function passCheck(elem): void {
     if (elem.value.trim().length === 0) {
         elem.classList.add('placeError');
     } else if (!elem.value.trim()
-        .match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/s)) {
+        .match(regExp.PASS_REG_EXP)) {
         elem.classList.add('placeError');
     } else {
         elem.classList.remove('placeError');
     }
 }
-export function nameCheck(elem) {
+export function nameCheck(elem): void {
     if (elem.value.trim().length === 0) {
         elem.classList.add('placeError');
-    } else if (!elem.value.trim().match(/^[a-zA-Z]+$/)) {
+    } else if (!elem.value.trim().match(regExp.NAME_REG_EXP)) {
         elem.classList.add('placeError');
     } else {
         elem.classList.remove('placeError');

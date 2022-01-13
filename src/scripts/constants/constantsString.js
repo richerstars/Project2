@@ -4,4 +4,5 @@ export default {
     passCheck: 'Password must contain at least 1 big letter, 1 small letter and 1 number. Length have to be 8+!;',
     fistLastCheckLetter: 'First Name and Last Name contains only letters and start with big letter!',
     invalidInputs: 'You have error inputs',
+    wrongLogin: 'Wrong login or password',
 };

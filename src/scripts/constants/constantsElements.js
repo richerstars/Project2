@@ -79,19 +79,13 @@ export const elementsOfDom = {
     classMask: document.querySelector(selectorsCss.classMark),
     classHeaderOne: document.querySelector(selectorsCss.classHeaderOne),
     bigWindow: document.querySelector(selectorsCss.bigWindow),
-    minVal: document.querySelector('#minRange'),
-    maxVal: document.querySelector('#maxRange'),
-    minNumVal: document.querySelector('#minNumberRange'),
-    maxNumVal: document.querySelector('#maxNumberRange'),
-    slider: document.querySelector('.range-slider'),
     templateIdNotFoundTemplate: document.querySelector(selectorsCss.idNotFoundTemplate).content,
     classRangeSlider: document.querySelector(selectorsCss.classRangeSlider),
     inputIdMinValueRange: document.querySelector(selectorsCss.idMinValueRange),
     inputIdMaxValueRange: document.querySelector(selectorsCss.idMaxValueRange),
     inputIdMinVNumberRange: document.querySelector(selectorsCss.idMinVNumberRange),
     inputIdMaxVNumberRange: document.querySelector(selectorsCss.idMaxNumberRange),
-    bigWindow: document.querySelector('.big-window'),
-    adultBlock: document.querySelector('#adult'),
+    adultBlock: document.querySelector(selectorsCss.idAdult),
     svgContainer: document.getElementById('svgContainer'),
 };
 
@@ -102,4 +96,3 @@ export const elemsQuerySelectors = {
     descriptionFilm: elementsOfDom.templateFilmsShowMore.querySelector('.descriptionFilm'),
     notFound: elementsOfDom.templateIdNotFoundTemplate.querySelector('.par-not-found'),
 };
-

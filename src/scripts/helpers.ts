@@ -22,11 +22,11 @@ export function renderGenresOptionsTemplate({
     return elementsOfDom.templateIdLangOptions.cloneNode(true);
 }
 
-export function loader() {
+export function loader(): void {
     elementsOfDom.classMask.classList.toggle(selectorsCss.classHidden);
 }
 
-export function clearImputs() {
+export function clearImputs(): void {
     elementsOfDom.inputIdUsername.value = '';
     elementsOfDom.inputIdPassword.value = '';
     elementsOfDom.inputIdFirstName.value = '';
@@ -58,7 +58,7 @@ function setGenres(genres: IGenres[]): void {
     elementsOfDom.selectIdSelectGenres.value = '';
 }
 
-export async function renderGenresLanguges(token: string) {
+export async function renderGenresLanguges(token: string): Promise<void> {
     try {
         const { data: { message: { languages, genres } } } = await axios
             .get(`${constants.SERVER_FILTERS}?${token}`);

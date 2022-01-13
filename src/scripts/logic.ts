@@ -8,7 +8,6 @@ import {
 } from './helpers';
 import renderNewFilm from './renderMovie';
 import { constants } from './constants/configConstants';
-// eslint-disable-next-line import/no-cycle
 import {
     createDynamic, getFilmBySearchInput, getFilterData,
 } from './filters';
@@ -18,12 +17,12 @@ export function checkToken(): void {
     if (document.cookie.length > 6) {
         elementsOfDom.sectionClassPopUp.classList.toggle(selectorsCss.classHidden);
         elementsOfDom.buttonShowMoreBtn.classList.toggle(selectorsCss.classHidden);
-        renderNewFilm(constants.SERVER_MOVIES);
         renderGenresLanguges(document.cookie);
+        renderNewFilm(constants.SERVER_MOVIES);
     }
 }
 
-export function showMoreMovies() {
+export function showMoreMovies(): void {
     if (elementsOfDom.inputIdFilters.classList.contains('active')) {
         elementsOfDom.inputClassSearchInput.value = '';
         createDynamic(getFilterData());
@@ -82,13 +81,12 @@ export function showInputSearch(): void {
     elementsOfDom.inputClassSearchInput.focus();
 }
 
-export function getInputValues(e) {
+export function getInputValues(e: Event): void {
     e.preventDefault();
     if ((<HTMLElement>e.target).classList.contains('inputValueNumber')) {
         (<HTMLInputElement>(<HTMLElement>e.target).previousElementSibling
             .previousElementSibling).value = (<HTMLInputElement>e.target).value;
     }
-
     if (+elementsOfDom.inputIdMinValueRange.value >= (+elementsOfDom.inputIdMaxValueRange
         .value - 10000)) {
         elementsOfDom.inputIdMinValueRange.value = (Number(elementsOfDom.inputIdMaxValueRange

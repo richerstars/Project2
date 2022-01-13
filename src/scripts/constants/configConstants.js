@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/prefer-default-export
 export const constants = {
     SERVER_SING_UP: 'http://localhost:5000/users/sign_up',
     SERVER_SING_IN: 'http://localhost:5000/users/sign_in',
@@ -18,5 +19,5 @@ export const constants = {
         REVENUE_MAX: 'revenue_max=',
         POPULARITY_MIN: 'popularity_min=',
         POPULARITY_MAX: 'popularity_max=',
-    }
-}
+    },
+};

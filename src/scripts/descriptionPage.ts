@@ -1,20 +1,21 @@
 import '../styles/descriptionPage.css';
 import axios from 'axios';
 import { TMovie, TGenres } from './types/types';
+import { constants } from './constants/configConstants';
 
 require('babel-core/register');
 require('babel-polyfill');
 
 const id = document.URL.split('#')[1];
-
-const taskItemTemplate = (<HTMLElement>document.getElementById('taskMovieTemplate')).innerHTML;
+const taskItemTemplate = (<HTMLElement>document
+    .getElementById('taskMovieTemplate')).innerHTML;
 const mainMovie = <HTMLElement>document.querySelector('.movie_page');
 
-function loader() {
+function loader(): void {
     document.querySelector('.masks').classList.add('hidden');
 }
 
-const htmlToElement = (html: string) => {
+const htmlToElement = (html: string):DocumentFragment => {
     const template: HTMLTemplateElement = document.createElement('template');
     html = html.trim();
     template.innerHTML = html;
@@ -23,7 +24,7 @@ const htmlToElement = (html: string) => {
 
 const normoleseGenres = async (token: string): Promise<TGenres[]> => {
     try {
-        const response = await axios.get(`http://localhost:5000/filters?${token}`);
+        const response = await axios.get(`${constants.SERVER_FILTERS}?${token}`);
         const { message: { genres } } = response.data;
         return genres;
     } catch (error) {
@@ -36,7 +37,7 @@ const normaliseDate = (date: string): string => {
     return normalDate.replace('-', '/').replace('-', '/');
 };
 
-const showFilm = async (movieInfo: TMovie) => {
+const showFilm = async (movieInfo: TMovie): Promise<void> => {
     const {
         poster_path: posterPath, release_date: releaseDate, genres: genreIds,
         original_language: originalLanguage, trailer,
@@ -50,7 +51,7 @@ const showFilm = async (movieInfo: TMovie) => {
     if (taskItemTemplate) {
         document.querySelector('.title').textContent = title;
         const html: string = taskItemTemplate
-            .replace('{{poster_path}}', (`https://image.tmdb.org/t/p/original${posterPath}`))
+            .replace('{{poster_path}}', (`${constants.IMAGE_POSTER_LINK}${posterPath}`))
             .replace('{{release_date}}', normaliseDate(releaseDate))
             .replace('{{movieSrc}}', trailer)
             .replace('{{title}}', title)
@@ -67,10 +68,10 @@ const showFilm = async (movieInfo: TMovie) => {
     }
 };
 
-const getFilm = async (movieId: string, token: string) => {
+const getFilm = async (movieId: string, token: string): Promise<void> => {
     try {
-        setTimeout(loader, 1000);
-        const { data: { message: movieData } } = await axios.get(`http://localhost:5000/movies/id?movie_id=${movieId}&${token}`);
+        loader();
+        const { data: { message: movieData } } = await axios.get(`${constants.SERVER_MOVIES}/id?movie_id=${movieId}&${token}`);
         showFilm(movieData);
     } catch (error) {
         // eslint-disable-next-line no-console

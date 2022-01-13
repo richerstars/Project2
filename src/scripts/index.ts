@@ -8,7 +8,6 @@ import {
     setSignUp, setSignIn,
     openFilmCard,
     getInputValues, showInputSearch, showMoreMovies,
-
 } from './logic';
 import {
     getFilters, saveFilters, resetFilters, hidetFilters, inputSearch,
@@ -31,7 +30,11 @@ elementsOfDom.sectionFilmsShowMore.addEventListener('click', openFilmCard);
 elementsOfDom.divClassSearch.addEventListener('click', showInputSearch);
 elementsOfDom.inputClassSearchInput.addEventListener('change', inputSearch);
 elementsOfDom.bigWindow.addEventListener('click', hidetFilters);
-elementsOfDom.inputIdUsername.addEventListener('change', () => userCheck(elementsOfDom.inputIdUsername));
-elementsOfDom.inputIdPassword.addEventListener('change', () => passCheck(elementsOfDom.inputIdPassword));
-elementsOfDom.inputIdFirstName.addEventListener('change', () => nameCheck(elementsOfDom.inputIdFirstName));
-elementsOfDom.inputIdLastName.addEventListener('change', () => nameCheck(elementsOfDom.inputIdLastName));
+elementsOfDom.inputIdUsername
+    .addEventListener('change', () => userCheck(elementsOfDom.inputIdUsername));
+elementsOfDom.inputIdPassword
+    .addEventListener('change', () => passCheck(elementsOfDom.inputIdPassword));
+elementsOfDom.inputIdFirstName
+    .addEventListener('change', () => nameCheck(elementsOfDom.inputIdFirstName));
+elementsOfDom.inputIdLastName
+    .addEventListener('change', () => nameCheck(elementsOfDom.inputIdLastName));
